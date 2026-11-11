@@ -178,12 +178,26 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - las columnas bajan de 49 a 29 y no se pierde ninguna fila;
   - se comparan 4 métodos para las duraciones vacías;
   - criticidad e impacto quedan con orden declarado, y hay one-hot y 3 escaladores comparados;
-  - la tabla de recurrencia tiene 203 elementos con pérdida de servicio por transmisión: 34 con 2 o más fallas y 12 con 3 o más;
+  - la tabla de recurrencia tiene 203 elementos con pérdida de servicio por transmisión: 34 con 2 o más fallas y 12 con 3 o más (cifra reemplazada en el paso 19 por el conteo por sitio);
   - 15 de 15 reglas de integridad cumplidas y pruebas normal, límite y excepción en 9 funciones.
 - **Función recursiva (RA2):** `utilidades.fusionar_intervalos` une las caídas de un mismo elemento que se traslapan, para no contar dos veces el tiempo fuera de servicio.
 - **Incidencia y corrección:** al validar apareció que `reparar_texto` no arreglaba la Ñ (`Ã‘uÃ±oa`). Esa letra se rompió con la codificación de Windows (cp1252), no con latin-1. Se corrigió la función para probar cp1252 primero, y quedan 0 celdas rotas.
 - **Otra corrección:** el one-hot con frecuencia mínima de 1 % agrupaba microondas y FOP como poco frecuentes, y son el foco de la pregunta. El tipo de enlace se codifica sin agrupar.
 - **Orden de trabajo, para no repetir la incidencia del paso 17:** ejecutar, guardar con Ctrl+S y recién ahí `git add` y `git commit`.
+
+## Paso 19 · Mnemónicos reales, conteo por sitio y reglas del NOC (11-11-2026)
+
+- **Qué cambió y por qué:** al revisar el gráfico de la Fase 2, los sitios aparecían como `NE_0132`, y así no se puede saber qué sitio escalar. Los mnemónicos de los sitios no son datos personales y la SUBTEL ya los publica. Por eso el anonimizador dejó de codificarlos, y ahora todo el proyecto usa el nombre real. Las personas siguen codificadas (IM_, OP_), igual que los tickets de proveedor y los códigos de servicio TX.
+- **Hallazgo al usar los nombres reales:** `Network Element` puede traer **varios sitios en la misma celda**, separados por dos espacios. Un espacio simple es parte del nombre, como en `SIT_0304`. Separar por dos espacios coincide con `Q Network Element` en las 21.542 filas. Hay 1.098 incidencias con más de un sitio.
+  - Antes se contaban como un solo "elemento" y la tabla mostraba 203. Contando por sitio, son **559 sitios** con pérdida de servicio por transmisión: 149 con 2 o más fallas y 21 con 3 o más.
+  - Se agregó `utilidades.separar_sitios`, con pruebas.
+- **Reglas del NOC confirmadas por Edgar:**
+  - **Criticidad:** P1 afecta a más de 50.000 clientes, P2 a más de 30.000, y P3 y P3E a menos de 30.000. La P3E es una P3 que dura más de 24 horas.
+  - **Pérdida de servicio:** P1, P2, P3 y P3E tienen pérdida de servicio. P2 Redundancia y P2R no, porque la redundancia está activa.
+  - **Orden ordinal:** P4 < P2 Redundancia < P2R Degradación < P3 = P3E < P2 < P1. P3 y P3E comparten nivel, y la duración las distingue con la bandera `es_extendida`.
+  - **Satelital:** el proveedor es TGS Starlink. El exporte lo deja vacío en las 15 fallas satelitales.
+- **Corrección de enfoque:** antes de esto se habían supuesto dos reglas del negocio, el proveedor satelital como "Sin dato" y la P3E como menos grave que la P2 Redundancia. Desde ahora toda regla del NOC se consulta antes de aplicarla.
+- **Impacto en el repositorio:** se regeneró `data/raw/incidencias_oct2026_anon.csv` con el anonimizador ajustado y se volvió a correr `validar_dataset.py`, que sigue diciendo CUMPLE. F1 y F2 se ejecutaron de nuevo, y la tabla de recurrencia ahora es `recurrencia_tx_por_sitio.csv`. F1 da 8 de 8 y F2 da 17 de 17 reglas de integridad.
 
 ---
 
@@ -206,6 +220,12 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | (rama f2-pipeline) | feat: notebook F2 con limpieza, transformación, escalamiento y validación | Notebook F2 ejecutado, figuras, metadatos y diccionario del modelo | 4. Notebooks F2 · 5. Evidencias | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
 | (rama f2-pipeline) | data: guarda los conjuntos procesados y la tabla de recurrencia | `data/processed/` (3 archivos) | 4. Notebooks F2 (salida) | 10 Preprocesamiento · 5 Reproducibilidad |
 | (rama f2-pipeline) | docs: registra las decisiones y el proceso de la Fase 2 | `docs/bitacora_decisiones.md` y este paso 18 | 5. Evidencias de trazabilidad | 7 Documentación del proceso |
+| (rama f2-pipeline) | data: conserva los mnemónicos reales de los sitios en data/raw | Anonimizador ajustado, `data/raw` regenerado y validación del dataset | 4. Obtención de datos | 10 Preprocesamiento · 3 Problemática |
+| (rama f2-pipeline) | feat: agrega separar_sitios para contar las fallas por sitio | `src/utilidades.py` | 4. Notebooks F2 (código) | 9 Codificación |
+| (rama f2-pipeline) | docs: F1 con mnemónicos reales, definición de criticidad y conteo por sitio | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática |
+| (rama f2-pipeline) | feat: F2 cuenta la recurrencia por sitio con las reglas del NOC | Notebook F2 ejecutado, figuras y metadatos | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
+| (rama f2-pipeline) | data: regenera los conjuntos procesados con la tabla por sitio | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
+| (rama f2-pipeline) | docs: registra el cambio a mnemónicos reales y el conteo por sitio | Paso 19 de esta bitácora y bitácora de decisiones | 5. Evidencias | 7 Documentación del proceso |
 | (pull request) | Merge de f2-pipeline en main | Integración de la Fase 2 | 2. Repositorio | 6 Control de versiones (ramas) · 8 Repositorio |
 
 Convención de prefijos:
