@@ -1,0 +1,16 @@
+elemento_mapa,tipo,estado,evidencia
+Python + entorno virtual,herramientas,implementado,Sección 2 · .venv y requirements.txt (commit e005441)
+Jupyter + kernel Python (mcdi500),herramientas,implementado,Sección 2 · kernel registrado y verificado
+Git y GitHub,herramientas,implementado,Sección 6 · historial con prefijos y una sola identidad
+Anonimización de los datos,procesos,implementado,scripts/anonimizar_incidencias.py · bitácora paso 4
+Exploración y medición de calidad,procesos,implementado,Secciones 5.3 y 5.4 de este notebook
+"Limpieza, imputación y transformación",procesos,proyectado,Fase 2 · F2/F2_Preprocesamiento.ipynb
+Núcleo algorítmico y POO,procesos,proyectado,Fase 3 · Sumativa 2
+"raw → processed, rutas relativas, semilla 42",flujo reproducible,implementado,Secciones 2 y 3 · localizar_raiz y SEMILLA
+Restart & Run All sin errores,flujo reproducible,implementado,Numeración continua de este notebook
+Datos internos anonimizados con permiso,decisiones técnicas,implementado,Ficha 5 · bitácora pasos 3 y 4
+Vacíos de duración = incidencia abierta,decisiones técnicas,implementado,Sección 5.4 · supuesto verificado
+"data/, docs/, src/, scripts/ y F1 a F4",organización del repositorio,implementado,Sección 3 · commit c7469f7
+README generado desde el notebook,organización del repositorio,implementado,Sección 9 · README.md
+Celdas narrativas antes de cada bloque de código,estructura del notebook,implementado,Todo este notebook
+"Pruebas normal, límite y excepción",estructura del notebook,implementado,Sección 4.1 · assert

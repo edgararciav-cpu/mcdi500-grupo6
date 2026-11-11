@@ -1,0 +1,50 @@
+variable,nombre_original,rol_analitico,descripcion,dtype,n_unicos,pct_nulos
+tt,</div>ï»¿TT,identificador,Número de ticket de la incidencia (no es único: un ticket puede abarcar varias filas),str,19915,0.0
+fecha_de_inicio_de_incidencia,Fecha de Inicio de incidencia,fecha,Inicio de la incidencia (dd-mm-aaaa H:MM),str,14997,0.0
+fecha_de_inicio_ticket,Fecha de Inicio ticket,fecha,Apertura del ticket,str,4598,0.0
+comuna,Comuna,alta cardinalidad,Comuna del elemento afectado,str,335,1.59
+estado,Estado,nominal,"Cerrada, Pendiente Automático, Abierta, Cancelada",str,4,0.0
+tipo_incidencia_noc,Tipo Incidencia NOC,nominal,"Tipo de falla según el NOC (Energía, Tx, RF, Hardware, ...)",str,14,0.0
+incidencia_noc,Incidencia NOC,nominal,Subtipo de falla,str,30,0.0
+criticidad,Criticidad,ordinal,"P1 (más crítica) a P4; incluye P2 Redundancia, P2R y P3E",str,7,0.0
+detalle,Detalle,texto,Descripción breve escrita por el operador,str,2709,0.0
+impacto,Impacto,ordinal,Sin Impacto < Localizado < Regional < Amplio,str,4,0.0
+tiempo_de_respuesta,Tiempo de Respuesta,discreta,"Tiempo comprometido de respuesta en horas (0, 2, 4, 24, 48)",int64,5,0.0
+titulo,Titulo,texto,Título del ticket,str,3068,78.53
+q_network_element,Q Network Element,discreta,Cantidad de elementos de red afectados,int64,35,0.0
+network_element,Network Element,identificador,Elemento de red afectado (código anonimizado NE_),str,3452,0.0
+proveedor,Proveedor,nominal,"Proveedor asociado a la falla (eléctrico, TX, propietario)",str,69,86.04
+ticket_de_proveedor,Ticket de proveedor,identificador,Ticket del proveedor (código TKP_ o marcador como N/A),str,275,92.3
+incident_manager,Incident Manager,nominal,Responsable de la incidencia (código IM_),str,8,78.51
+creador_de_tt,Creador de TT,nominal,Operador que creó el ticket (código OP_),str,36,0.0
+fecha_cierre_de_incidencia,Fecha Cierre de incidencia,fecha,Normalización de la incidencia,str,11014,24.7
+fecha_de_cierre_de_ticket,Fecha de Cierre de ticket,fecha,Cierre del ticket,str,3910,27.23
+tiempo_de_duracion_de_la_incidencia,Tiempo de duraciÃ³n de la incidencia,continua,Duración h:mm:ss; vacía si la incidencia no se ha normalizado,str,9822,24.69
+tiempo_de_duracion_del_ticket,Tiempo de duraciÃ³n del ticket,continua,Duración del ticket h:mm:ss,str,4173,27.23
+codigo_de_servicio,CÃ³digo de Servicio,identificador,"Código de servicio (suministro eléctrico, no es RUT)",str,1090,89.49
+tramo_afectado,Tramo Afectado,texto,Tramo de transmisión afectado; casi siempre NA o no aplica,str,5,98.38
+comunas,Comunas,alta cardinalidad,Comunas afectadas (puede listar varias),str,519,0.0
+regiones,Regiones,nominal,Regiones afectadas en números romanos (puede listar varias),str,29,0.24
+causa_raiz_noc,Causa Raiz NOC,nominal,Causa raíz según el NOC,str,54,78.49
+tipo_incidencia_gmi,Tipo Incidencia GMI,nominal,Tipo según el área GMI,str,7,93.46
+incidenca_gmi,Incidenca GMI,nominal,Subtipo según GMI (el nombre de la columna viene con error de tipeo),str,18,93.46
+causa_raiz_gmi,Causa Raiz GMI,nominal,Causa raíz según GMI,str,44,93.46
+horario_posible_degradacion,Horario Posible DegradaciÃ³n,vacía,Sin datos en el exporte,str,1,100.0
+etr,ETR,fecha,Hora estimada de restauración,str,18,99.9
+gestionable,Gestionable,binaria,SI / NO,str,2,0.0
+gestor_uptime,Gestor Uptime,binaria,SI / NO,str,2,0.0
+proveedor_tx_1,Proveedor TX 1,nominal,Proveedor del enlace de transmisión 1,str,10,97.54
+codigo_servicio_tx_1,CÃ³digo servicio TX 1,identificador,Código del servicio TX 1 (TXS_),str,147,97.54
+descripcion_tx_1,DescripciÃ³n TX 1,texto,Descripción del enlace TX 1,str,2,99.98
+proveedor_tx_2,Proveedor TX 2,nominal,Proveedor del enlace de transmisión 2,str,2,99.94
+codigo_servicio_tx_2,CÃ³digo servicio TX 2,identificador,Código del servicio TX 2 (TXS_),str,7,99.94
+descripcion_tx_2,DescripciÃ³n TX 2,texto,Descripción del enlace TX 2,str,1,99.94
+proveedor_tx_3,Proveedor TX 3,nominal,Proveedor del enlace de transmisión 3,str,2,99.98
+codigo_servicio_tx_3,CÃ³digo servicio TX 3,identificador,Código del servicio TX 3 (TXS_),str,2,99.98
+descripcion_tx_3,DescripciÃ³n TX 3,texto,Descripción del enlace TX 3,str,1,99.98
+proveedor_tx_4,Proveedor TX 4,nominal,Proveedor del enlace de transmisión 4,str,2,99.98
+codigo_servicio_tx_4,CÃ³digo servicio TX 4,identificador,Código del servicio TX 4 (TXS_),str,2,99.98
+descripcion_tx_4,DescripciÃ³n TX 4,texto,Descripción del enlace TX 4,str,1,99.98
+proveedor_tx_5,Proveedor TX 5,nominal,Proveedor del enlace de transmisión 5,str,1,100.0
+codigo_servicio_tx_5,CÃ³digo servicio TX 5,identificador,Código del servicio TX 5 (TXS_),str,1,100.0
+descripcion_tx_5,DescripciÃ³n TX 5,texto,Descripción del enlace TX 5,str,1,100.0

@@ -1,0 +1,24 @@
+{
+  "proyecto": "Duración de las incidencias de red de un operador móvil",
+  "fase": "F1",
+  "fecha_ejecucion": "2026-11-11",
+  "commit_base": "e6e738d",
+  "semilla": 42,
+  "python": "3.14.6",
+  "sistema": "Windows 11",
+  "entorno_virtual": true,
+  "dependencias": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "matplotlib": "3.11.2",
+    "scikit-learn": "1.9.1",
+    "jupyterlab": "4.6.6",
+    "ipykernel": "7.4.0"
+  },
+  "dataset": {
+    "archivo": "data/raw/incidencias_oct2026_anon.csv",
+    "filas": 21542,
+    "columnas": 49,
+    "duraciones_vacias": 5318
+  }
+}
