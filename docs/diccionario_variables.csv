@@ -6,13 +6,13 @@ comuna,Comuna,alta cardinalidad,Comuna del elemento afectado,str,335,1.59
 estado,Estado,nominal,"Cerrada, Pendiente Automático, Abierta, Cancelada",str,4,0.0
 tipo_incidencia_noc,Tipo Incidencia NOC,nominal,"Tipo de falla según el NOC (Energía, Tx, RF, Hardware, ...)",str,14,0.0
 incidencia_noc,Incidencia NOC,nominal,Subtipo de falla,str,30,0.0
-criticidad,Criticidad,ordinal,"P1 (más crítica) a P4. P1, P2, P3 y P3E (P3 extendida) son pérdida de servicio y afectan el uptime; P2 Redundancia, P2R y P4 no",str,7,0.0
+criticidad,Criticidad,ordinal,"P1 más de 50.000 clientes afectados, P2 más de 30.000, P3 y P3E menos de 30.000 (P3E: P3 que dura más de 24 h). P1, P2, P3 y P3E tienen pérdida de servicio; P2 Redundancia y P2R no (la redundancia está activa)",str,7,0.0
 detalle,Detalle,texto,Descripción breve escrita por el operador,str,2709,0.0
 impacto,Impacto,ordinal,Sin Impacto < Localizado < Regional < Amplio,str,4,0.0
 tiempo_de_respuesta,Tiempo de Respuesta,discreta,"Tiempo comprometido de respuesta en horas (0, 2, 4, 24, 48)",int64,5,0.0
 titulo,Titulo,texto,Título del ticket,str,3068,78.53
-q_network_element,Q Network Element,discreta,Cantidad de elementos de red afectados,int64,35,0.0
-network_element,Network Element,identificador,Elemento de red afectado (código anonimizado NE_),str,3452,0.0
+q_network_element,Q Network Element,discreta,Cantidad de sitios afectados por la incidencia,int64,35,0.0
+network_element,Network Element,identificador,"Mnemónico del sitio afectado; si son varios, separados por dos espacios",str,3452,0.0
 proveedor,Proveedor,nominal,"Proveedor asociado a la falla (eléctrico, TX, propietario)",str,69,86.04
 ticket_de_proveedor,Ticket de proveedor,identificador,Ticket del proveedor (código TKP_ o marcador como N/A),str,275,92.3
 incident_manager,Incident Manager,nominal,Responsable de la incidencia (código IM_),str,8,78.51

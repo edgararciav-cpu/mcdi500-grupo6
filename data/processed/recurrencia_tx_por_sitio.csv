@@ -1,0 +1,560 @@
+sitio,fallas,fallas_p3e,abiertas,enlace_principal,proveedor_tx,region,minutos_sumados,minutos_reales,horas_fuera
+SIT_0535,11,0,0,Fibra proveedor,GTD,X,2831.0,2831.0,47.2
+SIT_1088,4,1,0,Fibra proveedor,GTD,RM,3615.0,3615.0,60.2
+SIT_0751,4,1,0,Fibra proveedor,MOVISTAR,VIII,2769.0,2769.0,46.2
+SIT_1452,4,0,0,Fibra proveedor,GTD,RM,996.0,996.0,16.6
+SIT_2201,3,3,0,Microondas,WOM,IV,39591.0,39591.0,659.8
+SIT_1174,3,2,0,Microondas,WOM,V,11941.0,11941.0,199.0
+SIT_1764,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_1765,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_1766,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_1767,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_1768,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_1769,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_2268,3,2,0,Fibra proveedor,Sin dato,IV,5649.0,5649.0,94.2
+SIT_1224,3,1,0,Fibra proveedor,GTD,RM,4617.0,4617.0,77.0
+SIT_1349,3,2,0,Microondas,WOM,V,4501.0,4501.0,75.0
+SIT_1350,3,2,0,Microondas,WOM,V,4501.0,4501.0,75.0
+SIT_2228,3,1,0,Fibra proveedor,GTD,RM,3683.0,3683.0,61.4
+SIT_0533,3,0,0,Fibra propia (FOP),WOM,XI,1498.0,1498.0,25.0
+SIT_0912,3,0,0,Fibra proveedor,GTD,RM,943.0,943.0,15.7
+SIT_0934,3,0,0,Fibra propia (FOP),WOM,V,725.0,725.0,12.1
+SIT_0617,3,0,0,Microondas,WOM,VIII,712.0,712.0,11.9
+SIT_0382,2,2,0,Fibra propia (FOP),Sin dato,V,23354.0,23354.0,389.2
+SIT_3138,2,2,0,Microondas,WOM,VI,12209.0,12209.0,203.5
+SIT_1716,2,1,0,Microondas,Sin dato,VIII,10237.0,10237.0,170.6
+SIT_3064,2,2,0,Satelital,TGS Starlink,I,10099.0,10099.0,168.3
+SIT_1123,2,1,0,Fibra proveedor,GTD,I,8987.0,8987.0,149.8
+SIT_1125,2,1,0,Fibra proveedor,GTD,I,8987.0,8987.0,149.8
+SIT_1281,2,2,0,Satelital,TGS Starlink,IV,8358.0,8358.0,139.3
+SIT_1712,2,1,0,Microondas,WOM,VIII,6563.0,6563.0,109.4
+SIT_3778,2,2,0,Fibra propia (FOP),WOM,II,4188.0,4188.0,69.8
+SIT_2266,2,2,0,Fibra proveedor,GTD,RM,4078.0,4078.0,68.0
+SIT_1501,2,1,0,Fibra proveedor,GTD,RM,3857.0,3827.0,63.8
+SIT_1263,2,1,0,Fibra proveedor,GTD,RM,3591.0,3591.0,59.8
+SIT_1621,2,2,0,Microondas,WOM,II,3574.0,3574.0,59.6
+SIT_1522,2,1,0,Microondas,WOM,RM,3372.0,3372.0,56.2
+SIT_1596,2,2,0,Microondas,WOM,V,3104.0,3104.0,51.7
+SIT_1630,2,2,0,Microondas,WOM,V,3104.0,3104.0,51.7
+SIT_1122,2,1,0,Fibra proveedor,GTD,I,2811.0,2811.0,46.8
+SIT_1025,2,1,1,Microondas,WOM,XIV,2689.0,2689.0,44.8
+SIT_0921,2,1,0,Fibra proveedor,GTD,RM,2053.0,2053.0,34.2
+SIT_0454,2,1,0,Microondas,WOM,III,1755.0,1755.0,29.2
+SIT_1258,2,0,0,Fibra proveedor,GTD,RM,1593.0,1593.0,26.6
+SIT_1926,2,0,0,Fibra proveedor,GTD,RM,1413.0,1413.0,23.6
+SIT_0186,2,0,0,Fibra proveedor,GTD,RM,1408.0,1408.0,23.5
+SIT_1126,2,0,0,Fibra proveedor,GTD,I,1395.0,1395.0,23.2
+SIT_0812,2,0,0,Fibra proveedor,GTD,RM,1207.0,1207.0,20.1
+SIT_1608,2,0,0,Fibra proveedor,GTD,VI,1091.0,1091.0,18.2
+SIT_1405,2,0,0,Microondas,WOM,RM,1011.0,1011.0,16.8
+SIT_1951,2,0,0,Microondas,WOM,VI,998.0,998.0,16.6
+SIT_1952,2,0,0,Microondas,WOM,VI,998.0,998.0,16.6
+SIT_0364,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_1225,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_1657,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_1689,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2173,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2174,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2175,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2176,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2177,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2178,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2179,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2180,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_2181,2,0,0,Fibra proveedor,GTD,RM,939.0,939.0,15.6
+SIT_0101,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0102,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0104,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0108,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0109,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0110,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0113,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0115,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0116,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0117,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0118,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0122,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0123,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0124,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0125,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0126,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0127,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0128,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0129,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0130,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0131,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0132,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0134,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0136,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0137,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0140,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0141,2,0,0,Fibra proveedor,GTD,RM,866.0,866.0,14.4
+SIT_0029,2,0,0,Microondas,WOM,VIII,688.0,688.0,11.5
+SIT_1742,2,0,0,Fibra proveedor,GTD,RM,316.0,316.0,5.3
+SIT_1227,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1228,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1229,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1230,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1231,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1232,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1233,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1234,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1235,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1236,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1237,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1238,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1239,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1240,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1241,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_1242,2,0,0,Microondas,WOM,XIV,287.0,287.0,4.8
+SIT_0936,2,0,0,Microondas,WOM,IX,242.0,242.0,4.0
+SIT_1992,2,0,0,Fibra proveedor,GTD,RM,194.0,194.0,3.2
+SIT_1485,2,0,0,Microondas,WOM,XVI,184.0,184.0,3.1
+SIT_1440,2,0,0,Microondas,WOM,VI,181.0,181.0,3.0
+SIT_0142,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0143,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0144,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0145,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0146,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0147,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0148,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0149,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0150,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0151,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0152,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0153,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0154,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0155,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0156,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0157,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0158,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0159,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0160,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0161,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0162,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0163,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0164,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0165,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0166,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0167,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0168,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0169,2,0,0,Fibra propia (FOP),WOM,IV,120.0,120.0,2.0
+SIT_0196,2,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0704,2,0,0,Fibra propia (FOP),WOM,RM,24.0,24.0,0.4
+SIT_0706,2,0,0,Fibra propia (FOP),WOM,RM,24.0,24.0,0.4
+SIT_0707,2,0,0,Fibra propia (FOP),WOM,RM,24.0,24.0,0.4
+SIT_0708,2,0,0,Fibra propia (FOP),WOM,RM,24.0,24.0,0.4
+SIT_0710,2,0,0,Fibra propia (FOP),WOM,RM,24.0,24.0,0.4
+SIT_0712,2,0,0,Fibra propia (FOP),WOM,RM,24.0,24.0,0.4
+SIT_0718,2,0,0,Fibra propia (FOP),WOM,RM,24.0,24.0,0.4
+SIT_0719,2,0,0,Fibra propia (FOP),WOM,RM,24.0,24.0,0.4
+SIT_3171,1,1,0,Fibra propia (FOP),WOM,RM,25805.0,25805.0,430.1
+SIT_3415,1,1,0,Fibra proveedor,GTD,RM,24325.0,24325.0,405.4
+SIT_3110,1,1,0,Microondas,WOM,V,17237.0,17237.0,287.3
+SIT_3111,1,1,0,Microondas,WOM,V,17237.0,17237.0,287.3
+SIT_3042,1,1,0,Fibra proveedor,Sin dato,RM,13888.0,13888.0,231.5
+SIT_2472,1,1,0,Fibra propia (FOP),Sin dato,IX,10637.0,10637.0,177.3
+SIT_2111,1,1,0,Microondas,WOM,RM,10025.0,10025.0,167.1
+SIT_2112,1,1,0,Microondas,WOM,RM,10025.0,10025.0,167.1
+SIT_3512,1,1,0,Satelital,TGS Starlink,II,9654.0,9654.0,160.9
+SIT_3852,1,1,0,Fibra proveedor,GTD,X,8038.0,8038.0,134.0
+SIT_3368,1,1,0,Satelital,TGS Starlink,V,7398.0,7398.0,123.3
+SIT_1489,1,1,0,Fibra propia (FOP),WOM,RM,7305.0,7305.0,121.8
+SIT_3855,1,1,0,Fibra proveedor,GTD,RM,7270.0,7270.0,121.2
+SIT_1045,1,1,0,Fibra propia (FOP),Sin dato,V,6341.0,6341.0,105.7
+SIT_1047,1,1,0,Fibra propia (FOP),Sin dato,V,6341.0,6341.0,105.7
+SIT_1376,1,1,0,Fibra propia (FOP),WOM,X,6334.0,6334.0,105.6
+SIT_3805,1,1,0,Fibra proveedor,Sin dato,V,5601.0,5601.0,93.4
+SIT_3811,1,1,0,Fibra proveedor,MOVISTAR,RM,5490.0,5490.0,91.5
+SIT_3772,1,1,0,Fibra proveedor,Sin dato,IV,4964.0,4964.0,82.7
+SIT_3840,1,1,0,Fibra proveedor,Sin dato,IV,4964.0,4964.0,82.7
+SIT_2727,1,1,0,Fibra proveedor,GTD,IX,4482.0,4482.0,74.7
+SIT_3848,1,1,0,Fibra proveedor,GTD,RM,4449.0,4449.0,74.2
+SIT_3847,1,1,0,Fibra proveedor,GTD,RM,4417.0,4417.0,73.6
+SIT_3174,1,1,0,Fibra propia (FOP),WOM,IX,4277.0,4277.0,71.3
+SIT_3439,1,1,0,Fibra propia (FOP),WOM,IX,4277.0,4277.0,71.3
+SIT_3773,1,1,0,Fibra propia (FOP),WOM,IX,4277.0,4277.0,71.3
+SIT_3774,1,1,0,Fibra propia (FOP),WOM,IX,4277.0,4277.0,71.3
+SIT_3775,1,1,0,Fibra propia (FOP),WOM,IX,4277.0,4277.0,71.3
+SIT_3776,1,1,0,Fibra propia (FOP),WOM,IX,4277.0,4277.0,71.3
+SIT_3777,1,1,0,Fibra propia (FOP),WOM,IX,4277.0,4277.0,71.3
+SIT_3206,1,1,0,Microondas,WOM,V,4042.0,4042.0,67.4
+SIT_3767,1,1,0,Fibra propia (FOP),WOM,VI,4010.0,4010.0,66.8
+SIT_3791,1,1,0,Fibra proveedor,GTD,RM,3984.0,3984.0,66.4
+SIT_3792,1,1,0,Fibra proveedor,GTD,RM,3984.0,3984.0,66.4
+SIT_3796,1,1,0,Fibra proveedor,Sin dato,RM,3851.0,3851.0,64.2
+SIT_3795,1,1,0,Fibra propia (FOP),WOM,V,3818.0,3818.0,63.6
+SIT_3258,1,1,0,Fibra proveedor,MOVISTAR,VI,3800.0,3800.0,63.3
+SIT_2662,1,1,0,Fibra proveedor,Sin dato,RM,3587.0,3587.0,59.8
+SIT_3854,1,1,0,Fibra proveedor,GTD,RM,3344.0,3344.0,55.7
+SIT_3533,1,1,0,Fibra proveedor,GTD,RM,3009.0,3009.0,50.2
+SIT_3808,1,1,0,Fibra proveedor,GTD,RM,3009.0,3009.0,50.2
+SIT_3201,1,1,0,Fibra propia (FOP),WOM,RM,2925.0,2925.0,48.8
+SIT_2197,1,1,0,Microondas,WOM,IV,2731.0,2731.0,45.5
+SIT_3850,1,1,0,Fibra proveedor,GTD,RM,2658.0,2658.0,44.3
+SIT_3862,1,1,0,Fibra propia (FOP),WOM,RM,2500.0,2500.0,41.7
+SIT_2647,1,1,0,Fibra propia (FOP),WOM,II,2150.0,2150.0,35.8
+SIT_3826,1,1,0,Fibra propia (FOP),WOM,II,2150.0,2150.0,35.8
+SIT_3827,1,1,0,Fibra propia (FOP),WOM,II,2150.0,2150.0,35.8
+SIT_3828,1,1,0,Fibra propia (FOP),WOM,II,2150.0,2150.0,35.8
+SIT_0536,1,1,0,Microondas,WOM,IV,1989.0,1989.0,33.2
+SIT_1592,1,1,0,Microondas,WOM,IV,1989.0,1989.0,33.2
+SIT_2548,1,1,0,Microondas,WOM,IV,1989.0,1989.0,33.2
+SIT_1962,1,1,0,Fibra proveedor,Sin dato,RM,1911.0,1911.0,31.8
+SIT_0981,1,1,0,Fibra propia (FOP),WOM,RM,1899.0,1899.0,31.6
+SIT_3750,1,1,0,Fibra proveedor,GTD,V,1876.0,1876.0,31.3
+SIT_1617,1,1,0,Fibra proveedor,GTD,RM,1839.0,1839.0,30.6
+SIT_1331,1,1,0,Microondas,Sin dato,IV,1794.0,1794.0,29.9
+SIT_1959,1,1,0,Fibra propia (FOP),WOM,VI,1643.0,1643.0,27.4
+SIT_1824,1,1,0,Fibra propia (FOP),WOM,V,1559.0,1559.0,26.0
+SIT_1825,1,1,0,Fibra propia (FOP),WOM,V,1559.0,1559.0,26.0
+SIT_1827,1,1,0,Fibra propia (FOP),WOM,V,1559.0,1559.0,26.0
+SIT_1828,1,1,0,Fibra propia (FOP),WOM,V,1559.0,1559.0,26.0
+SIT_1829,1,1,0,Fibra propia (FOP),WOM,V,1559.0,1559.0,26.0
+SIT_1942,1,1,0,Fibra propia (FOP),WOM,V,1559.0,1559.0,26.0
+SIT_1943,1,1,0,Fibra propia (FOP),WOM,V,1559.0,1559.0,26.0
+SIT_1947,1,1,0,Fibra propia (FOP),WOM,V,1559.0,1559.0,26.0
+SIT_0674,1,0,0,Fibra propia (FOP),Sin dato,RM,1437.0,1437.0,24.0
+SIT_1909,1,0,0,Fibra propia (FOP),Sin dato,RM,1437.0,1437.0,24.0
+SIT_1910,1,0,0,Fibra propia (FOP),Sin dato,RM,1437.0,1437.0,24.0
+SIT_1911,1,0,0,Fibra propia (FOP),Sin dato,RM,1437.0,1437.0,24.0
+SIT_1912,1,0,0,Fibra propia (FOP),Sin dato,RM,1437.0,1437.0,24.0
+SIT_3760,1,1,0,Fibra propia (FOP),WOM,RM,1436.0,1436.0,23.9
+SIT_0984,1,0,0,Fibra proveedor,GTD,III,1362.0,1362.0,22.7
+SIT_2169,1,0,0,Satelital,TGS Starlink,V,1348.0,1348.0,22.5
+SIT_2253,1,1,0,Microondas,Sin dato,III,1342.0,1342.0,22.4
+SIT_2254,1,1,0,Microondas,Sin dato,III,1342.0,1342.0,22.4
+SIT_2255,1,1,0,Microondas,Sin dato,III,1342.0,1342.0,22.4
+SIT_2256,1,1,0,Microondas,Sin dato,III,1342.0,1342.0,22.4
+SIT_2257,1,1,0,Microondas,Sin dato,III,1342.0,1342.0,22.4
+SIT_1324,1,0,0,Fibra proveedor,CLARO,VIII,1243.0,1243.0,20.7
+SIT_1975,1,0,0,Fibra proveedor,GTD,RM,1230.0,1230.0,20.5
+SIT_2071,1,0,0,Fibra proveedor,GTD,RM,1210.0,1210.0,20.2
+SIT_1120,1,0,0,Fibra proveedor,GTD,I,1203.0,1203.0,20.0
+SIT_1121,1,0,0,Fibra proveedor,GTD,I,1203.0,1203.0,20.0
+SIT_1124,1,0,0,Fibra proveedor,GTD,I,1203.0,1203.0,20.0
+SIT_2081,1,0,0,Fibra proveedor,GTD,RM,1170.0,1170.0,19.5
+SIT_1575,1,0,0,Fibra proveedor,Sin dato,RM,1144.0,1144.0,19.1
+SIT_0825,1,0,0,Fibra proveedor,GTD,RM,1100.0,1100.0,18.3
+SIT_0657,1,0,0,Microondas,Sin dato,IX,1086.0,1086.0,18.1
+SIT_0819,1,0,0,Fibra proveedor,GTD,RM,1044.0,1044.0,17.4
+SIT_1999,1,0,0,Microondas,WOM,VI,848.0,848.0,14.1
+SIT_1913,1,0,0,Fibra proveedor,GTD,RM,847.0,847.0,14.1
+SIT_0985,1,0,0,Fibra proveedor,GTD,RM,832.0,832.0,13.9
+SIT_0365,1,0,0,Fibra proveedor,GTD,RM,829.0,829.0,13.8
+SIT_2172,1,0,0,Fibra proveedor,GTD,RM,829.0,829.0,13.8
+SIT_2034,1,0,0,Fibra proveedor,GTD,RM,812.0,812.0,13.5
+SIT_1493,1,0,0,Fibra propia (FOP),WOM,XIV,810.0,810.0,13.5
+SIT_1470,1,0,0,Fibra proveedor,MOVISTAR,V,808.0,808.0,13.5
+SIT_0755,1,0,0,Fibra proveedor,GTD,RM,799.0,799.0,13.3
+SIT_1896,1,0,0,Fibra proveedor,GTD,RM,789.0,789.0,13.2
+SIT_0992,1,0,0,Fibra proveedor,GTD,RM,739.0,739.0,12.3
+SIT_1428,1,0,0,Fibra proveedor,GTD,RM,736.0,736.0,12.3
+SIT_1794,1,0,0,Fibra propia (FOP),FOP WOM,VI,736.0,736.0,12.3
+SIT_1494,1,0,0,Fibra proveedor,MOVISTAR,VI,726.0,726.0,12.1
+SIT_0747,1,0,0,Fibra proveedor,GTD,RM,711.0,711.0,11.8
+SIT_1098,1,0,0,Microondas,Sin dato,I,633.0,633.0,10.6
+SIT_1099,1,0,0,Microondas,Sin dato,I,633.0,633.0,10.6
+SIT_1100,1,0,0,Microondas,Sin dato,I,633.0,633.0,10.6
+SIT_0832,1,0,0,Fibra proveedor,Sin dato,RM,631.0,631.0,10.5
+SIT_1875,1,0,0,Fibra proveedor,GTD,RM,622.0,622.0,10.4
+SIT_1429,1,0,0,Fibra proveedor,GTD,RM,613.0,613.0,10.2
+SIT_0440,1,0,0,Fibra proveedor,GTD,RM,562.0,562.0,9.4
+SIT_2000,1,0,0,Fibra proveedor,GTD,V,549.0,549.0,9.2
+SIT_2165,1,0,0,Fibra proveedor,GTD,VI,541.0,541.0,9.0
+SIT_2166,1,0,0,Fibra proveedor,GTD,VI,541.0,541.0,9.0
+SIT_3813,1,1,0,Satelital,TGS Starlink,IV,535.0,535.0,8.9
+SIT_1931,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1932,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1933,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1934,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1935,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1936,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1937,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1938,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1939,1,0,0,Microondas,Sin dato,RM,532.0,532.0,8.9
+SIT_1477,1,0,0,Fibra proveedor,GTD,VIII,498.0,498.0,8.3
+SIT_0923,1,0,0,Fibra proveedor,GTD,RM,475.0,475.0,7.9
+SIT_0924,1,0,0,Fibra proveedor,GTD,RM,475.0,475.0,7.9
+SIT_2030,1,0,0,Fibra proveedor,GTD,VII,455.0,455.0,7.6
+SIT_2239,1,0,0,Fibra proveedor,GTD,RM,425.0,425.0,7.1
+SIT_1868,1,0,0,Fibra proveedor,GTD,RM,418.0,418.0,7.0
+SIT_0915,1,0,0,Fibra proveedor,GTD,RM,414.0,414.0,6.9
+SIT_1983,1,0,0,Fibra propia (FOP),WOM,XVI,401.0,401.0,6.7
+SIT_1989,1,0,0,Fibra proveedor,GTD,RM,394.0,394.0,6.6
+SIT_2096,1,0,0,Fibra propia (FOP),Sin dato,RM,390.0,390.0,6.5
+SIT_2326,1,0,0,Fibra propia (FOP),Sin dato,RM,390.0,390.0,6.5
+SIT_2327,1,0,0,Fibra propia (FOP),Sin dato,RM,390.0,390.0,6.5
+SIT_0734,1,0,0,Fibra proveedor,GTD,RM,376.0,376.0,6.3
+SIT_1259,1,0,0,Fibra proveedor,Sin dato,X,348.0,348.0,5.8
+SIT_1060,1,0,0,Fibra proveedor,GTD,V,338.0,338.0,5.6
+SIT_1502,1,0,0,Fibra proveedor,GTD,RM,328.0,328.0,5.5
+SIT_0103,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0105,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0106,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0107,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0111,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0112,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0114,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0119,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0120,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0121,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0133,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0135,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0138,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0139,1,0,0,Fibra proveedor,GTD,RM,326.0,326.0,5.4
+SIT_0550,1,0,0,Microondas,WOM,IX,296.0,296.0,4.9
+SIT_0551,1,0,0,Microondas,WOM,IX,296.0,296.0,4.9
+SIT_0552,1,0,0,Microondas,WOM,IX,296.0,296.0,4.9
+SIT_0553,1,0,0,Microondas,WOM,IX,296.0,296.0,4.9
+SIT_1940,1,0,0,Microondas,WOM,V,293.0,293.0,4.9
+SIT_1941,1,0,0,Microondas,WOM,V,293.0,293.0,4.9
+SIT_1024,1,0,0,Microondas,WOM,XVI,291.0,291.0,4.8
+SIT_1661,1,0,0,Satelital,TGS Starlink,II,289.0,289.0,4.8
+SIT_1844,1,0,0,Microondas,WOM,I,289.0,289.0,4.8
+SIT_0423,1,0,0,Microondas,WOM,VIII,288.0,288.0,4.8
+SIT_1110,1,0,0,Microondas,WOM,VIII,288.0,288.0,4.8
+SIT_1111,1,0,0,Microondas,WOM,VIII,288.0,288.0,4.8
+SIT_1112,1,0,0,Microondas,WOM,VIII,288.0,288.0,4.8
+SIT_1113,1,0,0,Microondas,WOM,VIII,288.0,288.0,4.8
+SIT_1114,1,0,0,Microondas,WOM,VIII,288.0,288.0,4.8
+SIT_0749,1,0,0,Fibra proveedor,GTD,RM,283.0,283.0,4.7
+SIT_2032,1,0,0,Fibra proveedor,GTD,RM,283.0,283.0,4.7
+SIT_1471,1,0,0,Fibra proveedor,GTD,RM,282.0,282.0,4.7
+SIT_1374,1,0,0,Fibra proveedor,GTD,RM,276.0,276.0,4.6
+SIT_1867,1,0,0,Fibra proveedor,GTD,RM,272.0,272.0,4.5
+SIT_1118,1,0,0,Fibra proveedor,GTD,RM,268.0,268.0,4.5
+SIT_1243,1,0,0,Fibra proveedor,GTD,RM,267.0,267.0,4.4
+SIT_1706,1,0,0,Microondas,WOM,VI,253.0,253.0,4.2
+SIT_2270,1,0,0,Fibra proveedor,GTD,RM,253.0,253.0,4.2
+SIT_1145,1,0,0,Fibra proveedor,GTD,VIII,250.0,250.0,4.2
+SIT_2062,1,0,0,Microondas,WOM,X,238.0,238.0,4.0
+SIT_1918,1,0,0,Fibra proveedor,GTD,VI,224.0,224.0,3.7
+SIT_1919,1,0,0,Fibra proveedor,GTD,VI,224.0,224.0,3.7
+SIT_1920,1,0,0,Fibra proveedor,GTD,VI,224.0,224.0,3.7
+SIT_1921,1,0,0,Fibra proveedor,GTD,VI,224.0,224.0,3.7
+SIT_1922,1,0,0,Fibra proveedor,GTD,VI,224.0,224.0,3.7
+SIT_1923,1,0,0,Fibra proveedor,GTD,VI,224.0,224.0,3.7
+SIT_1924,1,0,0,Fibra proveedor,GTD,VI,224.0,224.0,3.7
+SIT_1925,1,0,0,Fibra proveedor,GTD,VI,224.0,224.0,3.7
+SIT_0991,1,0,0,Fibra proveedor,GTD,RM,217.0,217.0,3.6
+SIT_1822,1,0,0,Fibra proveedor,GTD,VIII,198.0,198.0,3.3
+SIT_1476,1,0,0,Microondas,Sin dato,RM,188.0,188.0,3.1
+SIT_1207,1,0,0,Fibra proveedor,GTD,III,184.0,184.0,3.1
+SIT_1516,1,0,0,Fibra propia (FOP),WOM,RM,163.0,163.0,2.7
+SIT_0002,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0003,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0004,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0005,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0006,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0007,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0008,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0009,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0010,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0011,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0012,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0013,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0014,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0015,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0016,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0017,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0018,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0019,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0020,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0021,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0022,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0023,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0024,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0025,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0026,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0027,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0028,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0030,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0031,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0032,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0033,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0034,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0035,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0036,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0037,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0038,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_0039,1,0,0,Microondas,WOM,VIII,154.0,154.0,2.6
+SIT_1209,1,0,0,Microondas,WOM,VII,143.0,143.0,2.4
+SIT_1210,1,0,0,Microondas,WOM,VII,143.0,143.0,2.4
+SIT_2222,1,0,0,Fibra proveedor,GTD,RM,140.0,140.0,2.3
+SIT_1381,1,0,0,Fibra proveedor,GTD,X,132.0,132.0,2.2
+SIT_1690,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1691,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1692,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1693,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1694,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1695,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1696,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1697,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1698,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1699,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1700,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1701,1,0,0,Fibra proveedor,GTD,VIII,127.0,127.0,2.1
+SIT_1203,1,0,0,Fibra propia (FOP),WOM,VII,124.0,124.0,2.1
+SIT_1609,1,0,0,Fibra propia (FOP),WOM,VII,124.0,124.0,2.1
+SIT_1610,1,0,0,Fibra propia (FOP),WOM,VII,124.0,124.0,2.1
+SIT_1073,1,0,0,Fibra proveedor,WOM,XVI,113.0,113.0,1.9
+SIT_0564,1,0,0,Satelital,TGS Starlink,IX,112.0,112.0,1.9
+SIT_2029,1,0,0,Fibra propia (FOP),WOM,RM,99.0,99.0,1.6
+SIT_2004,1,0,0,Fibra proveedor,GTD,RM,94.0,94.0,1.6
+SIT_0074,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0075,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0076,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0077,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0078,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0079,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0080,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0081,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0082,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0083,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0084,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0085,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0086,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0087,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0088,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0089,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0090,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0091,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0092,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0093,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0094,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0095,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0096,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0097,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0098,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0099,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_0100,1,0,0,Fibra proveedor,GTD,RM,92.0,92.0,1.5
+SIT_2024,1,0,0,Microondas,Sin dato,IX,92.0,92.0,1.5
+SIT_0754,1,0,0,Microondas,WOM,RM,90.0,90.0,1.5
+SIT_0833,1,0,0,Microondas,WOM,IX,79.0,79.0,1.3
+SIT_0723,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_0724,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_0725,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1479,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1480,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1481,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1709,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1710,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1711,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1713,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1714,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1715,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1717,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1718,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1719,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_1720,1,0,0,Microondas,Sin dato,VIII,76.0,76.0,1.3
+SIT_0702,1,0,0,Fibra proveedor,WOM,RM,45.0,45.0,0.8
+SIT_0170,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0171,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0172,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0173,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0174,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0175,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0176,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0177,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0178,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0179,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0180,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0181,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0182,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0183,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0184,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0185,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0187,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0188,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0189,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0190,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0191,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0192,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0193,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0194,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0195,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0197,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0198,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0199,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0200,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0201,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0202,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0203,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0204,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0205,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0206,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0207,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0208,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0209,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0210,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0211,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0212,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0213,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0214,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0215,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0216,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0217,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0218,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0219,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_0220,1,0,0,Fibra proveedor,GTD,RM,36.0,36.0,0.6
+SIT_1322,1,0,0,Microondas,WOM,VI,35.0,35.0,0.6
+SIT_1323,1,0,0,Microondas,WOM,VI,35.0,35.0,0.6
+SIT_0414,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0670,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0671,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0672,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0673,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0964,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0965,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0966,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0967,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0968,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0969,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0970,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0971,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0972,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0973,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0974,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0975,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0976,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0977,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0978,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0979,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0980,1,0,0,Fibra propia (FOP),WOM,IV,27.0,27.0,0.4
+SIT_0888,1,0,0,Microondas,WOM,XIV,22.0,22.0,0.4
+SIT_1804,1,0,0,Microondas,WOM,XIV,22.0,22.0,0.4
+SIT_1805,1,0,0,Microondas,WOM,XIV,22.0,22.0,0.4
+SIT_1806,1,0,0,Microondas,WOM,XIV,22.0,22.0,0.4
+SIT_1807,1,0,0,Microondas,WOM,XIV,22.0,22.0,0.4
+SIT_1808,1,0,0,Microondas,WOM,XIV,22.0,22.0,0.4
+SIT_1809,1,0,0,Microondas,WOM,XIV,22.0,22.0,0.4
+SIT_1810,1,0,0,Microondas,WOM,XIV,22.0,22.0,0.4
+SIT_1301,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_1303,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_1304,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_1306,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_1311,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_1312,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_1314,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_1333,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_1334,1,0,0,Microondas,WOM,III,16.0,16.0,0.3
+SIT_0304,1,0,0,Fibra proveedor,WOM,Sin dato,13.0,13.0,0.2
+SIT_1119,1,0,0,Fibra proveedor,GTD,VI,4.0,4.0,0.1
+SIT_0624,1,0,0,Fibra proveedor,GTD,RM,3.0,3.0,0.0
+SIT_1356,1,0,0,Microondas,Sin dato,V,2.0,2.0,0.0
+SIT_0237,1,0,0,Microondas,WOM,RM,0.0,0.0,0.0
+SIT_0305,1,0,0,Fibra proveedor,GTD,RM,0.0,0.0,0.0
+SIT_0793,1,0,0,Microondas,WOM,IX,0.0,0.0,0.0
+SIT_0798,1,0,0,Microondas,WOM,IX,0.0,0.0,0.0
+SIT_0876,1,0,0,Fibra proveedor,GTD,RM,0.0,0.0,0.0
+SIT_1092,1,0,0,Fibra proveedor,GTD,RM,0.0,0.0,0.0
+SIT_1093,1,0,0,Fibra proveedor,GTD,RM,0.0,0.0,0.0
+SIT_1094,1,0,0,Fibra proveedor,GTD,RM,0.0,0.0,0.0
+SIT_1095,1,0,0,Fibra proveedor,GTD,RM,0.0,0.0,0.0
+SIT_1096,1,0,0,Fibra proveedor,GTD,RM,0.0,0.0,0.0
+SIT_1355,1,0,0,Fibra proveedor,GTD,V,0.0,0.0,0.0
+SIT_1532,1,0,0,Fibra propia (FOP),WOM,RM,0.0,0.0,0.0
+SIT_1607,1,0,0,Microondas,WOM,RM,0.0,0.0,0.0
+SIT_2562,1,1,1,Microondas,Sin dato,IV,0.0,0.0,0.0
+SIT_3803,1,1,1,Fibra proveedor,Sin dato,RM,0.0,0.0,0.0

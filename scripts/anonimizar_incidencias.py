@@ -2,14 +2,15 @@
 Anonimiza el export de incidencias del NOC antes de usarlo en el proyecto MCDI500.
 
 Qué hace
-- Reemplaza por códigos los nombres de personas y los identificadores de red:
+- Reemplaza por códigos los nombres de personas y los identificadores comerciales:
     Incident Manager       -> IM_01, IM_02, ...
     Creador de TT          -> OP_01, OP_02, ...
-    Network Element        -> NE_0001, ...
     Ticket de proveedor    -> TKP_0001, ...
     Código servicio TX 1-5 -> TXS_0001, ...
-- Si alguno de esos valores aparece escrito dentro de otra columna (por ejemplo en Titulo o Detalle),
-  también lo reemplaza por su código.
+- Si un nombre de persona aparece escrito dentro de Titulo o Detalle, también lo reemplaza.
+- Los sitios (Network Element) se dejan con su mnemónico real: es información que la SUBTEL ya
+  publica y el proyecto la necesita para saber qué sitio falla (decisión del 11-11-2026).
+  La versión anterior los codificaba como NE_0001; se cambió para poder escalar con el sitio real.
 - No toca nada más: deja los errores de tildes, las categorías mal escritas y los vacíos,
   porque limpiarlos es el trabajo de la Fase 2.
 - No guarda la tabla de equivalencias (nombre -> código), así que el resultado no se puede revertir.
@@ -25,7 +26,6 @@ import sys
 A_CODIFICAR = {
     'Incident Manager': ('IM', 2),
     'Creador de TT': ('OP', 2),
-    'Network Element': ('NE', 4),
     'Ticket de proveedor': ('TKP', 4),
     'Código servicio TX 1': ('TXS', 4),
     'Código servicio TX 2': ('TXS', 4),
@@ -34,9 +34,9 @@ A_CODIFICAR = {
     'Código servicio TX 5': ('TXS', 4),
 }
 LARGO_MINIMO_EN_TEXTO = 4  # valores más cortos no se buscan dentro del texto, para no reemplazar por error
-# Solo se buscan dentro de texto libre los nombres de personas y de elementos de red,
+# Solo se buscan dentro de texto libre los nombres de personas,
 # y solo en estas columnas. Los tickets y códigos TX no, porque algunos son palabras comunes.
-PREFIJOS_EN_TEXTO = {'IM', 'OP', 'NE'}
+PREFIJOS_EN_TEXTO = {'IM', 'OP'}
 COLUMNAS_TEXTO = ['Titulo', 'Detalle']
 # En tickets y códigos TX solo se codifican los valores con algún número: "Pendiente" o "ENEL"
 # no son códigos sino marcadores, y se dejan tal cual para tratarlos en la Fase 2.
@@ -84,7 +84,7 @@ def main(origen, destino):
             if debe_codificar(prefijo, v):
                 fila[i] = codigos[(prefijo, v)]
 
-    # 3) Reemplazar nombres de personas y de elementos de red escritos dentro del texto libre
+    # 3) Reemplazar nombres de personas escritos dentro del texto libre
     por_valor = {v: c for (p, v), c in codigos.items() if p in PREFIJOS_EN_TEXTO and len(v) >= LARGO_MINIMO_EN_TEXTO}
     patron = re.compile(r'(?<![\w-])(' + '|'.join(re.escape(v) for v in sorted(por_valor, key=len, reverse=True)) + r')(?![\w-])')
     columnas_texto = [limpios.index(c) for c in COLUMNAS_TEXTO if c in limpios]
@@ -95,7 +95,7 @@ def main(origen, destino):
             if n:
                 fila[i], en_texto = nuevo, en_texto + n
 
-    # 4) Verificar que ningún nombre de persona ni elemento de red quede en todo el archivo
+    # 4) Verificar que ningún nombre de persona quede en todo el archivo
     quedan = sum(1 for fila in datos for v in fila if patron.search(v))
     with open(destino, 'w', encoding='utf-8', newline='') as f:
         csv.writer(f, delimiter=';', lineterminator='\r\n').writerows([cabecera] + datos)

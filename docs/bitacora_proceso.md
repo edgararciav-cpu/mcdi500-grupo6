@@ -167,7 +167,48 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - La mediana de la P3E es 3.188 minutos (unas 53 horas), contra 247 de la P3.
   - La tabla de recurrencia de la Fase 2 se construye solo con las fallas con pérdida de servicio.
 - **Hallazgo nuevo para la Fase 2:** 2 duraciones negativas (`-498136:-36:-45` y `-497906:-41:00`) en incidencias cerradas P4. Se cuentan en la sección 5.3 y se tratan en la Fase 2.
-- **Incidencia de los commits `348231e` y `376d53d`:** los dos guardaron el notebook sin las salidas, porque el commit se hizo antes de ejecutarlo y guardarlo. Se corrigió en el commit siguiente. **Orden correcto:** ejecutar (*Restart & Run All*), guardar (Ctrl+S) y recién ahí `git add` y `git commit`.
+- **Incidencia de los commits `348231e` y `376d53d` (ver paso 18 para la Fase 2):** los dos guardaron el notebook sin las salidas, porque el commit se hizo antes de ejecutarlo y guardarlo. Se corrigió en el commit siguiente. **Orden correcto:** ejecutar (*Restart & Run All*), guardar (Ctrl+S) y recién ahí `git add` y `git commit`.
+
+## Paso 18 · Pipeline de la Fase 2 en la rama `f2-pipeline` (11-11-2026)
+
+- **Qué pide:** criterios 9, 10, 11 y 13 (codificación, preprocesamiento, validación y notebook F2) y el uso de ramas del criterio 6.
+- **Qué se hizo:** `F2/F2_Preprocesamiento.ipynb` con el flujo obtener → explorar → limpiar → transformar → escalar → validar → guardar, en una rama propia que se integra a `main` con un pull request. Cada decisión queda con su cifra en `docs/bitacora_decisiones.md`, que genera el mismo notebook.
+- **Resultado:**
+  - 43.811 celdas con tildes rotas pasan a 0, y 29.667 marcadores de "sin dato" pasan a vacío;
+  - las columnas bajan de 49 a 29 y no se pierde ninguna fila;
+  - se comparan 4 métodos para las duraciones vacías;
+  - criticidad e impacto quedan con orden declarado, y hay one-hot y 3 escaladores comparados;
+  - la tabla de recurrencia tiene 203 elementos con pérdida de servicio por transmisión: 34 con 2 o más fallas y 12 con 3 o más (cifra reemplazada en el paso 19 por el conteo por sitio);
+  - 15 de 15 reglas de integridad cumplidas y pruebas normal, límite y excepción en 9 funciones.
+- **Función recursiva (RA2):** `utilidades.fusionar_intervalos` une las caídas de un mismo elemento que se traslapan, para no contar dos veces el tiempo fuera de servicio.
+- **Incidencia y corrección:** al validar apareció que `reparar_texto` no arreglaba la Ñ (`Ã‘uÃ±oa`). Esa letra se rompió con la codificación de Windows (cp1252), no con latin-1. Se corrigió la función para probar cp1252 primero, y quedan 0 celdas rotas.
+- **Otra corrección:** el one-hot con frecuencia mínima de 1 % agrupaba microondas y FOP como poco frecuentes, y son el foco de la pregunta. El tipo de enlace se codifica sin agrupar.
+- **Orden de trabajo, para no repetir la incidencia del paso 17:** ejecutar, guardar con Ctrl+S y recién ahí `git add` y `git commit`.
+
+## Paso 19 · Mnemónicos reales, conteo por sitio y reglas del NOC (11-11-2026)
+
+- **Qué cambió y por qué:** al revisar el gráfico de la Fase 2, los sitios aparecían como `NE_0132`, y así no se puede saber qué sitio escalar. Los mnemónicos de los sitios no son datos personales y la SUBTEL ya los publica. Por eso el anonimizador dejó de codificarlos, y ahora todo el proyecto usa el nombre real. Las personas siguen codificadas (IM_, OP_), igual que los tickets de proveedor y los códigos de servicio TX.
+- **Hallazgo al usar los nombres reales:** `Network Element` puede traer **varios sitios en la misma celda**, separados por dos espacios. Un espacio simple es parte del nombre, como en `SIT_0304`. Separar por dos espacios coincide con `Q Network Element` en las 21.542 filas. Hay 1.098 incidencias con más de un sitio.
+  - Antes se contaban como un solo "elemento" y la tabla mostraba 203. Contando por sitio, son **559 sitios** con pérdida de servicio por transmisión: 149 con 2 o más fallas y 21 con 3 o más.
+  - Se agregó `utilidades.separar_sitios`, con pruebas.
+- **Reglas del NOC confirmadas por Edgar:**
+  - **Criticidad:** P1 afecta a más de 50.000 clientes, P2 a más de 30.000, y P3 y P3E a menos de 30.000. La P3E es una P3 que dura más de 24 horas.
+  - **Pérdida de servicio:** P1, P2, P3 y P3E tienen pérdida de servicio. P2 Redundancia y P2R no, porque la redundancia está activa.
+  - **Orden ordinal:** P4 < P2 Redundancia < P2R Degradación < P3 = P3E < P2 < P1. P3 y P3E comparten nivel, y la duración las distingue con la bandera `es_extendida`.
+  - **Satelital:** el proveedor es TGS Starlink. El exporte lo deja vacío en las 15 fallas satelitales.
+- **Corrección de enfoque:** antes de esto se habían supuesto dos reglas del negocio, el proveedor satelital como "Sin dato" y la P3E como menos grave que la P2 Redundancia. Desde ahora toda regla del NOC se consulta antes de aplicarla.
+- **Incidencia repetida:** los commits `e8a457c` y `6431ae9` volvieron a guardar los notebooks sin salidas, porque se hicieron antes de ejecutarlos en Jupyter. Desde aquí se revisa en el disco que los notebooks tengan la numeración completa **antes** de cada commit. Se corrigió en el commit `fix:` siguiente.
+- **Impacto en el repositorio:** se regeneró `data/raw/incidencias_oct2026_anon.csv` con el anonimizador ajustado y se volvió a correr `validar_dataset.py`, que sigue diciendo CUMPLE. F1 y F2 se ejecutaron de nuevo, y la tabla de recurrencia ahora es `recurrencia_tx_por_sitio.csv`. F1 da 8 de 8 y F2 da 17 de 17 reglas de integridad.
+
+## Paso 20 · Mapa conceptual (11-11-2026)
+
+- **Qué pide:** criterio 14, con los seis tipos de elemento del mapa (herramientas, procesos, flujo reproducible, decisiones técnicas, organización del repositorio y estructura del notebook), conectores con verbo y leyenda. El curso también pide distinguir lo implementado de lo proyectado.
+- **Qué se hizo:** `scripts/mapa_conceptual.py` dibuja el mapa en `docs/figuras/mapa_conceptual.png`. Cada tipo tiene su color; el borde continuo marca lo implementado en F1 y F2 y el borde punteado lo proyectado para F3 y F4. Al ser un programa, el mapa se actualiza en cada fase con un comando.
+- **Enfoque descartado:** la primera versión ubicaba las cajas sin una grilla, y las flechas cruzaban otras cajas y las etiquetas se superponían. Se reordenó en cinco columnas para que cada flecha vaya a una caja vecina, y las flechas parten del borde de cada caja.
+- **Comando:**
+  ```
+  .\.venv\Scripts\python.exe scripts\mapa_conceptual.py
+  ```
 
 ---
 
@@ -185,7 +226,20 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `abd3693` | feat: notebook F1 con definición, entorno, ficha, diccionario y validación | Notebook F1, README generado y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática · 5 Reproducibilidad · 14 Vinculación con el mapa |
 | `348231e` | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
 | `376d53d` | docs: define el uptime por criticidad y guarda la ejecución de F1 | Criticidades que afectan el uptime y duraciones inválidas (el notebook quedó sin salidas) | 3. Notebook F1 · 5. Evidencias | 3 Problemática · 11 Validación |
-| (siguiente) | fix: guarda las salidas de la ejecución del notebook F1 | Notebook F1 ejecutado: numeración 1 a 22, 0 errores, 8 de 8 | 3. Notebook F1 | 12 Notebook F1 · 5 Reproducibilidad |
+| `75e005f` | fix: guarda las salidas de la ejecución del notebook F1 | Notebook F1 ejecutado: numeración 1 a 22, 0 errores, 8 de 8 | 3. Notebook F1 | 12 Notebook F1 · 5 Reproducibilidad |
+| (rama f2-pipeline) | feat: agrega funciones del pipeline F2 a utilidades y repara la Ñ | `src/utilidades.py`: `huella_sha256`, `es_vacio`, `clasificar_enlace`, `fusionar_intervalos` (recursiva) y la corrección de `reparar_texto` | 4. Notebooks F2 (código) | 9 Codificación · RA2 recursión |
+| (rama f2-pipeline) | feat: notebook F2 con limpieza, transformación, escalamiento y validación | Notebook F2 ejecutado, figuras, metadatos y diccionario del modelo | 4. Notebooks F2 · 5. Evidencias | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
+| (rama f2-pipeline) | data: guarda los conjuntos procesados y la tabla de recurrencia | `data/processed/` (3 archivos) | 4. Notebooks F2 (salida) | 10 Preprocesamiento · 5 Reproducibilidad |
+| (rama f2-pipeline) | docs: registra las decisiones y el proceso de la Fase 2 | `docs/bitacora_decisiones.md` y este paso 18 | 5. Evidencias de trazabilidad | 7 Documentación del proceso |
+| (rama f2-pipeline) | data: conserva los mnemónicos reales de los sitios en data/raw | Anonimizador ajustado, `data/raw` regenerado y validación del dataset | 4. Obtención de datos | 10 Preprocesamiento · 3 Problemática |
+| (rama f2-pipeline) | feat: agrega separar_sitios para contar las fallas por sitio | `src/utilidades.py` | 4. Notebooks F2 (código) | 9 Codificación |
+| (rama f2-pipeline) | docs: F1 con mnemónicos reales, definición de criticidad y conteo por sitio | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática |
+| (rama f2-pipeline) | feat: F2 cuenta la recurrencia por sitio con las reglas del NOC | Notebook F2 ejecutado, figuras y metadatos | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
+| (rama f2-pipeline) | data: regenera los conjuntos procesados con la tabla por sitio | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
+| (rama f2-pipeline) | docs: registra el cambio a mnemónicos reales y el conteo por sitio | Paso 19 de esta bitácora y bitácora de decisiones | 5. Evidencias | 7 Documentación del proceso |
+| (rama f2-pipeline) | fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales | Notebooks ejecutados y guardados, `data/processed` y `docs/` de esa ejecución | 3 y 4. Notebooks F1 y F2 | 12 y 13 Notebooks · 5 Reproducibilidad |
+| (rama f2-pipeline) | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
+| (pull request) | Merge de f2-pipeline en main | Integración de la Fase 2 | 2. Repositorio | 6 Control de versiones (ramas) · 8 Repositorio |
 
 Convención de prefijos:
 

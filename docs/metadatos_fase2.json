@@ -1,0 +1,84 @@
+{
+  "fase": "F2",
+  "generado": "2026-11-11T10:25:40",
+  "commit_base": "0ca7500",
+  "entrada": {
+    "archivo": "data/raw/incidencias_oct2026_anon.csv",
+    "sha256": "abdd99c96f73c6967480a6095ec02579704241227271d595e272a751f82a745d",
+    "filas": 21542
+  },
+  "salidas": {
+    "incidencias_limpio.csv": {
+      "filas": 21542,
+      "columnas": 34,
+      "sha256": "57555f4dd4a70d3d3860bb7c06465e676a8a901e67d4f236bd954f8b8357ace9"
+    },
+    "incidencias_modelo.csv": {
+      "filas": 21542,
+      "columnas": 48,
+      "sha256": "48da91b36f784339d222559da442e0921928c3a839981170f13c966146c26ad7"
+    },
+    "recurrencia_tx_por_sitio.csv": {
+      "filas": 559,
+      "columnas": 10,
+      "sha256": "a64949b249539a22a253510a01ffe00cfeec5107d6b01d6e828a554a3bc4357f"
+    }
+  },
+  "parametros": {
+    "semilla": 42,
+    "frecuencia_minima_onehot": 0.01,
+    "criticidad_uptime": [
+      "P1",
+      "P2",
+      "P3",
+      "P3E"
+    ],
+    "orden_criticidad": [
+      "P4",
+      "P2 Redundancia",
+      "P2R Degradación",
+      [
+        "P3",
+        "P3E"
+      ],
+      "P2",
+      "P1"
+    ],
+    "orden_impacto": [
+      "Sin Impacto",
+      "Localizado",
+      "Regional",
+      "Amplio"
+    ],
+    "escaladores": {
+      "duracion_log_esc": "StandardScaler",
+      "q_sitios_esc": "MinMaxScaler",
+      "tiempo_respuesta_esc": "MinMaxScaler"
+    }
+  },
+  "resultados": {
+    "fallas_tx": 588,
+    "fallas_tx_con_perdida": 260,
+    "elementos_con_2_o_mas": 149,
+    "minutos_traslape_descontados": 30.0
+  },
+  "validacion": {
+    "las 21.542 filas siguen en limpio y en modelo": "OK",
+    "clave TT + sitios + inicio única": "OK",
+    "sitios separados = q_sitios en todas las filas": "OK",
+    "enlaces satelitales con proveedor": "OK",
+    "sin celdas con tildes rotas": "OK",
+    "sin marcadores NA, N/A o no aplica escritos": "OK",
+    "modelo sin vacíos y todo numérico": "OK",
+    "duraciones no negativas": "OK",
+    "duración = cierre − inicio (± 2 min)": "OK",
+    "duracion_faltante coincide con duración vacía": "OK",
+    "ordinales dentro de su rango": "OK",
+    "cada grupo one-hot suma 1 por fila": "OK",
+    "tipo_enlace definido en todas las fallas TX y solo en ellas": "OK",
+    "afecta_uptime solo en P1, P2, P3 y P3E": "OK",
+    "minutos reales ≤ minutos sumados": "OK",
+    "recurrencia suma los sitios de las fallas TX con pérdida de servicio": "OK",
+    "data/raw sin cambios (SHA-256)": "OK"
+  }
+}

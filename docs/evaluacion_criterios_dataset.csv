@@ -5,6 +5,6 @@ Al menos una variable numérica,obligatorio,True,2 numéricas al leer
 Al menos una variable categórica,obligatorio,True,47 de texto o categoría
 Presencia de valores faltantes,aviso,True,máximo 100.0 %
 Variable de fecha,aviso,True,4 columnas de fecha
-Archivo bajo 100 MB,aviso,True,5.8 MB
+Archivo bajo 100 MB,aviso,True,5.9 MB
 Datos de los últimos 5 años,obligatorio,True,2026-10-01 a 2026-10-31 (cierres hasta 2026-11-10)
 Sin datos personales identificables,obligatorio,True,"anonimizado (ver bitácora, paso 4)"
