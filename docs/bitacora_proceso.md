@@ -161,6 +161,13 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - la Fase 2 suma dos productos: la clasificación por tipo de enlace y la tabla de recurrencia por elemento de red con sus minutos acumulados;
   - en la clasificación aparece un cuarto tipo que no estaba previsto: 15 fallas de **módem satelital** (Tx Proveedor). La Fase 2 lo trata como una categoría propia.
 - **Fuera del alcance:** la decisión de cambiar la transmisión de un sitio y sus costos. El proyecto entrega la priorización y la decisión la toman las áreas de transmisión.
+- **Ajuste por criticidad (definición operativa del NOC):** solo P1, P2, P3 y P3E (P3 extendida, las que pasan mucho tiempo fuera de servicio) son pérdida de servicio y afectan el uptime. P2 Redundancia, P2R y P4 no.
+  - De 588 fallas de transmisión, 264 dejaron el servicio caído: 206 elementos, 35 con 2 o más pérdidas y 12 con 3 o más; el máximo es 11.
+  - El elemento con más fallas de transmisión (19) tiene solo 1 con pérdida de servicio. Sin este filtro se habría priorizado mal.
+  - La mediana de la P3E es 3.188 minutos (unas 53 horas), contra 247 de la P3.
+  - La tabla de recurrencia de la Fase 2 se construye solo con las fallas con pérdida de servicio.
+- **Hallazgo nuevo para la Fase 2:** 2 duraciones negativas (`-498136:-36:-45` y `-497906:-41:00`) en incidencias cerradas P4. Se cuentan en la sección 5.3 y se tratan en la Fase 2.
+- **Incidencia del commit `348231e`:** el notebook se guardó sin las salidas de la ejecución. Se corrige en el commit siguiente, ejecutado y guardado.
 
 ---
 
@@ -176,7 +183,8 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `9f9d7f5` | feat: agrega módulo utilidades con funciones, clase y excepción propia | `src/utilidades.py` | 3. Notebook F1 (código modular) | 9 Codificación · 12 Notebook F1 |
 | `e6e738d` | data: valida el conjunto con validar_dataset.py del curso | `validar_dataset.py` y `docs/validacion_dataset.md` | 4. Obtención de datos | 11 Validación · 3 Problemática (requisitos del dataset) |
 | `abd3693` | feat: notebook F1 con definición, entorno, ficha, diccionario y validación | Notebook F1, README generado y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática · 5 Reproducibilidad · 14 Vinculación con el mapa |
-| (siguiente) | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
+| `348231e` | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
+| (siguiente) | docs: define el uptime por criticidad y guarda la ejecución de F1 | Criticidades que afectan el uptime, duraciones inválidas y notebook con sus salidas | 3. Notebook F1 · 5. Evidencias | 3 Problemática · 12 Notebook F1 · 11 Validación |
 
 Convención de prefijos:
 

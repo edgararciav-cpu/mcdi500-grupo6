@@ -7,7 +7,7 @@ Proyecto del curso **MCDI500 · Programación para la Ciencia de Datos** · Mag�
 
 ## Problemática
 
-El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios elementos de red fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y qué tipo de enlace las origina.
+El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios elementos de red fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y qué tipo de enlace las origina. Para el uptime cuentan solo las incidencias con pérdida de servicio: criticidad P1, P2, P3 y P3E (P3 extendida, las que pasan mucho tiempo fuera de servicio).
 
 **Pregunta:** ¿Qué elementos de red concentran incidencias recurrentes de transmisión (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y qué tipo de enlace o proveedor las origina, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime?
 
@@ -15,11 +15,11 @@ El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transm
 
 **Objetivos específicos:**
 
-1. Convertir la duración (texto h:mm:ss) a minutos y comparar su distribución y sus atípicos entre las fallas de transmisión y el resto.
-2. Clasificar cada falla de transmisión según el tipo de enlace (microondas, fibra propia FOP o fibra de proveedor) a partir del tipo y la incidencia NOC.
+1. Convertir la duración (texto h:mm:ss) a minutos, tratar las duraciones inválidas y comparar su distribución y sus atípicos entre las fallas de transmisión y el resto.
+2. Clasificar cada falla de transmisión según el tipo de enlace (microondas, fibra propia FOP, fibra de proveedor o satelital) y marcar si afecta el uptime según su criticidad (P1, P2, P3 o P3E).
 3. Comparar al menos tres métodos para tratar las duraciones vacías, considerando que corresponden a incidencias aún no normalizadas.
 4. Corregir la codificación del texto, unificar las categorías escritas de varias formas y codificar la criticidad y el impacto con orden declarado.
-5. Entregar un conjunto validado con pruebas (assert) y una tabla de recurrencia por elemento de red (incidencias y minutos acumulados), lista para las Fases 3 y 4.
+5. Entregar un conjunto validado con pruebas (assert) y una tabla de recurrencia por elemento de red (fallas con pérdida de servicio y minutos fuera de servicio acumulados), lista para las Fases 3 y 4.
 
 ## Datos
 

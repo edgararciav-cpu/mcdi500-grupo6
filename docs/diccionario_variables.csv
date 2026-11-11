@@ -6,7 +6,7 @@ comuna,Comuna,alta cardinalidad,Comuna del elemento afectado,str,335,1.59
 estado,Estado,nominal,"Cerrada, Pendiente Automático, Abierta, Cancelada",str,4,0.0
 tipo_incidencia_noc,Tipo Incidencia NOC,nominal,"Tipo de falla según el NOC (Energía, Tx, RF, Hardware, ...)",str,14,0.0
 incidencia_noc,Incidencia NOC,nominal,Subtipo de falla,str,30,0.0
-criticidad,Criticidad,ordinal,"P1 (más crítica) a P4; incluye P2 Redundancia, P2R y P3E",str,7,0.0
+criticidad,Criticidad,ordinal,"P1 (más crítica) a P4. P1, P2, P3 y P3E (P3 extendida) son pérdida de servicio y afectan el uptime; P2 Redundancia, P2R y P4 no",str,7,0.0
 detalle,Detalle,texto,Descripción breve escrita por el operador,str,2709,0.0
 impacto,Impacto,ordinal,Sin Impacto < Localizado < Regional < Amplio,str,4,0.0
 tiempo_de_respuesta,Tiempo de Respuesta,discreta,"Tiempo comprometido de respuesta en horas (0, 2, 4, 24, 48)",int64,5,0.0
