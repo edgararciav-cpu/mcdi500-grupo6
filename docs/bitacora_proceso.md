@@ -131,6 +131,37 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - `pip install` instala las librerías y `pip freeze` lista cada una con su versión exacta. El resultado se guarda en `requirements.txt` para reconstruir el mismo entorno en otro equipo con `pip install -r requirements.txt`.
   - `ipykernel install` registra el kernel. Así los notebooks se ejecutan con el Python del proyecto y no con el del sistema.
 
+## Paso 14 · Módulo propio `src/utilidades.py` (11-11-2026, 07:00)
+
+- **Qué pide:** criterio 9 (codificación con funciones, parámetros y docstring) y modularidad o POO.
+- **Qué se hizo:** un módulo con 4 funciones (`reparar_texto`, `normalizar_nombre`, `normalizar_columnas` y `duracion_a_minutos`), la clase `ConjuntoDatos` (con `existe`, `cargar` y `resumen`) y la excepción propia `ProyectoError`.
+- **Resultado:** commit `9f9d7f5`. Las pruebas normal, límite y excepción están en la sección 4.1 del notebook F1.
+
+## Paso 15 · Validación del conjunto con el programa del curso (11-11-2026, 07:03)
+
+- **Qué pide:** paso 3 de la lámina 67, validar el conjunto con `validar_dataset.py`.
+- **Resultado:** `docs/validacion_dataset.md` dice CUMPLE (21.542 × 49). Commit `e6e738d`.
+
+## Paso 16 · Notebook F1 ejecutado (11-11-2026, 07:20)
+
+- **Qué se hizo:** `F1/F1_Definicion.ipynb` con 11 secciones, igual al modelo del docente: definición, entorno, estructura, módulo, ficha y diccionario, control de versiones, validación, vinculación con el mapa, persistencia, conclusiones y verificación.
+- **Resultado:** ejecutado con *Restart & Run All*, numeración continua, 0 errores, 0 advertencias y "Fase 1 validada: 8 de 8". Commit `abd3693`.
+
+## Paso 17 · Cambio de la pregunta al foco en transmisión (11-11-2026)
+
+- **Qué cambió:** la pregunta original buscaba qué características de una incidencia se asocian a su duración. La nueva pregunta busca **qué elementos de red concentran fallas recurrentes de transmisión** (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y qué tipo de enlace o proveedor las origina.
+- **Motivo:** es la decisión que el NOC necesita tomar en la operación. Si un sitio falla varias veces por transmisión, se escala con el área que corresponde (transmisión propia o el proveedor) para evaluar un cambio de transmisión y asegurar el uptime. La pregunta anterior era más amplia y no llevaba a una acción concreta.
+- **Evidencia de que la pregunta tiene datos** (sección 5.5 del notebook F1):
+  - 588 fallas de transmisión de 21.542 (Tx Proveedor 333 y Tx Propia 255);
+  - 337 elementos de red con al menos una falla, 134 con 2 o más y 46 con 3 o más; uno falló 19 veces;
+  - subtipos principales: corte de fibra de proveedor 214, pérdida de enlace MW 135, pérdida de redundancia 100 y corte de fibra FOP 72.
+- **Impacto:**
+  - se reescribieron la pregunta, el objetivo general, los 5 objetivos específicos, el alcance, una restricción y un supuesto;
+  - las 21.542 filas se siguen limpiando completas, y el análisis se enfoca en las 588 de transmisión;
+  - la Fase 2 suma dos productos: la clasificación por tipo de enlace y la tabla de recurrencia por elemento de red con sus minutos acumulados;
+  - en la clasificación aparece un cuarto tipo que no estaba previsto: 15 fallas de **módem satelital** (Tx Proveedor). La Fase 2 lo trata como una categoría propia.
+- **Fuera del alcance:** la decisión de cambiar la transmisión de un sitio y sus costos. El proyecto entrega la priorización y la decisión la toman las áreas de transmisión.
+
 ---
 
 ## Historial de commits y criterio que respalda cada uno
@@ -141,6 +172,11 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `a1e40b8` | data: incorpora incidencias de octubre 2026 anonimizadas en raw | El conjunto de datos de entrada, ya anonimizado | 4. Obtención de datos (F2) | 10 Preprocesamiento (punto de partida) · 5 Reproducibilidad (los datos están en el repo) |
 | `b85a209` | docs: agrega bitácora del proceso y script de anonimización | Esta bitácora y el programa que preparó los datos | 5. Evidencias de trazabilidad | 7 Documentación del proceso · 11 Validación (verificación de la anonimización) |
 | `e005441` | feat: define el entorno reproducible con requirements.txt | Las 105 dependencias con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad técnica · 4 Herramientas científicas |
+| `cfceefa` | docs: registra el entorno reproducible y la relación de cada commit con la rúbrica | Pasos 11 a 13 de esta bitácora y esta tabla | 5. Evidencias de trazabilidad | 7 Documentación del proceso · 6 Control de versiones |
+| `9f9d7f5` | feat: agrega módulo utilidades con funciones, clase y excepción propia | `src/utilidades.py` | 3. Notebook F1 (código modular) | 9 Codificación · 12 Notebook F1 |
+| `e6e738d` | data: valida el conjunto con validar_dataset.py del curso | `validar_dataset.py` y `docs/validacion_dataset.md` | 4. Obtención de datos | 11 Validación · 3 Problemática (requisitos del dataset) |
+| `abd3693` | feat: notebook F1 con definición, entorno, ficha, diccionario y validación | Notebook F1, README generado y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática · 5 Reproducibilidad · 14 Vinculación con el mapa |
+| (siguiente) | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
 
 Convención de prefijos:
 

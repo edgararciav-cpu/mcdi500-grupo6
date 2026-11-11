@@ -1,4 +1,4 @@
-# Duración de las incidencias de red de un operador móvil
+# Fallas recurrentes de transmisión en la red de un operador móvil
 
 Proyecto del curso **MCDI500 · Programación para la Ciencia de Datos** · Magíster en Ciencia de Datos e Inteligencia Artificial, Universidad Andrés Bello.
 
@@ -7,19 +7,19 @@ Proyecto del curso **MCDI500 · Programación para la Ciencia de Datos** · Mag�
 
 ## Problemática
 
-El NOC registró 21.542 incidencias en octubre de 2026. Su duración va de minutos a varios días, y no se sabe con datos qué características se asocian a las más largas.
+El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios elementos de red fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y qué tipo de enlace las origina.
 
-**Pregunta:** ¿Qué características de una incidencia de red (tipo, criticidad, impacto, región, cantidad de elementos afectados y momento de inicio) se asocian a su tiempo de duración?
+**Pregunta:** ¿Qué elementos de red concentran incidencias recurrentes de transmisión (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y qué tipo de enlace o proveedor las origina, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime?
 
-**Objetivo general:** Construir un flujo reproducible que transforme el exporte de incidencias en un conjunto limpio y validado, apto para analizar los factores asociados a la duración.
+**Objetivo general:** Construir un flujo reproducible que transforme el exporte de incidencias en un conjunto limpio y validado, y en una tabla de recurrencia por elemento de red, apta para priorizar las fallas de transmisión.
 
 **Objetivos específicos:**
 
-1. Convertir la duración (texto h:mm:ss) a minutos y medir su distribución y sus atípicos por tipo y criticidad.
-2. Comparar al menos tres métodos para tratar las duraciones vacías y elegir uno según el cambio en la desviación estándar.
-3. Corregir la codificación del texto y unificar las categorías escritas de varias formas.
-4. Codificar la criticidad y el impacto con orden declarado y las variables nominales con one-hot.
-5. Entregar un conjunto validado con pruebas (assert), listo para las Fases 3 y 4.
+1. Convertir la duración (texto h:mm:ss) a minutos y comparar su distribución y sus atípicos entre las fallas de transmisión y el resto.
+2. Clasificar cada falla de transmisión según el tipo de enlace (microondas, fibra propia FOP o fibra de proveedor) a partir del tipo y la incidencia NOC.
+3. Comparar al menos tres métodos para tratar las duraciones vacías, considerando que corresponden a incidencias aún no normalizadas.
+4. Corregir la codificación del texto, unificar las categorías escritas de varias formas y codificar la criticidad y el impacto con orden declarado.
+5. Entregar un conjunto validado con pruebas (assert) y una tabla de recurrencia por elemento de red (incidencias y minutos acumulados), lista para las Fases 3 y 4.
 
 ## Datos
 

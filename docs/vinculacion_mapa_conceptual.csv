@@ -4,6 +4,8 @@ Jupyter + kernel Python (mcdi500),herramientas,implementado,Sección 2 · kernel
 Git y GitHub,herramientas,implementado,Sección 6 · historial con prefijos y una sola identidad
 Anonimización de los datos,procesos,implementado,scripts/anonimizar_incidencias.py · bitácora paso 4
 Exploración y medición de calidad,procesos,implementado,Secciones 5.3 y 5.4 de este notebook
+Foco en fallas de transmisión recurrentes,decisiones técnicas,implementado,"Sección 1 (pregunta) y sección 5.5 (588 fallas, 134 elementos con 2 o más)"
+Tabla de recurrencia por elemento de red,procesos,proyectado,"Fase 2 · clasificación MW, FOP y fibra de proveedor"
 "Limpieza, imputación y transformación",procesos,proyectado,Fase 2 · F2/F2_Preprocesamiento.ipynb
 Núcleo algorítmico y POO,procesos,proyectado,Fase 3 · Sumativa 2
 "raw → processed, rutas relativas, semilla 42",flujo reproducible,implementado,Secciones 2 y 3 · localizar_raiz y SEMILLA
