@@ -26,7 +26,7 @@ El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transm
 - **Origen:** Exporte interno del sistema de tickets del NOC de WOM (operador móvil, Chile). Uso autorizado por escrito por la jefatura; el docente está informado.
 - **Período:** 2026-10-01 a 2026-10-31 (cierres hasta 2026-11-10).
 - **Archivo:** `data/raw/incidencias_oct2026_anon.csv` (21.542 filas × 49 columnas, separador `;`).
-- **Anonimización:** scripts/anonimizar_incidencias.py: personas, tickets de proveedor y códigos de servicio TX reemplazados por códigos; los sitios conservan su mnemónico real (información pública de SUBTEL). El exporte original no forma parte del repositorio.
+- **Anonimización:** scripts/anonimizar_incidencias.py: personas, tickets de proveedor y códigos de servicio TX reemplazados por códigos; los sitios conservan su nemónico real. El exporte original no forma parte del repositorio.
 
 ## Estructura
 
