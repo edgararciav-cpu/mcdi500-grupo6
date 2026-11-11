@@ -7,11 +7,18 @@ Funciones reutilizables que usan los notebooks de todas las fases. Se importan c
 después de agregar la carpeta src/ a sys.path (lo hace la primera celda de cada notebook).
 """
 
+import hashlib
 import re
 import unicodedata
 from pathlib import Path
 
 import pandas as pd
+
+# Formas en que el exporte escribe "no hay dato". Se comparan sin mayúsculas ni espacios extremos.
+MARCADORES_VACIO = {"", "na", "n/a", "no aplica", "-", "0000-00-00 00:00:00"}
+
+# Criticidades con pérdida de servicio: son las que bajan el uptime (definición operativa del NOC).
+CRITICIDAD_UPTIME = ("P1", "P2", "P3", "P3E")
 
 
 class ProyectoError(Exception):
@@ -28,10 +35,13 @@ def reparar_texto(texto):
     limpio = texto.replace("﻿", "").replace("</div>", "").replace("ï»¿", "")
     if "Ã" not in limpio and "Â" not in limpio:
         return limpio
-    try:
-        return limpio.encode("latin-1").decode("utf-8")
-    except (UnicodeEncodeError, UnicodeDecodeError):
-        return limpio
+    # cp1252 primero: la Ñ rota ("Ã‘") usa un carácter (‘) que existe en cp1252 y no en latin-1
+    for codificacion in ("cp1252", "latin-1"):
+        try:
+            return limpio.encode(codificacion).decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            continue
+    return limpio
 
 
 def normalizar_nombre(texto):
@@ -66,6 +76,66 @@ def duracion_a_minutos(texto):
     if minutos >= 60 or segundos >= 60:
         raise ProyectoError(f"minutos o segundos fuera de rango: {texto!r}")
     return horas * 60 + minutos + segundos / 60
+
+
+def huella_sha256(ruta):
+    """Huella SHA-256 de un archivo: si cambia un solo byte, cambia la huella."""
+    return hashlib.sha256(Path(ruta).read_bytes()).hexdigest()
+
+
+def es_vacio(valor):
+    """True si el valor es un marcador de "sin dato" (NA, N/A, no aplica, vacío...)."""
+    if valor is None or (isinstance(valor, float) and pd.isna(valor)):
+        return True
+    return str(valor).strip().lower() in MARCADORES_VACIO
+
+
+def clasificar_enlace(tipo_incidencia, incidencia):
+    """Tipo de enlace de transmisión que falló, a partir del tipo y la incidencia NOC.
+
+    Devuelve "Microondas", "Fibra propia (FOP)", "Fibra proveedor", "Satelital" u "Otra TX".
+    Si la incidencia no es de transmisión devuelve None. Lanza ProyectoError si falta el texto.
+    """
+    if tipo_incidencia not in ("Tx Propia", "Tx Proveedor"):
+        return None
+    if not isinstance(incidencia, str) or not incidencia.strip():
+        raise ProyectoError(f"falla de transmisión sin incidencia NOC: {incidencia!r}")
+    texto = incidencia.strip().lower()
+    if texto.startswith("mw"):
+        return "Microondas"
+    if texto.startswith("fop"):
+        return "Fibra propia (FOP)"
+    if "satelital" in texto:
+        return "Satelital"
+    if tipo_incidencia == "Tx Proveedor":
+        return "Fibra proveedor"
+    return "Otra TX"
+
+
+def fusionar_intervalos(intervalos):
+    """Une intervalos (inicio, fin) que se traslapan. Función RECURSIVA.
+
+    Si un elemento de red tiene dos incidencias abiertas al mismo tiempo, sumar sus duraciones
+    contaría dos veces el mismo tiempo fuera de servicio. Esta función devuelve los intervalos sin
+    traslape, ordenados.
+
+    Caso base: 0 o 1 intervalo, no hay nada que unir.
+    Paso recursivo: se fusionan los intervalos desde el segundo en adelante, y luego se decide si
+    el primero se une con el primero de ese resultado o queda aparte.
+    """
+    ordenados = sorted(intervalos)
+    for inicio, fin in ordenados:
+        if fin < inicio:
+            raise ProyectoError(f"intervalo con fin anterior al inicio: {(inicio, fin)}")
+    if len(ordenados) <= 1:
+        return ordenados
+    primero, resto = ordenados[0], fusionar_intervalos(ordenados[1:])
+    siguiente = resto[0]
+    if siguiente[0] <= primero[1]:                       # se traslapan o se tocan: un solo intervalo
+        unido = (primero[0], max(primero[1], siguiente[1]))
+        # el intervalo unido puede alcanzar a los que siguen: se vuelve a fusionar (la lista es 1 más corta)
+        return fusionar_intervalos([unido] + resto[1:])
+    return [primero] + resto
 
 
 class ConjuntoDatos:
