@@ -197,7 +197,18 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - **Orden ordinal:** P4 < P2 Redundancia < P2R Degradación < P3 = P3E < P2 < P1. P3 y P3E comparten nivel, y la duración las distingue con la bandera `es_extendida`.
   - **Satelital:** el proveedor es TGS Starlink. El exporte lo deja vacío en las 15 fallas satelitales.
 - **Corrección de enfoque:** antes de esto se habían supuesto dos reglas del negocio, el proveedor satelital como "Sin dato" y la P3E como menos grave que la P2 Redundancia. Desde ahora toda regla del NOC se consulta antes de aplicarla.
+- **Incidencia repetida:** los commits `e8a457c` y `6431ae9` volvieron a guardar los notebooks sin salidas, porque se hicieron antes de ejecutarlos en Jupyter. Desde aquí se revisa en el disco que los notebooks tengan la numeración completa **antes** de cada commit. Se corrigió en el commit `fix:` siguiente.
 - **Impacto en el repositorio:** se regeneró `data/raw/incidencias_oct2026_anon.csv` con el anonimizador ajustado y se volvió a correr `validar_dataset.py`, que sigue diciendo CUMPLE. F1 y F2 se ejecutaron de nuevo, y la tabla de recurrencia ahora es `recurrencia_tx_por_sitio.csv`. F1 da 8 de 8 y F2 da 17 de 17 reglas de integridad.
+
+## Paso 20 · Mapa conceptual (11-11-2026)
+
+- **Qué pide:** criterio 14, con los seis tipos de elemento del mapa (herramientas, procesos, flujo reproducible, decisiones técnicas, organización del repositorio y estructura del notebook), conectores con verbo y leyenda. El curso también pide distinguir lo implementado de lo proyectado.
+- **Qué se hizo:** `scripts/mapa_conceptual.py` dibuja el mapa en `docs/figuras/mapa_conceptual.png`. Cada tipo tiene su color; el borde continuo marca lo implementado en F1 y F2 y el borde punteado lo proyectado para F3 y F4. Al ser un programa, el mapa se actualiza en cada fase con un comando.
+- **Enfoque descartado:** la primera versión ubicaba las cajas sin una grilla, y las flechas cruzaban otras cajas y las etiquetas se superponían. Se reordenó en cinco columnas para que cada flecha vaya a una caja vecina, y las flechas parten del borde de cada caja.
+- **Comando:**
+  ```
+  .\.venv\Scripts\python.exe scripts\mapa_conceptual.py
+  ```
 
 ---
 
@@ -226,6 +237,8 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | (rama f2-pipeline) | feat: F2 cuenta la recurrencia por sitio con las reglas del NOC | Notebook F2 ejecutado, figuras y metadatos | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
 | (rama f2-pipeline) | data: regenera los conjuntos procesados con la tabla por sitio | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
 | (rama f2-pipeline) | docs: registra el cambio a mnemónicos reales y el conteo por sitio | Paso 19 de esta bitácora y bitácora de decisiones | 5. Evidencias | 7 Documentación del proceso |
+| (rama f2-pipeline) | fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales | Notebooks ejecutados y guardados, `data/processed` y `docs/` de esa ejecución | 3 y 4. Notebooks F1 y F2 | 12 y 13 Notebooks · 5 Reproducibilidad |
+| (rama f2-pipeline) | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
 | (pull request) | Merge de f2-pipeline en main | Integración de la Fase 2 | 2. Repositorio | 6 Control de versiones (ramas) · 8 Repositorio |
 
 Convención de prefijos:
