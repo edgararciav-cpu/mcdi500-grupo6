@@ -167,7 +167,23 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - La mediana de la P3E es 3.188 minutos (unas 53 horas), contra 247 de la P3.
   - La tabla de recurrencia de la Fase 2 se construye solo con las fallas con pérdida de servicio.
 - **Hallazgo nuevo para la Fase 2:** 2 duraciones negativas (`-498136:-36:-45` y `-497906:-41:00`) en incidencias cerradas P4. Se cuentan en la sección 5.3 y se tratan en la Fase 2.
-- **Incidencia de los commits `348231e` y `376d53d`:** los dos guardaron el notebook sin las salidas, porque el commit se hizo antes de ejecutarlo y guardarlo. Se corrigió en el commit siguiente. **Orden correcto:** ejecutar (*Restart & Run All*), guardar (Ctrl+S) y recién ahí `git add` y `git commit`.
+- **Incidencia de los commits `348231e` y `376d53d` (ver paso 18 para la Fase 2):** los dos guardaron el notebook sin las salidas, porque el commit se hizo antes de ejecutarlo y guardarlo. Se corrigió en el commit siguiente. **Orden correcto:** ejecutar (*Restart & Run All*), guardar (Ctrl+S) y recién ahí `git add` y `git commit`.
+
+## Paso 18 · Pipeline de la Fase 2 en la rama `f2-pipeline` (11-11-2026)
+
+- **Qué pide:** criterios 9, 10, 11 y 13 (codificación, preprocesamiento, validación y notebook F2) y el uso de ramas del criterio 6.
+- **Qué se hizo:** `F2/F2_Preprocesamiento.ipynb` con el flujo obtener → explorar → limpiar → transformar → escalar → validar → guardar, en una rama propia que se integra a `main` con un pull request. Cada decisión queda con su cifra en `docs/bitacora_decisiones.md`, que genera el mismo notebook.
+- **Resultado:**
+  - 43.811 celdas con tildes rotas pasan a 0, y 29.667 marcadores de "sin dato" pasan a vacío;
+  - las columnas bajan de 49 a 29 y no se pierde ninguna fila;
+  - se comparan 4 métodos para las duraciones vacías;
+  - criticidad e impacto quedan con orden declarado, y hay one-hot y 3 escaladores comparados;
+  - la tabla de recurrencia tiene 203 elementos con pérdida de servicio por transmisión: 34 con 2 o más fallas y 12 con 3 o más;
+  - 15 de 15 reglas de integridad cumplidas y pruebas normal, límite y excepción en 9 funciones.
+- **Función recursiva (RA2):** `utilidades.fusionar_intervalos` une las caídas de un mismo elemento que se traslapan, para no contar dos veces el tiempo fuera de servicio.
+- **Incidencia y corrección:** al validar apareció que `reparar_texto` no arreglaba la Ñ (`Ã‘uÃ±oa`). Esa letra se rompió con la codificación de Windows (cp1252), no con latin-1. Se corrigió la función para probar cp1252 primero, y quedan 0 celdas rotas.
+- **Otra corrección:** el one-hot con frecuencia mínima de 1 % agrupaba microondas y FOP como poco frecuentes, y son el foco de la pregunta. El tipo de enlace se codifica sin agrupar.
+- **Orden de trabajo, para no repetir la incidencia del paso 17:** ejecutar, guardar con Ctrl+S y recién ahí `git add` y `git commit`.
 
 ---
 
@@ -185,7 +201,12 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `abd3693` | feat: notebook F1 con definición, entorno, ficha, diccionario y validación | Notebook F1, README generado y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática · 5 Reproducibilidad · 14 Vinculación con el mapa |
 | `348231e` | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
 | `376d53d` | docs: define el uptime por criticidad y guarda la ejecución de F1 | Criticidades que afectan el uptime y duraciones inválidas (el notebook quedó sin salidas) | 3. Notebook F1 · 5. Evidencias | 3 Problemática · 11 Validación |
-| (siguiente) | fix: guarda las salidas de la ejecución del notebook F1 | Notebook F1 ejecutado: numeración 1 a 22, 0 errores, 8 de 8 | 3. Notebook F1 | 12 Notebook F1 · 5 Reproducibilidad |
+| `75e005f` | fix: guarda las salidas de la ejecución del notebook F1 | Notebook F1 ejecutado: numeración 1 a 22, 0 errores, 8 de 8 | 3. Notebook F1 | 12 Notebook F1 · 5 Reproducibilidad |
+| (rama f2-pipeline) | feat: agrega funciones del pipeline F2 a utilidades y repara la Ñ | `src/utilidades.py`: `huella_sha256`, `es_vacio`, `clasificar_enlace`, `fusionar_intervalos` (recursiva) y la corrección de `reparar_texto` | 4. Notebooks F2 (código) | 9 Codificación · RA2 recursión |
+| (rama f2-pipeline) | feat: notebook F2 con limpieza, transformación, escalamiento y validación | Notebook F2 ejecutado, figuras, metadatos y diccionario del modelo | 4. Notebooks F2 · 5. Evidencias | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
+| (rama f2-pipeline) | data: guarda los conjuntos procesados y la tabla de recurrencia | `data/processed/` (3 archivos) | 4. Notebooks F2 (salida) | 10 Preprocesamiento · 5 Reproducibilidad |
+| (rama f2-pipeline) | docs: registra las decisiones y el proceso de la Fase 2 | `docs/bitacora_decisiones.md` y este paso 18 | 5. Evidencias de trazabilidad | 7 Documentación del proceso |
+| (pull request) | Merge de f2-pipeline en main | Integración de la Fase 2 | 2. Repositorio | 6 Control de versiones (ramas) · 8 Repositorio |
 
 Convención de prefijos:
 
