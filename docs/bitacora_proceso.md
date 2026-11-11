@@ -210,6 +210,17 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   .\.venv\Scripts\python.exe scripts\mapa_conceptual.py
   ```
 
+## Paso 21 · Prueba desde cero (11-11-2026, 10:54)
+
+- **Qué pide:** el docente recomienda clonar el repositorio en otra carpeta y seguir el README desde cero antes de entregar. Es la evidencia del criterio 5: estabilidad en cualquier equipo.
+- **Qué se hizo:** se clonó `main` (merge `350fa53`) en `C:\Users\edgar\MCDI500\prueba-desde-cero`, con un entorno virtual nuevo instalado desde `requirements.txt`, y se ejecutaron F1 y F2 completos.
+- **Resultado:**
+  - F1: 0 errores, 0 advertencias y "Fase 1 validada: 8 de 8".
+  - F2: 0 errores, 0 advertencias y "17 de 17 reglas de integridad".
+  - Los tres archivos de `data/processed` del clon tienen la **misma huella SHA-256** que los del repositorio: el resultado es idéntico byte a byte.
+- **Incidencia y corrección:** al registrar el kernel desde el clon, la definición «Python (mcdi500)» quedó apuntando al entorno del clon. Se volvió a registrar desde el proyecto original con el mismo comando.
+- **Comandos:** los del README, sección "Cómo ejecutar el proyecto desde cero".
+
 ---
 
 ## Historial de commits y criterio que respalda cada uno
