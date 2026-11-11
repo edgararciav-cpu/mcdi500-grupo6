@@ -111,3 +111,43 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - `git add .` prepara todos los archivos nuevos.
   - `git commit -m` guarda una versión con su mensaje (prefijo `docs:` según la convención).
   - `git push -u origin main` la sube a GitHub y deja vinculada la rama local con la remota.
+
+## Pasos 11 a 13 · Entorno reproducible (11-11-2026)
+
+- **Qué pide:** criterio 5, reproducibilidad técnica (6 pts): "ambientes virtuales y dependencias de forma completa, verifican la correcta instalación de cada componente".
+- **Qué se hizo:** se creó el entorno virtual, se instalaron las librerías del proyecto, se fijaron sus versiones y se registró el kernel de Jupyter.
+- **Resultado:** `.venv` con Python 3.14.6 y `requirements.txt` con 105 paquetes con versión exacta: pandas 3.1.1, numpy 2.5.4, scikit-learn 1.9.1, matplotlib 3.11.2, jupyterlab 4.6.6 e ipykernel 7.4.0. El kernel "Python (mcdi500)" quedó registrado. Los imports se verificaron sin errores.
+- **Incidencia y corrección:** la primera vez los comandos se ejecutaron desde `C:\Users\edgar` y no desde el proyecto, así que PowerShell no encontró `.venv`. Se corrigió entrando primero a la carpeta con `cd`.
+- **Comandos (PowerShell, desde la carpeta del proyecto):**
+  ```
+  python -m venv .venv
+  .\.venv\Scripts\python.exe -m pip install --upgrade pip
+  .\.venv\Scripts\python.exe -m pip install jupyterlab ipykernel numpy pandas matplotlib scikit-learn
+  .\.venv\Scripts\python.exe -m pip freeze | Set-Content -Encoding ascii requirements.txt
+  .\.venv\Scripts\python.exe -m ipykernel install --user --name mcdi500 --display-name "Python (mcdi500)"
+  ```
+  - `python -m venv .venv` crea un Python propio del proyecto, aislado del resto del computador.
+  - `.\.venv\Scripts\python.exe` usa ese Python sin "activarlo". En PowerShell, la activación suele quedar bloqueada por la política de ejecución de scripts.
+  - `pip install` instala las librerías y `pip freeze` lista cada una con su versión exacta. El resultado se guarda en `requirements.txt` para reconstruir el mismo entorno en otro equipo con `pip install -r requirements.txt`.
+  - `ipykernel install` registra el kernel. Así los notebooks se ejecutan con el Python del proyecto y no con el del sistema.
+
+---
+
+## Historial de commits y criterio que respalda cada uno
+
+| Commit | Mensaje | Qué guarda | Producto del enunciado | Criterio de la rúbrica |
+|---|---|---|---|---|
+| `c7469f7` | docs: crea estructura inicial del proyecto | Carpetas F1 a F4, data, docs, src y scripts; `.gitignore`; README inicial | 2. Repositorio con carpetas F1 y F2 | 8 Repositorio GitHub · 6 Control de versiones |
+| `a1e40b8` | data: incorpora incidencias de octubre 2026 anonimizadas en raw | El conjunto de datos de entrada, ya anonimizado | 4. Obtención de datos (F2) | 10 Preprocesamiento (punto de partida) · 5 Reproducibilidad (los datos están en el repo) |
+| `b85a209` | docs: agrega bitácora del proceso y script de anonimización | Esta bitácora y el programa que preparó los datos | 5. Evidencias de trazabilidad | 7 Documentación del proceso · 11 Validación (verificación de la anonimización) |
+| `e005441` | feat: define el entorno reproducible con requirements.txt | Las 105 dependencias con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad técnica · 4 Herramientas científicas |
+
+Convención de prefijos:
+
+| Prefijo | Uso |
+|---|---|
+| `docs:` | documentación |
+| `data:` | datos |
+| `feat:` | algo nuevo que hace funcionar el proyecto |
+| `fix:` | corrección |
+| `test:` | pruebas |
