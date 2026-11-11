@@ -90,6 +90,18 @@ def es_vacio(valor):
     return str(valor).strip().lower() in MARCADORES_VACIO
 
 
+def separar_sitios(texto):
+    """Lista de sitios (mnemónicos) de una celda de Network Element.
+
+    Cuando una incidencia afecta varios sitios, el exporte los escribe en la misma celda separados
+    por DOS o más espacios ("SIT_0002  SIT_0003"). Un espacio simple es parte del nombre
+    ("SIT_0304"). Lanza ProyectoError si la celda está vacía.
+    """
+    if not isinstance(texto, str) or not texto.strip():
+        raise ProyectoError(f"celda de sitios vacía: {texto!r}")
+    return re.split(r"\s{2,}", texto.strip())
+
+
 def clasificar_enlace(tipo_incidencia, incidencia):
     """Tipo de enlace de transmisión que falló, a partir del tipo y la incidencia NOC.
 
