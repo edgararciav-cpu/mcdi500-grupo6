@@ -1,7 +1,7 @@
 {
   "fase": "F2",
-  "generado": "2026-11-11T10:25:40",
-  "commit_base": "0ca7500",
+  "generado": "2026-11-11T17:31:52",
+  "commit_base": "a1728ca",
   "entrada": {
     "archivo": "data/raw/incidencias_oct2026_anon.csv",
     "sha256": "abdd99c96f73c6967480a6095ec02579704241227271d595e272a751f82a745d",
@@ -21,7 +21,7 @@
     "recurrencia_tx_por_sitio.csv": {
       "filas": 559,
       "columnas": 10,
-      "sha256": "a64949b249539a22a253510a01ffe00cfeec5107d6b01d6e828a554a3bc4357f"
+      "sha256": "b71de3d95131f239513a338080f99b8911ad731be79e14b4bd7c27a397f9a8b8"
     }
   },
   "parametros": {
@@ -60,7 +60,9 @@
     "fallas_tx": 588,
     "fallas_tx_con_perdida": 260,
     "elementos_con_2_o_mas": 149,
-    "minutos_traslape_descontados": 30.0
+    "minutos_traslape_descontados": 30.0,
+    "incidencias_cerradas_en_noviembre": 6,
+    "minutos_noviembre_descontados": 19029.0
   },
   "validacion": {
     "las 21.542 filas siguen en limpio y en modelo": "OK",
