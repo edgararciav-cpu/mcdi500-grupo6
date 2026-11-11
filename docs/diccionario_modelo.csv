@@ -1,0 +1,48 @@
+variable,grupo,dtype
+tt,identificador,str
+criticidad_ord,ordinal,float64
+impacto_ord,ordinal,float64
+afecta_uptime,bandera o derivada,float64
+es_tx,bandera o derivada,float64
+duracion_faltante,bandera o derivada,float64
+cierre_invalido,bandera o derivada,float64
+gestionable,bandera o derivada,float64
+gestor_uptime,bandera o derivada,float64
+hora_inicio,bandera o derivada,float64
+dia_semana,bandera o derivada,float64
+n_regiones,bandera o derivada,float64
+duracion_log_esc,escalada,float64
+q_elementos_esc,escalada,float64
+tiempo_respuesta_esc,escalada,float64
+tipo_incidencia_noc_energia,one-hot,int64
+tipo_incidencia_noc_incidencia_automatica,one-hot,int64
+tipo_incidencia_noc_problema_rf,one-hot,int64
+tipo_incidencia_noc_tx_propia,one-hot,int64
+tipo_incidencia_noc_tx_proveedor,one-hot,int64
+tipo_incidencia_noc_infrequent_sklearn,one-hot,int64
+estado_abierta,one-hot,int64
+estado_cerrada,one-hot,int64
+estado_pendiente_automatico,one-hot,int64
+estado_infrequent_sklearn,one-hot,int64
+region_principal_i,one-hot,int64
+region_principal_ii,one-hot,int64
+region_principal_iii,one-hot,int64
+region_principal_iv,one-hot,int64
+region_principal_ix,one-hot,int64
+region_principal_rm,one-hot,int64
+region_principal_v,one-hot,int64
+region_principal_vi,one-hot,int64
+region_principal_vii,one-hot,int64
+region_principal_viii,one-hot,int64
+region_principal_x,one-hot,int64
+region_principal_xii,one-hot,int64
+region_principal_xiv,one-hot,int64
+region_principal_xv,one-hot,int64
+region_principal_xvi,one-hot,int64
+region_principal_infrequent_sklearn,one-hot,int64
+tipo_enlace_fibra_propia_fop,one-hot,int64
+tipo_enlace_fibra_proveedor,one-hot,int64
+tipo_enlace_microondas,one-hot,int64
+tipo_enlace_otra_tx,one-hot,int64
+tipo_enlace_satelital,one-hot,int64
+tipo_enlace_sin_dato,one-hot,int64
