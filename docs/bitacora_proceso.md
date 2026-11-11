@@ -221,6 +221,17 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 - **Incidencia y corrección:** al registrar el kernel desde el clon, la definición «Python (mcdi500)» quedó apuntando al entorno del clon. Se volvió a registrar desde el proyecto original con el mismo comando.
 - **Comandos:** los del README, sección "Cómo ejecutar el proyecto desde cero".
 
+## Paso 22 · Restricciones nuevas y uptime solo con minutos de octubre (11-11-2026, tarde)
+
+- **Qué cambió y por qué:** en la revisión final del informe se vio que dos de las restricciones no eran límites del análisis (cómo se codifican las personas y de dónde sale el nemónico de los sitios). Se reemplazaron por límites reales de los datos, verificados en el archivo:
+  - el exporte no informa cuántos clientes afectó cada incidencia: solo se conoce el rango que fija la criticidad (ninguna de las 49 columnas trae clientes);
+  - el tipo de enlace no viene en una columna: se obtiene del texto de la incidencia NOC (MW = microondas, FOP = fibra propia).
+- **Regla del NOC (definida por Edgar):** el uptime es mensual, así que para octubre **solo cuentan los minutos de octubre**. Todas las incidencias del archivo empiezan en octubre, pero 288 se normalizaron en noviembre (la última, el 10-11 a las 11:33). De ellas, 6 son de transmisión con pérdida de servicio.
+- **Enfoque descartado:** contar la duración completa de esas 6 caídas. Era más simple y no tocaba el pipeline, pero sumaba al uptime de octubre tiempo que pertenece a noviembre.
+- **Cómo se implementó:** en la sección 4.4 de F2, el cierre se corta al 31-10 a las 23:59 (`FIN_OCTUBRE`) antes de fusionar los intervalos. La columna `duracion_min` del conjunto limpio conserva la duración completa, porque describe la incidencia (define si es P3E).
+- **Impacto medido:** 19.029 minutos de noviembre dejan de contarse en 6 sitios. SIT_2201, el sitio con más horas fuera de servicio, baja de 725 a 660 horas. La cantidad de sitios (559) y de sitios con 2 o más fallas (149) no cambia.
+- **Verificación:** antes de pasarlo al repositorio, F1 y F2 se ejecutaron completos en una copia: 8 de 8 y 17 de 17, sin errores ni advertencias.
+
 ---
 
 ## Historial de commits y criterio que respalda cada uno
@@ -251,6 +262,11 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | (rama f2-pipeline) | fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales | Notebooks ejecutados y guardados, `data/processed` y `docs/` de esa ejecución | 3 y 4. Notebooks F1 y F2 | 12 y 13 Notebooks · 5 Reproducibilidad |
 | (rama f2-pipeline) | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
 | (pull request) | Merge de f2-pipeline en main | Integración de la Fase 2 | 2. Repositorio | 6 Control de versiones (ramas) · 8 Repositorio |
+| `a1728ca` | docs: registra la prueba desde cero del repositorio | Paso 21 de esta bitácora | 5. Evidencias de trazabilidad | 5 Reproducibilidad · 7 Documentación |
+| (paso 22) | docs: reescribe las restricciones del proyecto en F1 | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 · 1. Informe | 3 Problemática · 12 Notebook F1 |
+| (paso 22) | feat: F2 cuenta solo los minutos de octubre para el uptime | Notebook F2 ejecutado, figuras, metadatos y bitácora de decisiones | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento |
+| (paso 22) | data: regenera la tabla de recurrencia con el corte al 31-10 | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
+| (paso 22) | docs: registra las restricciones nuevas y el corte al 31-10 | Paso 22 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
 
 Convención de prefijos:
 
