@@ -6,7 +6,7 @@ Anonimización de los datos,procesos,implementado,scripts/anonimizar_incidencias
 Exploración y medición de calidad,procesos,implementado,Secciones 5.3 y 5.4 de este notebook
 Foco en fallas de transmisión recurrentes,decisiones técnicas,implementado,"Sección 1 (pregunta) y sección 5.5 (588 fallas, 264 con pérdida de servicio)"
 "Uptime = criticidad P1, P2, P3 y P3E",decisiones técnicas,implementado,Sección 1 (supuesto 5) y sección 5.5
-Tabla de recurrencia por elemento de red,procesos,proyectado,"Fase 2 · clasificación MW, FOP y fibra de proveedor"
+Tabla de recurrencia por sitio,procesos,proyectado,"Fase 2 · clasificación MW, FOP y fibra de proveedor"
 "Limpieza, imputación y transformación",procesos,proyectado,Fase 2 · F2/F2_Preprocesamiento.ipynb
 Núcleo algorítmico y POO,procesos,proyectado,Fase 3 · Sumativa 2
 "raw → processed, rutas relativas, semilla 42",flujo reproducible,implementado,Secciones 2 y 3 · localizar_raiz y SEMILLA

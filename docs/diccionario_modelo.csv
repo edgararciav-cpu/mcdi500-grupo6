@@ -1,6 +1,7 @@
 variable,grupo,dtype
 tt,identificador,str
 criticidad_ord,ordinal,float64
+es_extendida,bandera o derivada,float64
 impacto_ord,ordinal,float64
 afecta_uptime,bandera o derivada,float64
 es_tx,bandera o derivada,float64
@@ -12,7 +13,7 @@ hora_inicio,bandera o derivada,float64
 dia_semana,bandera o derivada,float64
 n_regiones,bandera o derivada,float64
 duracion_log_esc,escalada,float64
-q_elementos_esc,escalada,float64
+q_sitios_esc,escalada,float64
 tiempo_respuesta_esc,escalada,float64
 tipo_incidencia_noc_energia,one-hot,int64
 tipo_incidencia_noc_incidencia_automatica,one-hot,int64

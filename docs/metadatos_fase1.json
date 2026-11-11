@@ -2,7 +2,7 @@
   "proyecto": "Fallas recurrentes de transmisión en la red de un operador móvil",
   "fase": "F1",
   "fecha_ejecucion": "2026-11-11",
-  "commit_base": "6eb12ef",
+  "commit_base": "0ca7500",
   "semilla": 42,
   "python": "3.14.6",
   "sistema": "Windows 11",
@@ -21,8 +21,8 @@
     "columnas": 49,
     "duraciones_vacias": 5318,
     "fallas_transmision": 588,
-    "elementos_tx_con_2_o_mas": 134,
+    "elementos_tx_con_2_o_mas": 366,
     "fallas_tx_con_perdida_de_servicio": 264,
-    "elementos_con_2_o_mas_perdidas": 35
+    "elementos_con_2_o_mas_perdidas": 151
   }
 }
