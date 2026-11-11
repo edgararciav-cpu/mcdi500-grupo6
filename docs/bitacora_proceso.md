@@ -98,7 +98,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - `git config --global` fija el nombre y el correo que firman cada commit. Es el mismo correo de la cuenta de GitHub, para que todos los commits salgan con una sola identidad.
   - `git clone` descarga el repositorio y lo deja conectado con GitHub.
 
-## Paso 9 y 10 · Estructura inicial y primer commit (11-11-2026, 05:43)
+## Pasos 9 y 10 · Estructura inicial y primer commit (11-11-2026, 05:43)
 
 - **Qué se hizo:** carpetas `F1` a `F4`, `data/raw`, `data/processed`, `docs`, `src` y `scripts`, igual al proyecto modelo. Se agregaron un `.gitignore` (excluye `.venv` y el exporte original de WOM) y un README inicial.
 - **Resultado:** commit `c7469f7` "docs: crea estructura inicial del proyecto". GitHub lo reconoce como `edgararciav-cpu`.
@@ -228,9 +228,21 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - el tipo de enlace no viene en una columna: se obtiene del texto de la incidencia NOC (MW = microondas, FOP = fibra propia).
 - **Regla del NOC (definida por Edgar):** el uptime es mensual, así que para octubre **solo cuentan los minutos de octubre**. Todas las incidencias del archivo empiezan en octubre, pero 288 se normalizaron en noviembre (la última, el 10-11 a las 11:33). De ellas, 6 son de transmisión con pérdida de servicio.
 - **Enfoque descartado:** contar la duración completa de esas 6 caídas. Era más simple y no tocaba el pipeline, pero sumaba al uptime de octubre tiempo que pertenece a noviembre.
-- **Cómo se implementó:** en la sección 4.4 de F2, el cierre se corta al 31-10 a las 23:59 (`FIN_OCTUBRE`) antes de fusionar los intervalos. La columna `duracion_min` del conjunto limpio conserva la duración completa, porque describe la incidencia (define si es P3E).
+- **Cómo se implementó:** en la sección 4.4 de F2, el cierre se corta al 31-10 a las 23:59 (`FIN_OCTUBRE`) antes de fusionar los intervalos. La columna `duracion_min` del conjunto limpio conserva la duración completa, porque describe la incidencia.
 - **Impacto medido:** 19.029 minutos de noviembre dejan de contarse en 6 sitios. SIT_2201, el sitio con más horas fuera de servicio, baja de 725 a 660 horas. La cantidad de sitios (559) y de sitios con 2 o más fallas (149) no cambia.
 - **Verificación:** antes de pasarlo al repositorio, F1 y F2 se ejecutaron completos en una copia: 8 de 8 y 17 de 17, sin errores ni advertencias.
+
+## Paso 23 · Correcciones de la auditoría independiente (11-11-2026, tarde)
+
+- **Qué se hizo:** antes de entregar, un revisor independiente recorrió los 15 criterios de la rúbrica y comparó cada cifra del informe con los notebooks, `docs/`, `data/processed/` y `git log`. Además clonó el repositorio desde GitHub (commit `88effca`), ejecutó F1 y F2 y obtuvo los tres archivos de `data/processed` idénticos byte a byte.
+- **Lo que se corrigió:**
+  - **Duración de la transmisión:** el informe decía que las fallas de transmisión son las que más duran, y no es así: tipos como Hardware o Sitio Vandalizado tienen medianas mayores. Ahora dice que su mediana supera las 10 horas (605 min) frente al resto, y la tabla de atípicos de F2 (sección 2.4) muestra la mediana de cada grupo para que la cifra se pueda verificar.
+  - **P3E:** se quitó la definición "P3 que dura más de 24 h", que no calzaba con la duración de la incidencia (112 de 674 P3E duran 24 h o menos). Regla del NOC confirmada por Edgar: la P3E se trata igual que una P3.
+  - **Duraciones negativas:** F2 atribuía las 2 a una fecha de cierre `0000-00-00`; en realidad son incidencias cerradas **sin** fecha de cierre (los `0000-00-00` están en otras filas, con duraciones válidas).
+  - **Declaración de IA:** el README y F1 decían otra cosa que el informe; ahora los tres usan el mismo texto.
+  - **Mapa conceptual:** la caja de uptime dice "solo octubre", y la tabla de vinculación del informe tiene solo elementos que están en el mapa.
+  - **Consistencia:** "nemónico" en todo el proyecto; la bitácora de decisiones dice cp1252, igual que el paso 18; las listas de verificación de F1 y F2 quedan marcadas; la tabla de commits de esta bitácora muestra el hash de cada commit.
+- **Lo que no se cambia:** todo el historial es del 11-11 (no se reescribe la historia para repartirlo) y los mensajes de commits antiguos dicen "mnemónicos".
 
 ---
 
@@ -249,24 +261,26 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `348231e` | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
 | `376d53d` | docs: define el uptime por criticidad y guarda la ejecución de F1 | Criticidades que afectan el uptime y duraciones inválidas (el notebook quedó sin salidas) | 3. Notebook F1 · 5. Evidencias | 3 Problemática · 11 Validación |
 | `75e005f` | fix: guarda las salidas de la ejecución del notebook F1 | Notebook F1 ejecutado: numeración 1 a 22, 0 errores, 8 de 8 | 3. Notebook F1 | 12 Notebook F1 · 5 Reproducibilidad |
-| (rama f2-pipeline) | feat: agrega funciones del pipeline F2 a utilidades y repara la Ñ | `src/utilidades.py`: `huella_sha256`, `es_vacio`, `clasificar_enlace`, `fusionar_intervalos` (recursiva) y la corrección de `reparar_texto` | 4. Notebooks F2 (código) | 9 Codificación · RA2 recursión |
-| (rama f2-pipeline) | feat: notebook F2 con limpieza, transformación, escalamiento y validación | Notebook F2 ejecutado, figuras, metadatos y diccionario del modelo | 4. Notebooks F2 · 5. Evidencias | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
-| (rama f2-pipeline) | data: guarda los conjuntos procesados y la tabla de recurrencia | `data/processed/` (3 archivos) | 4. Notebooks F2 (salida) | 10 Preprocesamiento · 5 Reproducibilidad |
-| (rama f2-pipeline) | docs: registra las decisiones y el proceso de la Fase 2 | `docs/bitacora_decisiones.md` y este paso 18 | 5. Evidencias de trazabilidad | 7 Documentación del proceso |
-| (rama f2-pipeline) | data: conserva los mnemónicos reales de los sitios en data/raw | Anonimizador ajustado, `data/raw` regenerado y validación del dataset | 4. Obtención de datos | 10 Preprocesamiento · 3 Problemática |
-| (rama f2-pipeline) | feat: agrega separar_sitios para contar las fallas por sitio | `src/utilidades.py` | 4. Notebooks F2 (código) | 9 Codificación |
-| (rama f2-pipeline) | docs: F1 con mnemónicos reales, definición de criticidad y conteo por sitio | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática |
-| (rama f2-pipeline) | feat: F2 cuenta la recurrencia por sitio con las reglas del NOC | Notebook F2 ejecutado, figuras y metadatos | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
-| (rama f2-pipeline) | data: regenera los conjuntos procesados con la tabla por sitio | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
-| (rama f2-pipeline) | docs: registra el cambio a mnemónicos reales y el conteo por sitio | Paso 19 de esta bitácora y bitácora de decisiones | 5. Evidencias | 7 Documentación del proceso |
-| (rama f2-pipeline) | fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales | Notebooks ejecutados y guardados, `data/processed` y `docs/` de esa ejecución | 3 y 4. Notebooks F1 y F2 | 12 y 13 Notebooks · 5 Reproducibilidad |
-| (rama f2-pipeline) | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
+| `9cd6c0d` | feat: agrega funciones del pipeline F2 a utilidades y repara la Ñ | `src/utilidades.py`: `huella_sha256`, `es_vacio`, `clasificar_enlace`, `fusionar_intervalos` (recursiva) y la corrección de `reparar_texto` | 4. Notebooks F2 (código) | 9 Codificación · RA2 recursión |
+| `e697114` | feat: notebook F2 con limpieza, transformación, escalamiento y validación | Notebook F2 ejecutado, figuras, metadatos y diccionario del modelo | 4. Notebooks F2 · 5. Evidencias | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
+| `70ae0b7` | data: guarda los conjuntos procesados y la tabla de recurrencia | `data/processed/` (3 archivos) | 4. Notebooks F2 (salida) | 10 Preprocesamiento · 5 Reproducibilidad |
+| `1a9c017` | docs: registra las decisiones y el proceso de la Fase 2 | `docs/bitacora_decisiones.md` y este paso 18 | 5. Evidencias de trazabilidad | 7 Documentación del proceso |
+| `ef65acf` | data: conserva los mnemónicos reales de los sitios en data/raw | Anonimizador ajustado, `data/raw` regenerado y validación del dataset | 4. Obtención de datos | 10 Preprocesamiento · 3 Problemática |
+| `6eb12ef` | feat: agrega separar_sitios para contar las fallas por sitio | `src/utilidades.py` | 4. Notebooks F2 (código) | 9 Codificación |
+| `e8a457c` | docs: F1 con mnemónicos reales, definición de criticidad y conteo por sitio | README y productos de `docs/` (el notebook quedó sin salidas; lo corrige `d0469be`) | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática |
+| `6431ae9` | feat: F2 cuenta la recurrencia por sitio con las reglas del NOC | Figuras y metadatos (el notebook quedó sin salidas; lo corrige `d0469be`) | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
+| `e2a8a60` | data: regenera los conjuntos procesados con la tabla por sitio | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
+| `0ca7500` | docs: registra el cambio a mnemónicos reales y el conteo por sitio | Paso 19 de esta bitácora y bitácora de decisiones | 5. Evidencias | 7 Documentación del proceso |
+| `d0469be` | fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales | Notebooks ejecutados y guardados, `data/processed` y `docs/` de esa ejecución | 3 y 4. Notebooks F1 y F2 | 12 y 13 Notebooks · 5 Reproducibilidad |
+| `db1ccd7` | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
 | (pull request) | Merge de f2-pipeline en main | Integración de la Fase 2 | 2. Repositorio | 6 Control de versiones (ramas) · 8 Repositorio |
 | `a1728ca` | docs: registra la prueba desde cero del repositorio | Paso 21 de esta bitácora | 5. Evidencias de trazabilidad | 5 Reproducibilidad · 7 Documentación |
-| (paso 22) | docs: reescribe las restricciones del proyecto en F1 | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 · 1. Informe | 3 Problemática · 12 Notebook F1 |
-| (paso 22) | feat: F2 cuenta solo los minutos de octubre para el uptime | Notebook F2 ejecutado, figuras, metadatos y bitácora de decisiones | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento |
-| (paso 22) | data: regenera la tabla de recurrencia con el corte al 31-10 | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
-| (paso 22) | docs: registra las restricciones nuevas y el corte al 31-10 | Paso 22 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| `aecfd0e` | docs: reescribe las restricciones del proyecto en F1 | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 · 1. Informe | 3 Problemática · 12 Notebook F1 |
+| `a890f1a` | feat: F2 cuenta solo los minutos de octubre para el uptime | Notebook F2 ejecutado, figuras, metadatos y bitácora de decisiones | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento |
+| `fda0d96` | data: regenera la tabla de recurrencia con el corte al 31-10 | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
+| `88effca` | docs: registra las restricciones nuevas y el corte al 31-10 | Paso 22 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| (paso 23) | fix: corrige textos de F1, F2 y el mapa según la auditoría | Notebooks F1 y F2 ejecutados, README, `docs/` y mapa | 3 y 4. Notebooks · 1. Informe | 12 y 13 Notebooks · 14 Vinculación · 7 Documentación |
+| (paso 23) | docs: registra las correcciones de la auditoría | Paso 23 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
 
 Convención de prefijos:
 
