@@ -167,7 +167,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - La mediana de la P3E es 3.188 minutos (unas 53 horas), contra 247 de la P3.
   - La tabla de recurrencia de la Fase 2 se construye solo con las fallas con pérdida de servicio.
 - **Hallazgo nuevo para la Fase 2:** 2 duraciones negativas (`-498136:-36:-45` y `-497906:-41:00`) en incidencias cerradas P4. Se cuentan en la sección 5.3 y se tratan en la Fase 2.
-- **Incidencia del commit `348231e`:** el notebook se guardó sin las salidas de la ejecución. Se corrige en el commit siguiente, ejecutado y guardado.
+- **Incidencia de los commits `348231e` y `376d53d`:** los dos guardaron el notebook sin las salidas, porque el commit se hizo antes de ejecutarlo y guardarlo. Se corrigió en el commit siguiente. **Orden correcto:** ejecutar (*Restart & Run All*), guardar (Ctrl+S) y recién ahí `git add` y `git commit`.
 
 ---
 
@@ -184,7 +184,8 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `e6e738d` | data: valida el conjunto con validar_dataset.py del curso | `validar_dataset.py` y `docs/validacion_dataset.md` | 4. Obtención de datos | 11 Validación · 3 Problemática (requisitos del dataset) |
 | `abd3693` | feat: notebook F1 con definición, entorno, ficha, diccionario y validación | Notebook F1, README generado y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática · 5 Reproducibilidad · 14 Vinculación con el mapa |
 | `348231e` | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
-| (siguiente) | docs: define el uptime por criticidad y guarda la ejecución de F1 | Criticidades que afectan el uptime, duraciones inválidas y notebook con sus salidas | 3. Notebook F1 · 5. Evidencias | 3 Problemática · 12 Notebook F1 · 11 Validación |
+| `376d53d` | docs: define el uptime por criticidad y guarda la ejecución de F1 | Criticidades que afectan el uptime y duraciones inválidas (el notebook quedó sin salidas) | 3. Notebook F1 · 5. Evidencias | 3 Problemática · 11 Validación |
+| (siguiente) | fix: guarda las salidas de la ejecución del notebook F1 | Notebook F1 ejecutado: numeración 1 a 22, 0 errores, 8 de 8 | 3. Notebook F1 | 12 Notebook F1 · 5 Reproducibilidad |
 
 Convención de prefijos:
 
