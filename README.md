@@ -7,7 +7,7 @@ Proyecto del curso **MCDI500 · Programación para la Ciencia de Datos** · Mag�
 
 ## Problemática
 
-El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios sitios fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y qué tipo de enlace las origina. Para el uptime cuentan solo las incidencias con pérdida de servicio: criticidad P1, P2, P3 y P3E (P3 extendida, las que pasan mucho tiempo fuera de servicio).
+El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios sitios fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y qué tipo de enlace las origina. Para el uptime cuentan solo las incidencias con pérdida de servicio: criticidad P1, P2, P3 y P3E (P3 extendida, que se trata igual que una P3).
 
 **Pregunta:** ¿Qué sitios de la red concentran incidencias recurrentes de transmisión (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y qué tipo de enlace o proveedor las origina, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime?
 
@@ -64,4 +64,4 @@ En JupyterLab, abrir los notebooks en orden (`F1/F1_Definicion.ipynb`, luego `F2
 
 ## Uso de herramientas de inteligencia artificial
 
-Se utilizó un asistente de inteligencia artificial generativa como apoyo para explicar conceptos, revisar código y redactar borradores. Las decisiones, la ejecución y la revisión final son del autor.
+Se utilizó un asistente de inteligencia artificial generativa como apoyo para explicar conceptos y revisar código. Las decisiones, la ejecución de los notebooks, los commits y la revisión final son del autor.

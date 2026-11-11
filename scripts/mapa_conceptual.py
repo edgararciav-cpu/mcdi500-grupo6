@@ -47,14 +47,14 @@ NODOS = {
     "f4":    ("F4 · Visualización\ny comunicación", "flujo reproducible", C3, F[5], True),
     "rama":  ("Rama f2-pipeline\n+ pull request", "organización del repositorio", C3, F[6], False),
 
-    "anon":  ("Anonimizar personas\n(sitios con mnemónico real)", "procesos", C4, F[1], False),
+    "anon":  ("Anonimizar personas\n(sitios con nemónico real)", "procesos", C4, F[1], False),
     "medir": ("Medir calidad sin corregir\n(tildes, vacíos, TT)", "procesos", C4, F[2], False),
     "limp":  ("Limpiar · transformar\n· escalar", "procesos", C4, F[3], False),
     "rec":   ("Recurrencia por sitio\n(fusión recursiva)", "procesos", C4, F[4], False),
 
     "d_na":  ("Duración vacía: no se\ninventa en el limpio", "decisiones técnicas", C5, F[2], False),
     "d_esc": ("Standard en log(duración)\nMinMax en conteos", "decisiones técnicas", C5, F[3], False),
-    "d_up":  ("Uptime = P1, P2, P3, P3E\n(sin canceladas)", "decisiones técnicas", C5, F[4], False),
+    "d_up":  ("Uptime = P1, P2, P3, P3E\n(sin canceladas, solo octubre)", "decisiones técnicas", C5, F[4], False),
     "d_sit": ("Un sitio por fila\n(2 espacios = Q sitios)", "decisiones técnicas", C5, F[5], False),
 }
 
