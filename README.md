@@ -26,7 +26,7 @@ El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transm
 - **Origen:** Exporte interno del sistema de tickets del NOC de WOM (operador móvil, Chile). Uso autorizado por escrito por la jefatura; el docente está informado.
 - **Período:** 2026-10-01 a 2026-10-31 (cierres hasta 2026-11-10).
 - **Archivo:** `data/raw/incidencias_oct2026_anon.csv` (21.542 filas × 49 columnas, separador `;`).
-- **Anonimización:** scripts/anonimizar_incidencias.py: personas, tickets de proveedor y códigos de servicio TX reemplazados por códigos; los sitios conservan su nemónico real. El exporte original no forma parte del repositorio.
+- **Anonimización:** scripts/anonimizar_incidencias.py: personas, tickets de proveedor y códigos de servicio TX reemplazados por códigos; los sitios van con un código (SIT_0001, ...) y el texto libre (Titulo y Detalle) se omite. El exporte original no forma parte del repositorio.
 
 ## Estructura
 
@@ -54,9 +54,11 @@ En JupyterLab, abrir los notebooks en orden (`F1/F1_Definicion.ipynb`, luego `F2
 
 ## Reproducibilidad
 
-- Python 3.14.6 en entorno virtual `.venv`; versiones fijas en `requirements.txt`.
+- Python 3.14.6 en entorno virtual `.venv`.
+- `requirements.txt` declara solo las librerías del proyecto, con versión fija; pip resuelve el resto según el sistema operativo.
+- La instalación se prueba en Linux, macOS y Windows con GitHub Actions (`.github/workflows/instalacion.yml`) en cada push.
 - Semilla aleatoria: 42. Rutas relativas a la raíz del proyecto (`localizar_raiz`).
-- Cada notebook verifica el entorno en su primera sección y se detiene si algo no coincide.
+- F1 verifica el entorno en su sección 2: se detiene si el kernel no es el del proyecto e informa las versiones que no coincidan.
 
 ## Convención de commits
 

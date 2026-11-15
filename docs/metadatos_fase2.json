@@ -1,17 +1,17 @@
 {
   "fase": "F2",
-  "generado": "2026-11-11T18:26:28",
-  "commit_base": "88effca",
+  "generado": "2026-11-15T07:25:32",
+  "commit_base": "e26718b",
   "entrada": {
     "archivo": "data/raw/incidencias_oct2026_anon.csv",
-    "sha256": "abdd99c96f73c6967480a6095ec02579704241227271d595e272a751f82a745d",
+    "sha256": "51857b969bd285282ba3edd670048029a2877179de4241e77df5356e6d8ba596",
     "filas": 21542
   },
   "salidas": {
     "incidencias_limpio.csv": {
       "filas": 21542,
       "columnas": 34,
-      "sha256": "57555f4dd4a70d3d3860bb7c06465e676a8a901e67d4f236bd954f8b8357ace9"
+      "sha256": "4ad2487500af5cc9f2fe8111a2423375215cf1f580a912cda66d4718607036b6"
     },
     "incidencias_modelo.csv": {
       "filas": 21542,
@@ -21,7 +21,7 @@
     "recurrencia_tx_por_sitio.csv": {
       "filas": 559,
       "columnas": 10,
-      "sha256": "b71de3d95131f239513a338080f99b8911ad731be79e14b4bd7c27a397f9a8b8"
+      "sha256": "b8d2bf14c28f872e2883050d522b5b6f71442aa4e8bb8df39c5706165c9d10de"
     }
   },
   "parametros": {
