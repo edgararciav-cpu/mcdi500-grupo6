@@ -6,7 +6,7 @@
 
 | variable | dtype | rol | unicos | pct_nulos |
 | --- | --- | --- | --- | --- |
-| </div>ï»¿TT | str | alta cardinalidad | 19915 | 0.0 |
+| ﻿</div>ï»¿TT | str | alta cardinalidad | 19915 | 0.0 |
 | Fecha de Inicio de incidencia | str | fecha | 14997 | 0.0 |
 | Fecha de Inicio ticket | str | fecha | 4598 | 0.0 |
 | Comuna | str | alta cardinalidad | 335 | 1.6 |
@@ -14,10 +14,10 @@
 | Tipo Incidencia NOC | str | nominal | 14 | 0.0 |
 | Incidencia NOC | str | alta cardinalidad | 30 | 0.0 |
 | Criticidad | str | nominal | 7 | 0.0 |
-| Detalle | str | alta cardinalidad | 2709 | 0.0 |
+| Detalle | str | nominal | 1 | 0.0 |
 | Impacto | str | nominal | 4 | 0.0 |
 | Tiempo de Respuesta | int64 | discreta | 5 | 0.0 |
-| Titulo | str | alta cardinalidad | 3068 | 78.5 |
+| Titulo | str | nominal | 1 | 78.5 |
 | Q Network Element | int64 | discreta | 35 | 0.0 |
 | Network Element | str | alta cardinalidad | 3452 | 0.0 |
 | Proveedor | str | alta cardinalidad | 69 | 86.0 |
@@ -62,14 +62,14 @@
 | --- | --- | --- |
 | OK | Al menos 2000 filas | 21542 filas |
 | OK | Al menos 12 columnas | 49 columnas |
-| OK | Combina al menos 3 roles analíticos | alta cardinalidad, nominal, binaria, fecha, discreta |
+| OK | Combina al menos 3 roles analíticos | nominal, alta cardinalidad, binaria, fecha, discreta |
 | OK | Al menos una variable numérica | 2 numéricas (continuas o discretas) |
-| OK | Al menos una variable categórica | 24 categóricas (nominales, binarias u ordinales) |
+| OK | Al menos una variable categórica | 26 categóricas (nominales, binarias u ordinales) |
 | OK | Presencia de valores faltantes | máximo 100.0% en una variable |
 | AVISO | Ninguna variable sobre 60% de faltantes | máximo 100.0% |
 | OK | Incluye alguna variable de fecha | 5 detectadas |
-| OK | Incluye texto o categórica de alta cardinalidad | 18 detectadas |
-| OK | Archivo bajo 100 MB | 5.6 MB |
+| OK | Incluye texto o categórica de alta cardinalidad | 16 detectadas |
+| OK | Archivo bajo 100 MB | 5.5 MB |
 | OK | Sin filas duplicadas exactas | ninguna |
 
 ## Resultado
