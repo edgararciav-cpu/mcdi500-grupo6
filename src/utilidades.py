@@ -91,11 +91,11 @@ def es_vacio(valor):
 
 
 def separar_sitios(texto):
-    """Lista de sitios (mnemónicos) de una celda de Network Element.
+    """Lista de sitios (códigos) de una celda de Network Element.
 
     Cuando una incidencia afecta varios sitios, el exporte los escribe en la misma celda separados
     por DOS o más espacios ("SIT_0002  SIT_0003"). Un espacio simple es parte del nombre
-    ("SIT_0304"). Lanza ProyectoError si la celda está vacía.
+    ("SITIO NORTE"). Lanza ProyectoError si la celda está vacía.
     """
     if not isinstance(texto, str) or not texto.strip():
         raise ProyectoError(f"celda de sitios vacía: {texto!r}")
