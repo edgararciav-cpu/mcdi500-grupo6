@@ -1,7 +1,7 @@
 {
   "fase": "F2",
   "generado": "2026-11-15T07:25:32",
-  "commit_base": "e26718b",
+  "commit_base": "e6e23da",
   "entrada": {
     "archivo": "data/raw/incidencias_oct2026_anon.csv",
     "sha256": "51857b969bd285282ba3edd670048029a2877179de4241e77df5356e6d8ba596",
