@@ -37,10 +37,25 @@ def contar_rotas(df):
     return int(df.apply(lambda col: col.astype(str).str.contains("Ã|Â", regex=True)).sum().sum())
 
 
-def unificar_vacios(df):
-    """Reemplaza todos los marcadores de "sin dato" por NaN y quita espacios extremos."""
+def unificar_vacios_por_celda(df):
+    """Versión de la Fase 2: llama a utilidades.es_vacio una vez por celda (más de 1,3 millones de llamadas).
+
+    Se conserva para la comparación de eficiencia de la Fase 3 y para las pruebas.
+    """
     salida = df.apply(lambda col: col.str.strip())
     marcadores = salida.apply(lambda col: col.map(utilidades.es_vacio))
+    return salida.mask(marcadores)
+
+
+def unificar_vacios(df):
+    """Reemplaza todos los marcadores de "sin dato" por NaN y quita espacios extremos.
+
+    Versión vectorizada (Fase 3): compara cada columna completa contra MARCADORES_VACIO con isin, en
+    vez de llamar a una función de Python por celda. Mismo resultado que unificar_vacios_por_celda y
+    unas 2,4 veces más rápida sobre los datos reales (medición en F3, sección 6).
+    """
+    salida = df.apply(lambda col: col.str.strip())
+    marcadores = salida.apply(lambda col: col.isna() | col.str.lower().isin(utilidades.MARCADORES_VACIO))
     return salida.mask(marcadores)
 
 
@@ -152,11 +167,12 @@ def log_duracion_modelo(df):
 FIN_OCTUBRE = pd.Timestamp("2026-11-01")   # el uptime de octubre cuenta hasta el 31-10 a las 23:59
 
 
-def minutos_reales(inicios, cierres, fusionar=utilidades.fusionar_intervalos):
+def minutos_reales(inicios, cierres, fusionar=utilidades.fusionar_intervalos_iterativo):
     """Minutos fuera de servicio sin contar dos veces los traslapes.
 
-    `fusionar` es la función que une los intervalos: por defecto la recursiva; la Fase 3 la compara
-    con una versión iterativa que da el mismo resultado.
+    `fusionar` es la función que une los intervalos. Desde la Fase 3 se usa la iterativa: da el mismo
+    resultado que la recursiva de la Fase 2, es más rápida y no tiene límite de profundidad (la
+    recursiva falla con RecursionError sobre unos 1.000 intervalos de un mismo sitio).
     """
     intervalos = list(zip(inicios, cierres))
     return sum((fin - ini).total_seconds() / 60 for ini, fin in fusionar(intervalos))
@@ -167,7 +183,7 @@ def por_sitio(df):
     return df.assign(sitio=df["sitios"].map(utilidades.separar_sitios)).explode("sitio")
 
 
-def tabla_recurrencia(df, fusionar=utilidades.fusionar_intervalos):
+def tabla_recurrencia(df, fusionar=utilidades.fusionar_intervalos_iterativo):
     """Una fila por sitio: fallas TX con pérdida de servicio, minutos sumados y minutos reales (solo octubre)."""
     foco = por_sitio(df[(df["es_tx"] == 1) & (df["afecta_uptime"] == 1)])
     con_cierre = foco.dropna(subset=["fecha_cierre"]).copy()

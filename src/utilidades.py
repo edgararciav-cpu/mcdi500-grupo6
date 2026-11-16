@@ -134,6 +134,10 @@ def fusionar_intervalos(intervalos):
     Caso base: 0 o 1 intervalo, no hay nada que unir.
     Paso recursivo: se fusionan los intervalos desde el segundo en adelante, y luego se decide si
     el primero se une con el primero de ese resultado o queda aparte.
+
+    Es la versión de la Fase 2. La Fase 3 midió su costo: cada llamada vuelve a ordenar y copiar la
+    lista, y la profundidad crece con la cantidad de intervalos. Por eso el pipeline usa ahora
+    fusionar_intervalos_iterativo; esta se conserva como referencia y en las pruebas.
     """
     ordenados = sorted(intervalos)
     for inicio, fin in ordenados:

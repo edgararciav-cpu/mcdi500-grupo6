@@ -161,6 +161,14 @@ class PruebasPipelineYFunciones(unittest.TestCase):
         with self.assertRaises(utilidades.ProyectoError):
             utilidades.fusionar_intervalos_iterativo([(5, 1)])
 
+    def test_normal_vacios_vectorizado_igual_al_de_la_fase_2(self):
+        df = pd.DataFrame({"a": [" NA ", "x", "", "n/a", "No aplica"], "b": ["-", "0000-00-00 00:00:00", "y ", "z", "na"]})
+        pd.testing.assert_frame_equal(limpieza.unificar_vacios(df), limpieza.unificar_vacios_por_celda(df))
+
+    def test_limite_columna_sin_vacios_no_cambia(self):
+        df = pd.DataFrame({"a": ["x", "y"]})
+        pd.testing.assert_frame_equal(limpieza.unificar_vacios(df), df)
+
     def test_excepcion_comparacion_con_resultados_distintos(self):
         with self.assertRaises(AssertionError):
             comparar({"a": lambda: 1, "b": lambda: 2}, repeticiones=1)
