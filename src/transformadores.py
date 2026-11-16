@@ -127,17 +127,21 @@ class UnificadorVariantes(Transformador):
             formas[col] = forma_frecuente
         return {"formas": formas}
 
+    def _unificar(self, serie, forma_frecuente):
+        """Reescribe cada valor con la forma aprendida. Un valor que no se vio al ajustar se conserva tal cual."""
+        return self._llave(serie).map(forma_frecuente).fillna(serie).where(serie.notna())
+
     def aplicar(self, df):
         for col, forma_frecuente in self._parametros["formas"].items():
             if col in df.columns:
-                df[col] = self._llave(df[col]).map(forma_frecuente).where(df[col].notna())
+                df[col] = self._unificar(df[col], forma_frecuente)
         return df
 
     def cambios(self, df):
         """Cuántos valores reescribiría en cada columna (para la bitácora)."""
         conteo = {}
         for col, forma_frecuente in self._parametros["formas"].items():
-            nueva = self._llave(df[col]).map(forma_frecuente).where(df[col].notna())
+            nueva = self._unificar(df[col], forma_frecuente)
             n = int((nueva != df[col])[df[col].notna()].sum())
             if n:
                 conteo[col] = n

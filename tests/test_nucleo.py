@@ -89,6 +89,10 @@ class PruebasUnificadorYEliminador(unittest.TestCase):
         salida = UnificadorVariantes(excluir=["detalle"]).ajustar_transformar(df)
         self.assertEqual(salida["detalle"].tolist(), ["Hola", "HOLA"])
 
+    def test_limite_categoria_que_no_se_vio_al_ajustar_se_conserva(self):
+        paso = UnificadorVariantes().ajustar(pd.DataFrame({"q": ["1", "2", "2"]}))
+        self.assertEqual(paso.transformar(pd.DataFrame({"q": ["2", "21", None]}))["q"].tolist()[:2], ["2", "21"])
+
     def test_normal_quita_las_casi_vacias_y_conserva_las_pedidas(self):
         df = pd.DataFrame({"llena": [1, 2, 3], "vacia": [np.nan] * 3, "necesaria": [np.nan] * 3})
         salida = EliminadorCasiVacias(umbral=95, conservar=["necesaria"]).ajustar_transformar(df)
@@ -177,7 +181,7 @@ class PruebasPipelineYFunciones(unittest.TestCase):
 class PruebaEquivalenciaConFase2(unittest.TestCase):
     """Con los datos reales: el pipeline con clases genera los mismos tres archivos que F2, byte a byte."""
 
-    def test_mismos_archivos_que_la_fase_2(self):
+    def test_normal_mismos_archivos_que_la_fase_2(self):
         resultado = ejecutar(RAIZ)
         archivos = {"limpio": "incidencias_limpio.csv", "modelo": "incidencias_modelo.csv",
                     "recurrencia": "recurrencia_tx_por_sitio.csv"}
