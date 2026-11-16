@@ -1,0 +1,178 @@
+{
+  "fase": "F3",
+  "generado": "2026-11-16T20:38:55",
+  "commit_base": "7ab7853",
+  "entrada": {
+    "archivo": "data/raw/incidencias_oct2026_anon.csv",
+    "sha256": "51857b969bd285282ba3edd670048029a2877179de4241e77df5356e6d8ba596",
+    "filas": 21542
+  },
+  "salidas_identicas_a_f2": {
+    "incidencias_limpio.csv": true,
+    "incidencias_modelo.csv": true,
+    "recurrencia_tx_por_sitio.csv": true
+  },
+  "pipeline": [
+    {
+      "orden": 1,
+      "paso": "PasoFijo(limpiar_nombres)",
+      "clase": "PasoFijo",
+      "aprende de los datos": "no"
+    },
+    {
+      "orden": 2,
+      "paso": "PasoFijo(reparar_texto)",
+      "clase": "PasoFijo",
+      "aprende de los datos": "no"
+    },
+    {
+      "orden": 3,
+      "paso": "PasoFijo(unificar_vacios)",
+      "clase": "PasoFijo",
+      "aprende de los datos": "no"
+    },
+    {
+      "orden": 4,
+      "paso": "UnificadorVariantes",
+      "clase": "UnificadorVariantes",
+      "aprende de los datos": "sí"
+    },
+    {
+      "orden": 5,
+      "paso": "EliminadorCasiVacias",
+      "clase": "EliminadorCasiVacias",
+      "aprende de los datos": "sí"
+    },
+    {
+      "orden": 6,
+      "paso": "PasoFijo(convertir_tipos)",
+      "clase": "PasoFijo",
+      "aprende de los datos": "no"
+    },
+    {
+      "orden": 7,
+      "paso": "ImputadorMedianaGrupo(duracion_min, tipo_incidencia_noc, criticidad)",
+      "clase": "ImputadorMedianaGrupo",
+      "aprende de los datos": "sí"
+    },
+    {
+      "orden": 8,
+      "paso": "PasoFijo(derivar_variables)",
+      "clase": "PasoFijo",
+      "aprende de los datos": "no"
+    },
+    {
+      "orden": 9,
+      "paso": "PasoFijo(codificar_ordinales)",
+      "clase": "PasoFijo",
+      "aprende de los datos": "no"
+    },
+    {
+      "orden": 10,
+      "paso": "CodificadorNominal(tipo_incidencia_noc, estado, region_principal)",
+      "clase": "CodificadorNominal",
+      "aprende de los datos": "sí"
+    },
+    {
+      "orden": 11,
+      "paso": "CodificadorNominal(tipo_enlace)",
+      "clase": "CodificadorNominal",
+      "aprende de los datos": "sí"
+    },
+    {
+      "orden": 12,
+      "paso": "PasoFijo(log_duracion_modelo)",
+      "clase": "PasoFijo",
+      "aprende de los datos": "no"
+    },
+    {
+      "orden": 13,
+      "paso": "Escalador(duracion_log_modelo, StandardScaler)",
+      "clase": "Escalador",
+      "aprende de los datos": "sí"
+    },
+    {
+      "orden": 14,
+      "paso": "Escalador(q_sitios, MinMaxScaler)",
+      "clase": "Escalador",
+      "aprende de los datos": "sí"
+    },
+    {
+      "orden": 15,
+      "paso": "Escalador(tiempo_respuesta_h, MinMaxScaler)",
+      "clase": "Escalador",
+      "aprende de los datos": "sí"
+    }
+  ],
+  "patrones": {
+    "Observer": "Bitacora suscrita al Pipeline",
+    "Strategy": "Escalador con estrategia de escalamiento",
+    "Adaptador": "PasoFijo envuelve las funciones sin estado"
+  },
+  "eficiencia": [
+    {
+      "operación": "fusión de intervalos (datos de octubre)",
+      "versión F2": "recursiva (F2)",
+      "alternativa": "iterativa",
+      "tiempo F2 (s)": 0.0004,
+      "tiempo alternativa (s)": 0.0003,
+      "veces más rápida": 1.3,
+      "memoria F2 (MB)": 0.039,
+      "memoria alternativa (MB)": 0.047,
+      "decisión": "diferencia menor a 1 ms: decide el crecimiento (fila siguiente)"
+    },
+    {
+      "operación": "fusión de intervalos (n = 900)",
+      "versión F2": "recursiva (F2)",
+      "alternativa": "iterativa",
+      "tiempo F2 (s)": 0.9656,
+      "tiempo alternativa (s)": 0.0003,
+      "veces más rápida": 3393.0,
+      "memoria F2 (MB)": 6.275,
+      "memoria alternativa (MB)": 0.013,
+      "decisión": "se cambia (además, la recursiva falla sobre ~1.000 intervalos)"
+    },
+    {
+      "operación": "marcadores de vacío",
+      "versión F2": "es_vacio por celda (F2)",
+      "alternativa": "vectorizado con isin",
+      "tiempo F2 (s)": 0.718,
+      "tiempo alternativa (s)": 0.3277,
+      "veces más rápida": 2.19,
+      "memoria F2 (MB)": 16.335,
+      "memoria alternativa (MB)": 16.329,
+      "decisión": "se cambia"
+    },
+    {
+      "operación": "separar sitios",
+      "versión F2": "separar_sitios por celda (F2)",
+      "alternativa": "str.split vectorizado",
+      "tiempo F2 (s)": 0.0162,
+      "tiempo alternativa (s)": 0.0135,
+      "veces más rápida": 1.2,
+      "memoria F2 (MB)": 3.868,
+      "memoria alternativa (MB)": 3.868,
+      "decisión": "se conserva la de F2"
+    }
+  ],
+  "limite_recursion": "RecursionError con 1.500 intervalos",
+  "duraciones_imputadas": 5320,
+  "pruebas": {
+    "ejecutadas": 30,
+    "fallas": 0,
+    "errores": 0,
+    "por_escenario": {
+      "normal": 11,
+      "limite": 10,
+      "excepcion": 9
+    }
+  },
+  "entregables_fase4": [
+    "data/processed/incidencias_limpio.csv",
+    "data/processed/incidencias_modelo.csv",
+    "data/processed/recurrencia_tx_por_sitio.csv",
+    "data/processed/diccionario_f3.csv",
+    "data/processed/parametros_f3.csv"
+  ],
+  "como_usar": "from src.pipeline import construir_pipeline; tubo = construir_pipeline().ajustar(entrenamiento); tubo.transformar(prueba)"
+}

@@ -1,0 +1,93 @@
+archivo,columna,tipo,pct_vacio,origen
+incidencias_limpio.csv,tt,str,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,sitios,str,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,fecha_inicio,datetime64[us],0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,fecha_cierre,datetime64[us],24.7,data/raw (nombre normalizado)
+incidencias_limpio.csv,estado,str,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,tipo_incidencia_noc,str,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,incidencia_noc,str,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,causa_raiz_noc,str,78.5,data/raw (nombre normalizado)
+incidencias_limpio.csv,criticidad,str,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,criticidad_ord,Int64,0.0,9. PasoFijo(codificar_ordinales)
+incidencias_limpio.csv,es_extendida,int64,0.0,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,impacto,str,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,impacto_ord,Int64,0.0,9. PasoFijo(codificar_ordinales)
+incidencias_limpio.csv,afecta_uptime,int64,0.0,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,es_tx,int64,0.0,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,tipo_enlace,str,97.3,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,proveedor_tx_1,str,97.5,data/raw (nombre normalizado)
+incidencias_limpio.csv,codigo_servicio_tx_1,str,97.5,data/raw (nombre normalizado)
+incidencias_limpio.csv,proveedor,str,86.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,duracion_min,float64,24.7,6. PasoFijo(convertir_tipos)
+incidencias_limpio.csv,duracion_faltante,int64,0.0,6. PasoFijo(convertir_tipos)
+incidencias_limpio.csv,cierre_invalido,int64,0.0,6. PasoFijo(convertir_tipos)
+incidencias_limpio.csv,duracion_log,float64,24.7,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,q_sitios,int64,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,tiempo_respuesta_h,int64,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,hora_inicio,int32,0.0,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,dia_semana,int32,0.0,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,region_principal,object,0.2,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,n_regiones,int64,0.0,8. PasoFijo(derivar_variables)
+incidencias_limpio.csv,comuna,str,1.6,data/raw (nombre normalizado)
+incidencias_limpio.csv,gestionable,Int64,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,gestor_uptime,Int64,0.0,data/raw (nombre normalizado)
+incidencias_limpio.csv,titulo,str,78.5,data/raw (nombre normalizado)
+incidencias_limpio.csv,detalle,str,0.0,data/raw (nombre normalizado)
+incidencias_modelo.csv,tt,str,0.0,data/raw (nombre normalizado)
+incidencias_modelo.csv,criticidad_ord,float64,0.0,9. PasoFijo(codificar_ordinales)
+incidencias_modelo.csv,es_extendida,float64,0.0,8. PasoFijo(derivar_variables)
+incidencias_modelo.csv,impacto_ord,float64,0.0,9. PasoFijo(codificar_ordinales)
+incidencias_modelo.csv,afecta_uptime,float64,0.0,8. PasoFijo(derivar_variables)
+incidencias_modelo.csv,es_tx,float64,0.0,8. PasoFijo(derivar_variables)
+incidencias_modelo.csv,duracion_faltante,float64,0.0,6. PasoFijo(convertir_tipos)
+incidencias_modelo.csv,cierre_invalido,float64,0.0,6. PasoFijo(convertir_tipos)
+incidencias_modelo.csv,gestionable,float64,0.0,data/raw (nombre normalizado)
+incidencias_modelo.csv,gestor_uptime,float64,0.0,data/raw (nombre normalizado)
+incidencias_modelo.csv,hora_inicio,float64,0.0,8. PasoFijo(derivar_variables)
+incidencias_modelo.csv,dia_semana,float64,0.0,8. PasoFijo(derivar_variables)
+incidencias_modelo.csv,n_regiones,float64,0.0,8. PasoFijo(derivar_variables)
+incidencias_modelo.csv,duracion_log_esc,float64,0.0,"13. Escalador(duracion_log_modelo, StandardScaler)"
+incidencias_modelo.csv,q_sitios_esc,float64,0.0,"14. Escalador(q_sitios, MinMaxScaler)"
+incidencias_modelo.csv,tiempo_respuesta_esc,float64,0.0,"15. Escalador(tiempo_respuesta_h, MinMaxScaler)"
+incidencias_modelo.csv,tipo_incidencia_noc_energia,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,tipo_incidencia_noc_incidencia_automatica,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,tipo_incidencia_noc_problema_rf,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,tipo_incidencia_noc_tx_propia,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,tipo_incidencia_noc_tx_proveedor,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,tipo_incidencia_noc_infrequent_sklearn,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,estado_abierta,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,estado_cerrada,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,estado_pendiente_automatico,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,estado_infrequent_sklearn,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_i,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_ii,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_iii,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_iv,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_ix,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_rm,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_v,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_vi,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_vii,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_viii,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_x,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_xii,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_xiv,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_xv,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_xvi,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,region_principal_infrequent_sklearn,int64,0.0,"10. CodificadorNominal(tipo_incidencia_noc, estado, region_principal)"
+incidencias_modelo.csv,tipo_enlace_fibra_propia_fop,int64,0.0,11. CodificadorNominal(tipo_enlace)
+incidencias_modelo.csv,tipo_enlace_fibra_proveedor,int64,0.0,11. CodificadorNominal(tipo_enlace)
+incidencias_modelo.csv,tipo_enlace_microondas,int64,0.0,11. CodificadorNominal(tipo_enlace)
+incidencias_modelo.csv,tipo_enlace_otra_tx,int64,0.0,11. CodificadorNominal(tipo_enlace)
+incidencias_modelo.csv,tipo_enlace_satelital,int64,0.0,11. CodificadorNominal(tipo_enlace)
+incidencias_modelo.csv,tipo_enlace_sin_dato,int64,0.0,11. CodificadorNominal(tipo_enlace)
+recurrencia_tx_por_sitio.csv,sitio,str,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,fallas,int64,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,fallas_p3e,int64,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,abiertas,int64,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,enlace_principal,str,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,proveedor_tx,str,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,region,str,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,minutos_sumados,float64,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,minutos_reales,float64,0.0,tabla_recurrencia
+recurrencia_tx_por_sitio.csv,horas_fuera,float64,0.0,tabla_recurrencia

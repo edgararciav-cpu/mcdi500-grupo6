@@ -1,0 +1,5 @@
+operación,versión F2,alternativa,tiempo F2 (s),tiempo alternativa (s),veces más rápida,memoria F2 (MB),memoria alternativa (MB),decisión
+fusión de intervalos (datos de octubre),recursiva (F2),iterativa,0.0004,0.0003,1.3,0.039,0.047,diferencia menor a 1 ms: decide el crecimiento (fila siguiente)
+fusión de intervalos (n = 900),recursiva (F2),iterativa,0.9656,0.0003,3393.0,6.275,0.013,"se cambia (además, la recursiva falla sobre ~1.000 intervalos)"
+marcadores de vacío,es_vacio por celda (F2),vectorizado con isin,0.718,0.3277,2.19,16.335,16.329,se cambia
+separar sitios,separar_sitios por celda (F2),str.split vectorizado,0.0162,0.0135,1.2,3.868,3.868,se conserva la de F2
