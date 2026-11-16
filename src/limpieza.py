@@ -52,7 +52,7 @@ def unificar_vacios(df):
 
     Versión vectorizada (Fase 3): compara cada columna completa contra MARCADORES_VACIO con isin, en
     vez de llamar a una función de Python por celda. Mismo resultado que unificar_vacios_por_celda y
-    unas 2,4 veces más rápida sobre los datos reales (medición en F3, sección 6).
+    unas 2 veces más rápida sobre los datos reales (medición en F3, sección 6).
     """
     salida = df.apply(lambda col: col.str.strip())
     marcadores = salida.apply(lambda col: col.isna() | col.str.lower().isin(utilidades.MARCADORES_VACIO))
