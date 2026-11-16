@@ -294,6 +294,26 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - **codificar los sitios dentro del texto libre:** el texto también traía nombres de equipos y tickets de terceros que una lista de sitios no detecta;
   - **force push sin borrar el repositorio:** dejaba los commits antiguos accesibles desde el pull request #1.
 
+## Paso 26 · Núcleo de la Fase 3: código en `src/`, clases, pipeline, eficiencia y pruebas (16-11-2026)
+
+- **Qué pidió el profesor (guía ilustrada del 13-11):** pasar el código de F2 a `src/`, crear clases solo donde se aprende de los datos, armar un pipeline con uno o dos patrones justificados, demostrar que el resultado es idéntico al de F2, comparar implementaciones con `timeit` y `tracemalloc`, y dejar pruebas en `tests/` que corran con un comando. Todo en la rama `f3-nucleo`.
+- **Código en `src/`:** `carga.py` (lee y verifica `data/raw`), `limpieza.py` (16 funciones que no aprenden nada), `transformadores.py` (clase base y clases que aprenden), `pipeline.py` (los 15 pasos de F2 en el mismo orden) y `medicion.py`.
+- **Clases solo donde se aprende:** `UnificadorVariantes`, `EliminadorCasiVacias`, `ImputadorMedianaGrupo`, `CodificadorNominal` y `Escalador` guardan lo aprendido en `_parametros` y lo aplican a cualquier conjunto. Las funciones sin estado se envuelven con `PasoFijo` para que el pipeline las recorra igual (polimorfismo) sin convertirlas en clases artificiales.
+- **Patrones:** Observer (`Bitacora`, registra filas y columnas de cada paso) y Strategy (`Escalador` con `estandar`, `minmax` o `robusta`).
+- **Equivalencia con F2:** `ejecutar(RAIZ)` produce los tres archivos de `data/processed` idénticos byte a byte (`4ad2487500af`, `48da91b36f78`, `b8d2bf14c28f`) y `assert_frame_equal` lo confirma. `data/processed` no se reescribe.
+- **Eficiencia (la medición cambió dos decisiones):**
+  - fusión de intervalos: la iterativa reemplaza a la recursiva en el pipeline. Con los datos de octubre es unas 2 veces más rápida; con 900 intervalos en un sitio, más de 2.000 veces, con 6,3 MB contra 0,01 MB, y la recursiva falla con `RecursionError` sobre unos 1.000 intervalos. La recursiva se conserva en `utilidades.py` como referencia y en las pruebas;
+  - marcadores de vacío: la versión vectorizada con `isin` es 2,4 veces más rápida que llamar a `es_vacio` en cada una de las 1.055.558 celdas, con la misma memoria;
+  - separar sitios: se conserva la de F2, porque la vectorizada no fue más rápida.
+  - Regla fijada antes de medir: se cambia solo si la alternativa es al menos 1,5 veces más rápida.
+- **Error encontrado al probar la división entrenamiento/prueba:** `UnificadorVariantes` dejaba vacía una categoría que no había visto al ajustar (por ejemplo, `q_sitios` = 21), y la conversión de tipos fallaba. Con el conjunto completo no se notaba. Se corrigió para conservar el valor y se agregó la prueba del caso.
+- **Pruebas:** 30 en `tests/test_nucleo.py` (11 normales, 10 límite y 9 de excepción), con `unittest`. Comando: `.venv\Scripts\python.exe -m unittest discover -s tests -v`.
+- **Notebook F3** (`F3/F3_Nucleo_Eficiencia_POO.ipynb`): arquitectura generada desde el código, clases y principios, pipeline y patrones, división sin fuga de datos, equivalencia, mediciones con su gráfico (`docs/figuras/f3_fusion_crecimiento.png`), pruebas y `docs/metadatos_fase3.json`.
+- **Limitación declarada:** 5.320 incidencias sin duración válida (5.318 abiertas al exportar y 2 negativas). La mediana imputada se usa solo en el conjunto para modelos; la tabla de recurrencia usa las fechas reales y deja las abiertas aparte.
+- **Enfoque descartado:**
+  - **una clase `Preprocesador` que hiciera todo:** juntaba 15 pasos en una sola clase, con baja cohesión, y no permitía medir ni probar cada paso por separado;
+  - **convertir todas las funciones en clases:** la mayoría no aprende nada; serían clases sin estado, que la guía desaconseja.
+
 ---
 
 ## Historial de commits y criterio que respalda cada uno
@@ -335,6 +355,17 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `60d03f8` | feat: prueba la instalación en Linux, macOS y Windows con GitHub Actions | `.github/workflows/instalacion.yml` | 2. Repositorio · 5. Evidencias | 5 Reproducibilidad · 6 Control de versiones |
 | `4d89856` | docs: registra el repositorio privado y las dependencias del proyecto | Paso 24 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
 | `e26718b` | Merge pull request #1 from edgararciav-cpu/f3-dependencias | Integración del componente de dependencias | 2. Repositorio | 6 Control de versiones (ramas) |
+| `14a463d` | fix: codifica los sitios y omite el texto libre en el anonimizador | `scripts/anonimizar_incidencias.py` y `data/raw` con códigos | S2 · IV Repositorio | Confidencialidad pedida en la retroalimentación |
+| `ba245e7` | docs: describe los sitios como códigos en el módulo y en el mapa | `src/utilidades.py` y mapa conceptual | S2 · III.b Documentación | Confidencialidad |
+| `a30346b` | feat: F1 y F2 ejecutados con los sitios codificados | Notebooks, `data/processed` y `docs/` | S2 · V Notebooks | Reproducibilidad |
+| `b72615d` | docs: registra la confidencialidad de los datos y los hashes nuevos | Paso 25 y `docs/equivalencia_commits_reescritura.csv` | S2 · IV Repositorio | Trazabilidad |
+| `b2b381c` | feat: traslada a src las funciones de F2 que no aprenden de los datos | `src/__init__.py`, `carga.py`, `limpieza.py` | S2 · II.a Codificación | II.e Diseño estructurado |
+| `7addbfd` | feat: clase base Transformador y clases que aprenden de los datos | `src/transformadores.py` | S2 · III.a POO | II.b Preprocesamiento |
+| `eb641f3` | feat: pipeline que ejecuta la Fase 2 en una llamada, con bitácora observadora | `src/pipeline.py` | S2 · III.a POO · III.b Patrones | II.b Preprocesamiento |
+| `954761e` | feat: medición de tiempo y memoria y fusión de intervalos iterativa | `src/medicion.py`, `src/utilidades.py` | S2 · II.d Eficiencia | II.e Recursividad |
+| `62ca8e2` | test: pruebas normales, límite y de excepción, y equivalencia con la Fase 2 | `tests/test_nucleo.py` | S2 · II.c Validación | V Notebooks |
+| `d0f3074` | perf: vacíos vectorizados y fusión iterativa por defecto, según la medición | `src/limpieza.py`, `src/utilidades.py`, pruebas | S2 · II.d Eficiencia | La medición cambia la decisión |
+| `8d1bdbb` | fix: UnificadorVariantes conserva los valores que no vio al ajustar | `src/transformadores.py` y su prueba | S2 · II.c Validación | III.a POO (ajustar/transformar) |
 
 Convención de prefijos:
 
@@ -345,3 +376,4 @@ Convención de prefijos:
 | `feat:` | algo nuevo que hace funcionar el proyecto |
 | `fix:` | corrección |
 | `test:` | pruebas |
+| `perf:` | cambio de implementación justificado por una medición |
