@@ -150,6 +150,24 @@ def fusionar_intervalos(intervalos):
     return [primero] + resto
 
 
+def fusionar_intervalos_iterativo(intervalos):
+    """Misma tarea que fusionar_intervalos, con un solo recorrido y sin recursión.
+
+    Ordena una vez y recorre la lista: si el intervalo actual toca o se traslapa con el último
+    unido, lo extiende; si no, abre uno nuevo. Tiempo O(n log n) por el ordenamiento y sin límite
+    de profundidad. La Fase 3 la compara con la versión recursiva (mismo resultado, distinto costo).
+    """
+    unidos = []
+    for inicio, fin in sorted(intervalos):
+        if fin < inicio:
+            raise ProyectoError(f"intervalo con fin anterior al inicio: {(inicio, fin)}")
+        if unidos and inicio <= unidos[-1][1]:
+            unidos[-1] = (unidos[-1][0], max(unidos[-1][1], fin))
+        else:
+            unidos.append((inicio, fin))
+    return unidos
+
+
 class ConjuntoDatos:
     """Describe un archivo de datos del proyecto y lo carga siempre de la misma forma.
 
