@@ -1,19 +1,22 @@
 elemento_mapa,tipo,estado,evidencia
-Python + entorno virtual,herramientas,implementado,Sección 2 · .venv y requirements.txt (commit db429ec)
-Jupyter + kernel Python (mcdi500),herramientas,implementado,Sección 2 · kernel registrado y verificado
-Git y GitHub,herramientas,implementado,Sección 6 · historial con prefijos y una sola identidad
-Anonimización de los datos,procesos,implementado,scripts/anonimizar_incidencias.py · bitácora paso 4
-Exploración y medición de calidad,procesos,implementado,Secciones 5.3 y 5.4 de este notebook
-Foco en fallas de transmisión recurrentes,decisiones técnicas,implementado,"Sección 1 (pregunta) y sección 5.5 (588 fallas, 264 con pérdida de servicio)"
-"Uptime = criticidad P1, P2, P3 y P3E",decisiones técnicas,implementado,Sección 1 (supuesto 5) y sección 5.5
-Tabla de recurrencia por sitio,procesos,proyectado,"Fase 2 · clasificación MW, FOP y fibra de proveedor"
-"Limpieza, imputación y transformación",procesos,proyectado,Fase 2 · F2/F2_Preprocesamiento.ipynb
-Núcleo algorítmico y POO,procesos,proyectado,Fase 3 · Sumativa 2
-"raw → processed, rutas relativas, semilla 42",flujo reproducible,implementado,Secciones 2 y 3 · localizar_raiz y SEMILLA
-Restart & Run All sin errores,flujo reproducible,implementado,Numeración continua de este notebook
-Datos internos anonimizados con permiso,decisiones técnicas,implementado,Ficha 5 · bitácora pasos 3 y 4
-Vacíos de duración = incidencia abierta,decisiones técnicas,implementado,Sección 5.4 · supuesto verificado
-"data/, docs/, src/, scripts/ y F1 a F4",organización del repositorio,implementado,Sección 3 · commit c7469f7
-README generado desde el notebook,organización del repositorio,implementado,Sección 9 · README.md
-Celdas narrativas antes de cada bloque de código,estructura del notebook,implementado,Todo este notebook
-"Pruebas normal, límite y excepción",estructura del notebook,implementado,Sección 4.1 · assert
+Python 3.14 + .venv + requirements.txt,herramientas,implementado,"Sección 2 · requirements.txt con 6 librerías, instalación probada en Linux, macOS y Windows"
+JupyterLab y kernel «Python (mcdi500)»,herramientas,implementado,Sección 2 · celda de configuración de F2 y F3
+"pandas, NumPy, scikit-learn, matplotlib",herramientas,implementado,F2 y F3 · docs/figuras
+"Git y GitHub, una sola identidad",herramientas,implementado,Historial de commits · docs/bitacora_proceso.md
+data/raw → F1 → F2 → F3 → data/processed,flujo reproducible,implementado,"Huella SHA-256 y metadatos de F1, F2 y F3"
+"F3 · algoritmos, eficiencia y POO",flujo reproducible,implementado,src/ y tests/ · F3/F3_Nucleo_Eficiencia_POO.ipynb
+F4 · visualización y comunicación,flujo reproducible,proyectado,Sumativa 3
+Anonimizar personas y sitios,procesos,implementado,scripts/anonimizar_incidencias.py · bitácora pasos 4 y 25
+Medir calidad sin corregir,procesos,implementado,Secciones 5.3 a 5.5 de este notebook
+"Limpiar, transformar y escalar",procesos,implementado,"F2, secciones 3 a 5 · clases de src/transformadores.py (F3)"
+Recurrencia por sitio con fusión de intervalos,procesos,implementado,"F2, sección 4.4 · F3, sección 6.1 (versión iterativa)"
+"Uptime = P1, P2, P3 y P3E, sin canceladas, solo octubre",decisiones técnicas,implementado,"Sección 1 (supuesto 5) · F2, secciones 4.1 y 4.4"
+Duración vacía no se inventa en el limpio,decisiones técnicas,implementado,"F2, sección 3.6 · F3, sección 9 (limitación declarada)"
+Un sitio por fila (dos espacios = Q sitios),decisiones técnicas,implementado,Sección 5.5 · regla de integridad en F2
+StandardScaler y MinMaxScaler según la variable,decisiones técnicas,implementado,"F2, sección 5 · Escalador con patrón Strategy (F3)"
+Datos del operador: sitios con código y repo privado,decisiones técnicas,implementado,Ficha 5 · bitácora pasos 24 y 25
+"F1/ a F4/, data/, docs/, src/, scripts/, tests/, README",organización del repositorio,implementado,Sección 3 · README generado por este notebook
+src/ en módulos con una responsabilidad cada uno,organización del repositorio,implementado,"carga, limpieza, transformadores, pipeline, medicion y utilidades"
+Ramas por componente y pull request,organización del repositorio,implementado,f2-pipeline y los pull request #1 a #3 de la Fase 3
+Celda narrativa → código → evidencia,estructura del notebook,implementado,"F1, F2 y F3 completos"
+"Pruebas normal, límite y excepción",estructura del notebook,implementado,Sección 4.1 · F2 sección 6.2 · tests/ (30 pruebas)

@@ -1,8 +1,8 @@
 {
   "proyecto": "Fallas recurrentes de transmisión en la red de un operador móvil",
   "fase": "F1",
-  "fecha_ejecucion": "2026-11-15",
-  "commit_base": "e6e23da",
+  "fecha_ejecucion": "2026-11-17",
+  "commit_base": "c25abe5",
   "semilla": 42,
   "python": "3.14.6",
   "sistema": "Windows 11",
