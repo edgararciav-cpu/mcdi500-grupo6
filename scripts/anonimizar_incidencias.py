@@ -7,6 +7,8 @@ Qué hace
     Creador de TT          -> OP_01, OP_02, ...
     Ticket de proveedor    -> TKP_0001, ...
     Código servicio TX 1-5 -> TXS_0001, ...
+    Código de Servicio     -> SRV_0001, ...   (números de cliente de la distribuidora eléctrica)
+    Tramo Afectado         -> TRA_001, ...    (nombres de equipos y circuitos del proveedor)
 - Reemplaza cada sitio de Network Element por un código, SIT_0001, SIT_0002, ..., en el orden en
   que aparece. Si una celda trae varios sitios (separados por dos o más espacios), cada uno recibe
   su código y se conservan los separadores, así que la cantidad de sitios por celda no cambia.
@@ -39,10 +41,12 @@ A_CODIFICAR = {
     'Código servicio TX 3': ('TXS', 4),
     'Código servicio TX 4': ('TXS', 4),
     'Código servicio TX 5': ('TXS', 4),
+    'Código de Servicio': ('SRV', 4),
+    'Tramo Afectado': ('TRA', 3),
 }
-# En tickets y códigos TX solo se codifican los valores con algún número: "Pendiente" o "ENEL"
-# no son códigos sino marcadores, y se dejan tal cual para tratarlos en la Fase 2.
-SOLO_CON_NUMERO = {'TKP', 'TXS'}
+# En tickets, códigos de servicio y tramos solo se codifican los valores con algún número: "Pendiente",
+# "ENEL" o "MW WOM" no son identificadores sino marcadores, y se dejan tal cual para tratarlos en la Fase 2.
+SOLO_CON_NUMERO = {'TKP', 'TXS', 'SRV', 'TRA'}
 
 COLUMNA_SITIOS = 'Network Element'
 PREFIJO_SITIO, DIGITOS_SITIO = 'SIT', 4
