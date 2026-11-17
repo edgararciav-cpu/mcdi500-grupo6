@@ -38,7 +38,7 @@ def contar_rotas(df):
 
 
 def unificar_vacios_por_celda(df):
-    """Versión de la Fase 2: llama a utilidades.es_vacio una vez por celda (más de 1,3 millones de llamadas).
+    """Versión de la Fase 2: llama a utilidades.es_vacio una vez por celda (más de un millón de llamadas).
 
     Se conserva para la comparación de eficiencia de la Fase 3 y para las pruebas.
     """

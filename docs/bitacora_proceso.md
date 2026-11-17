@@ -188,7 +188,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 ## Paso 19 · Mnemónicos reales, conteo por sitio y reglas del NOC (11-11-2026)
 
 - **Qué cambió y por qué:** al revisar el gráfico de la Fase 2, los sitios aparecían como `NE_0132`, y así no se puede saber qué sitio escalar. Los mnemónicos de los sitios no son datos personales y la SUBTEL ya los publica. Por eso el anonimizador dejó de codificarlos, y ahora todo el proyecto usa el nombre real. Las personas siguen codificadas (IM_, OP_), igual que los tickets de proveedor y los códigos de servicio TX.
-- **Hallazgo al usar los nombres reales:** `Network Element` puede traer **varios sitios en la misma celda**, separados por dos espacios. Un espacio simple es parte del nombre, como en `SIT_0304`. Separar por dos espacios coincide con `Q Network Element` en las 21.542 filas. Hay 1.098 incidencias con más de un sitio.
+- **Hallazgo al usar los nombres reales:** `Network Element` puede traer **varios sitios en la misma celda**, separados por dos espacios. Un espacio simple es parte del nombre del sitio (hoy cada sitio es un código, como `SIT_0304`, que no lleva espacios). Separar por dos espacios coincide con `Q Network Element` en las 21.542 filas. Hay 1.098 incidencias con más de un sitio.
   - Antes se contaban como un solo "elemento" y la tabla mostraba 203. Contando por sitio, son **559 sitios** con pérdida de servicio por transmisión: 149 con 2 o más fallas y 21 con 3 o más.
   - Se agregó `utilidades.separar_sitios`, con pruebas.
 - **Reglas del NOC confirmadas por Edgar:**
@@ -246,7 +246,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 
 # Fase 3 · Sumativa 2
 
-## Paso 24 · Repositorio privado y dependencias solo del proyecto (13-11-2026)
+## Paso 24 · Repositorio privado y dependencias solo del proyecto (13 al 15-11-2026)
 
 - **Retroalimentación de la Sumativa 1 (93 de 99):** el profesor pidió cinco correcciones para la Fase 3:
   - resolver la publicación de los datos;
