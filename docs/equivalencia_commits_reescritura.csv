@@ -1,32 +1,32 @@
 commit_antiguo,commit_nuevo,mensaje
-0ca7500,8d41e3e,docs: registra el cambio a mnemónicos reales y el conteo por sitio
-1a9c017,e65ae34,docs: registra las decisiones y el proceso de la Fase 2
-2758a74,2977d93,docs: registra las correcciones de la auditoría
-348231e,814256b,docs: ajusta la problemática al foco en fallas de transmisión
-350fa53,56b39ef,Merge pull request #1 from edgararciav-cpu/f2-pipeline
-3525ccc,cf41653,"fix: corrige textos de F1, F2 y el mapa según la auditoría"
-376d53d,d56de0e,docs: define el uptime por criticidad y guarda la ejecución de F1
-6431ae9,1c94a0f,feat: F2 cuenta la recurrencia por sitio con las reglas del NOC
-6eb12ef,2dbef02,feat: agrega separar_sitios para contar las fallas por sitio
-70ae0b7,a10c794,data: guarda los conjuntos procesados y la tabla de recurrencia
-75e005f,df0c96d,fix: guarda las salidas de la ejecución del notebook F1
-88effca,737cc2b,docs: registra las restricciones nuevas y el corte al 31-10
-9cd6c0d,122ab0f,feat: agrega funciones del pipeline F2 a utilidades y repara la Ñ
-9f9d7f5,0042548,"feat: agrega módulo utilidades con funciones, clase y excepción propia"
-a1728ca,7675ef7,docs: registra la prueba desde cero del repositorio
-a1e40b8,9a07d36,data: incorpora incidencias de octubre 2026 anonimizadas en raw
-a890f1a,011dd44,feat: F2 cuenta solo los minutos de octubre para el uptime
-abd3693,293cccd,"feat: notebook F1 con definición, entorno, ficha, diccionario y validación"
-aecfd0e,b90ce57,docs: reescribe las restricciones del proyecto en F1
-b85a209,73ebe27,docs: agrega bitácora del proceso y script de anonimización
+0ca7500,44c4803,docs: registra el cambio a mnemónicos reales y el conteo por sitio
+1a9c017,4bd3f1b,docs: registra las decisiones y el proceso de la Fase 2
+2758a74,6f7b49e,docs: registra las correcciones de la auditoría
+348231e,97b3766,docs: ajusta la problemática al foco en fallas de transmisión
+350fa53,eca9340,Merge pull request #1 from edgararciav-cpu/f2-pipeline
+3525ccc,beb5b5e,"fix: corrige textos de F1, F2 y el mapa según la auditoría"
+376d53d,a01920f,docs: define el uptime por criticidad y guarda la ejecución de F1
+6431ae9,954d6f4,feat: F2 cuenta la recurrencia por sitio con las reglas del NOC
+6eb12ef,2ca9b4f,feat: agrega separar_sitios para contar las fallas por sitio
+70ae0b7,63a1bae,data: guarda los conjuntos procesados y la tabla de recurrencia
+75e005f,131cab6,fix: guarda las salidas de la ejecución del notebook F1
+88effca,663037e,docs: registra las restricciones nuevas y el corte al 31-10
+9cd6c0d,4bbb358,feat: agrega funciones del pipeline F2 a utilidades y repara la Ñ
+9f9d7f5,70a2144,"feat: agrega módulo utilidades con funciones, clase y excepción propia"
+a1728ca,c5fc311,docs: registra la prueba desde cero del repositorio
+a1e40b8,d7c9945,data: incorpora incidencias de octubre 2026 anonimizadas en raw
+a890f1a,69aca6d,feat: F2 cuenta solo los minutos de octubre para el uptime
+abd3693,7ab07a0,"feat: notebook F1 con definición, entorno, ficha, diccionario y validación"
+aecfd0e,25750d7,docs: reescribe las restricciones del proyecto en F1
+b85a209,22d3bd5,docs: agrega bitácora del proceso y script de anonimización
 c7469f7,c7469f7,docs: crea estructura inicial del proyecto
-cfceefa,a286355,docs: registra el entorno reproducible y la relación de cada commit con la rúbrica
-d0469be,ebad4a5,fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales
-db1ccd7,229e1a8,docs: agrega el mapa conceptual del flujo reproducible
-e005441,db429ec,feat: define el entorno reproducible con requirements.txt
-e2a8a60,e6efd34,data: regenera los conjuntos procesados con la tabla por sitio
-e697114,2087c11,"feat: notebook F2 con limpieza, transformación, escalamiento y validación"
-e6e738d,8a302df,data: valida el conjunto con validar_dataset.py del curso
-e8a457c,69237c2,"docs: F1 con mnemónicos reales, definición de criticidad y conteo por sitio"
-ef65acf,736c217,data: conserva los mnemónicos reales de los sitios en data/raw
-fda0d96,16f936e,data: regenera la tabla de recurrencia con el corte al 31-10
+cfceefa,61aea75,docs: registra el entorno reproducible y la relación de cada commit con la rúbrica
+d0469be,504af47,fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales
+db1ccd7,6cfd05b,docs: agrega el mapa conceptual del flujo reproducible
+e005441,ed3bcfd,feat: define el entorno reproducible con requirements.txt
+e2a8a60,fc557b8,data: regenera los conjuntos procesados con la tabla por sitio
+e697114,bb16016,"feat: notebook F2 con limpieza, transformación, escalamiento y validación"
+e6e738d,d33287c,data: valida el conjunto con validar_dataset.py del curso
+e8a457c,862650d,"docs: F1 con mnemónicos reales, definición de criticidad y conteo por sitio"
+ef65acf,2c91181,data: conserva los mnemónicos reales de los sitios en data/raw
+fda0d96,a5f8c5f,data: regenera la tabla de recurrencia con el corte al 31-10
