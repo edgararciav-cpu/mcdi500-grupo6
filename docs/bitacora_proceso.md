@@ -267,7 +267,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 
   Probado en una copia: 6 librerías con la versión declarada y "8 de 8". El F1 actual también funciona con el archivo nuevo, porque sus 6 librerías clave están declaradas.
 - **Enfoque descartado:** generar `requirements.txt` con `pip freeze`. Fija también las dependencias propias de cada sistema operativo, y por eso no se puede instalar en otro.
-- **Integración:** rama `f3-dependencias` (commits `ee532d1`, `80f8f94` y `e6e23da`), integrada a `main` con el pull request #1. Las verificaciones de GitHub Actions pasaron en Ubuntu, macOS y Windows.
+- **Integración:** rama `f3-dependencias` (commits `ee532d1`, `80f8f94` y `e6e23da`), integrada a `main` con el pull request #1 (`b0c2b7c`). Las verificaciones de GitHub Actions pasaron en Ubuntu, macOS y Windows.
 
 ## Paso 25 · Sitios con código, texto libre omitido e historial limpio (15-11-2026)
 
@@ -354,11 +354,12 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `ee532d1` | fix: deja en requirements.txt solo las librerías del proyecto | 6 librerías con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad |
 | `80f8f94` | feat: prueba la instalación en Linux, macOS y Windows con GitHub Actions | `.github/workflows/instalacion.yml` | 2. Repositorio · 5. Evidencias | 5 Reproducibilidad · 6 Control de versiones |
 | `e6e23da` | docs: registra el repositorio privado y las dependencias del proyecto | Paso 24 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
-| (pull request #1) | Merge pull request #1 from edgararciav-cpu/f3-dependencias | Integración del componente de dependencias | 2. Repositorio | 6 Control de versiones (ramas) |
+| `b0c2b7c` | Merge pull request #1 from edgararciav-cpu/f3-dependencias | Integración del componente de dependencias | 2. Repositorio | 6 Control de versiones (ramas) |
 | `005bbc5` | fix: codifica los sitios y omite el texto libre en el anonimizador | `scripts/anonimizar_incidencias.py` y `data/raw` con códigos | S2 · IV Repositorio | Confidencialidad pedida en la retroalimentación |
 | `fc5cdaa` | docs: describe los sitios como códigos en el módulo y en el mapa | `src/utilidades.py` y mapa conceptual | S2 · III.b Documentación | Confidencialidad |
 | `d1beb38` | feat: F1 y F2 ejecutados con los sitios codificados | Notebooks, `data/processed` y `docs/` | S2 · V Notebooks | Reproducibilidad |
 | `56de100` | docs: registra la confidencialidad de los datos y los hashes nuevos | Paso 25 y `docs/equivalencia_commits_reescritura.csv` | S2 · IV Repositorio | Trazabilidad |
+| `84ea005` | Merge pull request #2 from edgararciav-cpu/f3-confidencialidad | Integración del componente de confidencialidad | S2 · IV Repositorio | Ramas por componente |
 | `a9f037b` | feat: traslada a src las funciones de F2 que no aprenden de los datos | `src/__init__.py`, `carga.py`, `limpieza.py` | S2 · II.a Codificación | II.e Diseño estructurado |
 | `d4a89cc` | feat: clase base Transformador y clases que aprenden de los datos | `src/transformadores.py` | S2 · III.a POO | II.b Preprocesamiento |
 | `56afc75` | feat: pipeline que ejecuta la Fase 2 en una llamada, con bitácora observadora | `src/pipeline.py` | S2 · III.a POO · III.b Patrones | II.b Preprocesamiento |
@@ -366,6 +367,10 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `8bd7787` | test: pruebas normales, límite y de excepción, y equivalencia con la Fase 2 | `tests/test_nucleo.py` | S2 · II.c Validación | V Notebooks |
 | `41cd99b` | perf: vacíos vectorizados y fusión iterativa por defecto, según la medición | `src/limpieza.py`, `src/utilidades.py`, pruebas | S2 · II.d Eficiencia | La medición cambia la decisión |
 | `f550374` | fix: UnificadorVariantes conserva los valores que no vio al ajustar | `src/transformadores.py` y su prueba | S2 · II.c Validación | III.a POO (ajustar/transformar) |
+| `64ea39b` | docs: cifras de eficiencia como rangos, porque varían entre ejecuciones | `src/limpieza.py` y paso 26 | S2 · II.d Eficiencia | Medición honesta |
+| `ce72af4` | feat: notebook F3 ejecutado con clases, equivalencia, eficiencia, pruebas y contrato con la Fase 4 | Notebook F3, `diccionario_f3.csv`, `parametros_f3.csv`, mediciones y metadatos | S2 · V Notebooks | III.b Documentación |
+| `135fa4b` | docs: actualiza los hashes de commits citados en la bitácora, los metadatos y los notebooks | Referencias a commits | S2 · IV Repositorio | Trazabilidad |
+| `9933b1d` | Merge pull request #3 from edgararciav-cpu/f3-nucleo | Integración del núcleo de la Fase 3 | S2 · IV Repositorio | Ramas por componente |
 
 Convención de prefijos:
 
