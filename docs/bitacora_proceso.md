@@ -267,7 +267,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 
   Probado en una copia: 6 librerías con la versión declarada y "8 de 8". El F1 actual también funciona con el archivo nuevo, porque sus 6 librerías clave están declaradas.
 - **Enfoque descartado:** generar `requirements.txt` con `pip freeze`. Fija también las dependencias propias de cada sistema operativo, y por eso no se puede instalar en otro.
-- **Integración:** rama `f3-dependencias` (commits `0676823`, `52efc82` y `e36b384`), integrada a `main` con el pull request #1 (merge del pull request #1). Las verificaciones de GitHub Actions pasaron en Ubuntu, macOS y Windows.
+- **Integración:** rama `f3-dependencias` (commits `0676823`, `52efc82` y `e36b384`), integrada a `main` con el pull request #1 (`00a152e`). Las verificaciones de GitHub Actions pasaron en Ubuntu, macOS y Windows.
 
 ## Paso 25 · Sitios con código, texto libre omitido e historial limpio (15-11-2026)
 
@@ -364,12 +364,12 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `0676823` | fix: deja en requirements.txt solo las librerías del proyecto | 6 librerías con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad |
 | `52efc82` | feat: prueba la instalación en Linux, macOS y Windows con GitHub Actions | `.github/workflows/instalacion.yml` | 2. Repositorio · 5. Evidencias | 5 Reproducibilidad · 6 Control de versiones |
 | `e36b384` | docs: registra el repositorio privado y las dependencias del proyecto | Paso 24 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
-| (PR #1) | Merge pull request #1 from edgararciav-cpu/f3-dependencias | Integración del componente de dependencias | 2. Repositorio | 6 Control de versiones (ramas) |
+| `00a152e` | Merge pull request #1 from edgararciav-cpu/f3-dependencias | Integración del componente de dependencias | 2. Repositorio | 6 Control de versiones (ramas) |
 | `1e004ac` | fix: codifica los sitios y omite el texto libre en el anonimizador | `scripts/anonimizar_incidencias.py` y `data/raw` con códigos | S2 · IV Repositorio | Confidencialidad pedida en la retroalimentación |
 | `80ea4a1` | docs: describe los sitios como códigos en el módulo y en el mapa | `src/utilidades.py` y mapa conceptual | S2 · III.b Documentación | Confidencialidad |
 | `5bda65b` | feat: F1 y F2 ejecutados con los sitios codificados | Notebooks, `data/processed` y `docs/` | S2 · V Notebooks | Reproducibilidad |
 | `d639676` | docs: registra la confidencialidad de los datos y los hashes nuevos | Paso 25 y `docs/equivalencia_commits_reescritura.csv` | S2 · IV Repositorio | Trazabilidad |
-| (PR #2) | Merge pull request #2 from edgararciav-cpu/f3-confidencialidad | Integración del componente de confidencialidad | S2 · IV Repositorio | Ramas por componente |
+| `ab6c2eb` | Merge pull request #2 from edgararciav-cpu/f3-confidencialidad | Integración del componente de confidencialidad | S2 · IV Repositorio | Ramas por componente |
 | `b5ce606` | feat: traslada a src las funciones de F2 que no aprenden de los datos | `src/__init__.py`, `carga.py`, `limpieza.py` | S2 · II.a Codificación | II.e Diseño estructurado |
 | `fcad3ed` | feat: clase base Transformador y clases que aprenden de los datos | `src/transformadores.py` | S2 · III.a POO | II.b Preprocesamiento |
 | `d7ef4a8` | feat: pipeline que ejecuta la Fase 2 en una llamada, con bitácora observadora | `src/pipeline.py` | S2 · III.a POO · III.b Patrones | II.b Preprocesamiento |
@@ -380,7 +380,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `858583a` | docs: cifras de eficiencia como rangos, porque varían entre ejecuciones | `src/limpieza.py` y paso 26 | S2 · II.d Eficiencia | Medición honesta |
 | `9e7df9d` | feat: notebook F3 ejecutado con clases, equivalencia, eficiencia, pruebas y contrato con la Fase 4 | Notebook F3, `diccionario_f3.csv`, `parametros_f3.csv`, mediciones y metadatos | S2 · V Notebooks | III.b Documentación |
 | `02dd194` | docs: actualiza los hashes de commits citados en la bitácora, los metadatos y los notebooks | Referencias a commits | S2 · IV Repositorio | Trazabilidad |
-| (PR #3) | Merge pull request #3 from edgararciav-cpu/f3-nucleo | Integración del núcleo de la Fase 3 | S2 · IV Repositorio | Ramas por componente |
+| `0ac03fa` | Merge pull request #3 from edgararciav-cpu/f3-nucleo | Integración del núcleo de la Fase 3 | S2 · IV Repositorio | Ramas por componente |
 | `7bef7bf` | docs: registra en la bitácora los merges de los pull request de la Fase 3 | Tabla de commits | S2 · IV Repositorio | Trazabilidad |
 | `dd5a032` | docs: agrega .mailmap para que Git muestre una sola identidad del autor | `.mailmap` | S2 · IV Repositorio | Contribuciones identificables |
 | `213015b` | docs: objetivos analíticos, metodología y vinculación con el mapa al cierre de la Fase 3 | F1 ejecutado, README y `docs/` | S2 · II (objetivos) | Corrección 2 de la S1 |
