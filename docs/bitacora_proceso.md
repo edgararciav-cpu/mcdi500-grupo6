@@ -213,7 +213,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 ## Paso 21 · Prueba desde cero (11-11-2026, 10:54)
 
 - **Qué pide:** el docente recomienda clonar el repositorio en otra carpeta y seguir el README desde cero antes de entregar. Es la evidencia del criterio 5: estabilidad en cualquier equipo.
-- **Qué se hizo:** se clonó `main` (merge `b100d99`) en `C:\Users\edgar\MCDI500\prueba-desde-cero`, con un entorno virtual nuevo instalado desde `requirements.txt`, y se ejecutaron F1 y F2 completos.
+- **Qué se hizo:** se clonó `main` (merge `56b39ef`) en `C:\Users\edgar\MCDI500\prueba-desde-cero`, con un entorno virtual nuevo instalado desde `requirements.txt`, y se ejecutaron F1 y F2 completos.
 - **Resultado:**
   - F1: 0 errores, 0 advertencias y "Fase 1 validada: 8 de 8".
   - F2: 0 errores, 0 advertencias y "17 de 17 reglas de integridad".
@@ -234,7 +234,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 
 ## Paso 23 · Correcciones de la auditoría independiente (11-11-2026, tarde)
 
-- **Qué se hizo:** antes de entregar, un revisor independiente recorrió los 15 criterios de la rúbrica y comparó cada cifra del informe con los notebooks, `docs/`, `data/processed/` y `git log`. Además clonó el repositorio desde GitHub (commit `c3fc0d0`), ejecutó F1 y F2 y obtuvo los tres archivos de `data/processed` idénticos byte a byte.
+- **Qué se hizo:** antes de entregar, un revisor independiente recorrió los 15 criterios de la rúbrica y comparó cada cifra del informe con los notebooks, `docs/`, `data/processed/` y `git log`. Además clonó el repositorio desde GitHub (commit `737cc2b`), ejecutó F1 y F2 y obtuvo los tres archivos de `data/processed` idénticos byte a byte.
 - **Lo que se corrigió:**
   - **Duración de la transmisión:** el informe decía que las fallas de transmisión son las que más duran, y no es así: tipos como Hardware o Sitio Vandalizado tienen medianas mayores. Ahora dice que su mediana supera las 10 horas (605 min) frente al resto, y la tabla de atípicos de F2 (sección 2.4) muestra la mediana de cada grupo para que la cifra se pueda verificar.
   - **P3E:** se quitó la definición "P3 que dura más de 24 h", que no calzaba con la duración de la incidencia (112 de 674 P3E duran 24 h o menos). Regla del NOC confirmada por Edgar: la P3E se trata igual que una P3.
@@ -267,7 +267,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 
   Probado en una copia: 6 librerías con la versión declarada y "8 de 8". El F1 actual también funciona con el archivo nuevo, porque sus 6 librerías clave están declaradas.
 - **Enfoque descartado:** generar `requirements.txt` con `pip freeze`. Fija también las dependencias propias de cada sistema operativo, y por eso no se puede instalar en otro.
-- **Integración:** rama `f3-dependencias` (commits `96ec463`, `60d03f8` y `4d89856`), integrada a `main` con el pull request #1 (`e26718b`). Las verificaciones de GitHub Actions pasaron en Ubuntu, macOS y Windows.
+- **Integración:** rama `f3-dependencias` (commits `ee532d1`, `80f8f94` y `e6e23da`), integrada a `main` con el pull request #1. Las verificaciones de GitHub Actions pasaron en Ubuntu, macOS y Windows.
 
 ## Paso 25 · Sitios con código, texto libre omitido e historial limpio (15-11-2026)
 
@@ -293,6 +293,26 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 - **Enfoque descartado:**
   - **codificar los sitios dentro del texto libre:** el texto también traía nombres de equipos y tickets de terceros que una lista de sitios no detecta;
   - **force push sin borrar el repositorio:** dejaba los commits antiguos accesibles desde el pull request #1.
+
+## Paso 26 · Núcleo de la Fase 3: código en `src/`, clases, pipeline, eficiencia y pruebas (16-11-2026)
+
+- **Qué pidió el profesor (guía ilustrada del 13-11):** pasar el código de F2 a `src/`, crear clases solo donde se aprende de los datos, armar un pipeline con uno o dos patrones justificados, demostrar que el resultado es idéntico al de F2, comparar implementaciones con `timeit` y `tracemalloc`, y dejar pruebas en `tests/` que corran con un comando. Todo en la rama `f3-nucleo`.
+- **Código en `src/`:** `carga.py` (lee y verifica `data/raw`), `limpieza.py` (16 funciones que no aprenden nada), `transformadores.py` (clase base y clases que aprenden), `pipeline.py` (los 15 pasos de F2 en el mismo orden) y `medicion.py`.
+- **Clases solo donde se aprende:** `UnificadorVariantes`, `EliminadorCasiVacias`, `ImputadorMedianaGrupo`, `CodificadorNominal` y `Escalador` guardan lo aprendido en `_parametros` y lo aplican a cualquier conjunto. Las funciones sin estado se envuelven con `PasoFijo` para que el pipeline las recorra igual (polimorfismo) sin convertirlas en clases artificiales.
+- **Patrones:** Observer (`Bitacora`, registra filas y columnas de cada paso) y Strategy (`Escalador` con `estandar`, `minmax` o `robusta`).
+- **Equivalencia con F2:** `ejecutar(RAIZ)` produce los tres archivos de `data/processed` idénticos byte a byte (`4ad2487500af`, `48da91b36f78`, `b8d2bf14c28f`) y `assert_frame_equal` lo confirma. `data/processed` no se reescribe.
+- **Eficiencia (la medición cambió dos decisiones):**
+  - fusión de intervalos: la iterativa reemplaza a la recursiva en el pipeline. Con los datos de octubre las dos tardan menos de 1 ms y la proporción varía entre ejecuciones (1,2 a 2 veces), así que decide el crecimiento: con 900 intervalos en un sitio, más de 2.000 veces, con 6,3 MB contra 0,01 MB, y la recursiva falla con `RecursionError` sobre unos 1.000 intervalos. La recursiva se conserva en `utilidades.py` como referencia y en las pruebas;
+  - marcadores de vacío: la versión vectorizada con `isin` es unas 2 veces más rápida (2,0 a 2,4 según la ejecución) que llamar a `es_vacio` en cada una de las 1.055.558 celdas, con la misma memoria;
+  - separar sitios: se conserva la de F2, porque la vectorizada no alcanzó la regla (entre 0,9 y 1,3 veces).
+  - Regla fijada antes de medir: se cambia solo si la alternativa es al menos 1,5 veces más rápida.
+- **Error encontrado al probar la división entrenamiento/prueba:** `UnificadorVariantes` dejaba vacía una categoría que no había visto al ajustar (por ejemplo, `q_sitios` = 21), y la conversión de tipos fallaba. Con el conjunto completo no se notaba. Se corrigió para conservar el valor y se agregó la prueba del caso.
+- **Pruebas:** 30 en `tests/test_nucleo.py` (11 normales, 10 límite y 9 de excepción), con `unittest`. Comando: `.venv\Scripts\python.exe -m unittest discover -s tests -v`.
+- **Notebook F3** (`F3/F3_Nucleo_Eficiencia_POO.ipynb`): arquitectura generada desde el código, clases y principios, pipeline y patrones, división sin fuga de datos, equivalencia, mediciones con su gráfico (`docs/figuras/f3_fusion_crecimiento.png`), pruebas, `docs/metadatos_fase3.json` y el contrato con la Fase 4 (`data/processed/diccionario_f3.csv` y `parametros_f3.csv`, armados con un segundo observador del pipeline).
+- **Limitación declarada:** 5.320 incidencias sin duración válida (5.318 abiertas al exportar y 2 negativas). La mediana imputada se usa solo en el conjunto para modelos; la tabla de recurrencia usa las fechas reales y deja las abiertas aparte.
+- **Enfoque descartado:**
+  - **una clase `Preprocesador` que hiciera todo:** juntaba 15 pasos en una sola clase, con baja cohesión, y no permitía medir ni probar cada paso por separado;
+  - **convertir todas las funciones en clases:** la mayoría no aprende nada; serían clases sin estado, que la guía desaconseja.
 
 ---
 
@@ -322,19 +342,30 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `e6efd34` | data: regenera los conjuntos procesados con la tabla por sitio | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
 | `8d41e3e` | docs: registra el cambio a mnemónicos reales y el conteo por sitio | Paso 19 de esta bitácora y bitácora de decisiones | 5. Evidencias | 7 Documentación del proceso |
 | `ebad4a5` | fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales | Notebooks ejecutados y guardados, `data/processed` y `docs/` de esa ejecución | 3 y 4. Notebooks F1 y F2 | 12 y 13 Notebooks · 5 Reproducibilidad |
-| `b172f94` | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
+| `229e1a8` | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
 | (pull request) | Merge de f2-pipeline en main | Integración de la Fase 2 | 2. Repositorio | 6 Control de versiones (ramas) · 8 Repositorio |
-| `25da47f` | docs: registra la prueba desde cero del repositorio | Paso 21 de esta bitácora | 5. Evidencias de trazabilidad | 5 Reproducibilidad · 7 Documentación |
-| `ead6bcc` | docs: reescribe las restricciones del proyecto en F1 | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 · 1. Informe | 3 Problemática · 12 Notebook F1 |
-| `bd1c6c6` | feat: F2 cuenta solo los minutos de octubre para el uptime | Notebook F2 ejecutado, figuras, metadatos y bitácora de decisiones | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento |
-| `b99a974` | data: regenera la tabla de recurrencia con el corte al 31-10 | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
-| `c3fc0d0` | docs: registra las restricciones nuevas y el corte al 31-10 | Paso 22 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
-| `26eb864` | fix: corrige textos de F1, F2 y el mapa según la auditoría | Notebooks F1 y F2 ejecutados, README, `docs/` y mapa | 3 y 4. Notebooks · 1. Informe | 12 y 13 Notebooks · 14 Vinculación · 7 Documentación |
-| `17fe776` | docs: registra las correcciones de la auditoría | Paso 23 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
-| `96ec463` | fix: deja en requirements.txt solo las librerías del proyecto | 6 librerías con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad |
-| `60d03f8` | feat: prueba la instalación en Linux, macOS y Windows con GitHub Actions | `.github/workflows/instalacion.yml` | 2. Repositorio · 5. Evidencias | 5 Reproducibilidad · 6 Control de versiones |
-| `4d89856` | docs: registra el repositorio privado y las dependencias del proyecto | Paso 24 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
-| `e26718b` | Merge pull request #1 from edgararciav-cpu/f3-dependencias | Integración del componente de dependencias | 2. Repositorio | 6 Control de versiones (ramas) |
+| `7675ef7` | docs: registra la prueba desde cero del repositorio | Paso 21 de esta bitácora | 5. Evidencias de trazabilidad | 5 Reproducibilidad · 7 Documentación |
+| `b90ce57` | docs: reescribe las restricciones del proyecto en F1 | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 · 1. Informe | 3 Problemática · 12 Notebook F1 |
+| `011dd44` | feat: F2 cuenta solo los minutos de octubre para el uptime | Notebook F2 ejecutado, figuras, metadatos y bitácora de decisiones | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento |
+| `16f936e` | data: regenera la tabla de recurrencia con el corte al 31-10 | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
+| `737cc2b` | docs: registra las restricciones nuevas y el corte al 31-10 | Paso 22 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| `cf41653` | fix: corrige textos de F1, F2 y el mapa según la auditoría | Notebooks F1 y F2 ejecutados, README, `docs/` y mapa | 3 y 4. Notebooks · 1. Informe | 12 y 13 Notebooks · 14 Vinculación · 7 Documentación |
+| `2977d93` | docs: registra las correcciones de la auditoría | Paso 23 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| `ee532d1` | fix: deja en requirements.txt solo las librerías del proyecto | 6 librerías con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad |
+| `80f8f94` | feat: prueba la instalación en Linux, macOS y Windows con GitHub Actions | `.github/workflows/instalacion.yml` | 2. Repositorio · 5. Evidencias | 5 Reproducibilidad · 6 Control de versiones |
+| `e6e23da` | docs: registra el repositorio privado y las dependencias del proyecto | Paso 24 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| (pull request #1) | Merge pull request #1 from edgararciav-cpu/f3-dependencias | Integración del componente de dependencias | 2. Repositorio | 6 Control de versiones (ramas) |
+| `005bbc5` | fix: codifica los sitios y omite el texto libre en el anonimizador | `scripts/anonimizar_incidencias.py` y `data/raw` con códigos | S2 · IV Repositorio | Confidencialidad pedida en la retroalimentación |
+| `fc5cdaa` | docs: describe los sitios como códigos en el módulo y en el mapa | `src/utilidades.py` y mapa conceptual | S2 · III.b Documentación | Confidencialidad |
+| `d1beb38` | feat: F1 y F2 ejecutados con los sitios codificados | Notebooks, `data/processed` y `docs/` | S2 · V Notebooks | Reproducibilidad |
+| `56de100` | docs: registra la confidencialidad de los datos y los hashes nuevos | Paso 25 y `docs/equivalencia_commits_reescritura.csv` | S2 · IV Repositorio | Trazabilidad |
+| `a9f037b` | feat: traslada a src las funciones de F2 que no aprenden de los datos | `src/__init__.py`, `carga.py`, `limpieza.py` | S2 · II.a Codificación | II.e Diseño estructurado |
+| `d4a89cc` | feat: clase base Transformador y clases que aprenden de los datos | `src/transformadores.py` | S2 · III.a POO | II.b Preprocesamiento |
+| `56afc75` | feat: pipeline que ejecuta la Fase 2 en una llamada, con bitácora observadora | `src/pipeline.py` | S2 · III.a POO · III.b Patrones | II.b Preprocesamiento |
+| `292cf73` | feat: medición de tiempo y memoria y fusión de intervalos iterativa | `src/medicion.py`, `src/utilidades.py` | S2 · II.d Eficiencia | II.e Recursividad |
+| `8bd7787` | test: pruebas normales, límite y de excepción, y equivalencia con la Fase 2 | `tests/test_nucleo.py` | S2 · II.c Validación | V Notebooks |
+| `41cd99b` | perf: vacíos vectorizados y fusión iterativa por defecto, según la medición | `src/limpieza.py`, `src/utilidades.py`, pruebas | S2 · II.d Eficiencia | La medición cambia la decisión |
+| `f550374` | fix: UnificadorVariantes conserva los valores que no vio al ajustar | `src/transformadores.py` y su prueba | S2 · II.c Validación | III.a POO (ajustar/transformar) |
 
 Convención de prefijos:
 
@@ -345,3 +376,4 @@ Convención de prefijos:
 | `feat:` | algo nuevo que hace funcionar el proyecto |
 | `fix:` | corrección |
 | `test:` | pruebas |
+| `perf:` | cambio de implementación justificado por una medición |

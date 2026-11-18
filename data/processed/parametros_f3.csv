@@ -1,0 +1,16 @@
+orden,paso,clase,aprendido
+1,PasoFijo(limpiar_nombres),PasoFijo,no aprende: función fija
+2,PasoFijo(reparar_texto),PasoFijo,no aprende: función fija
+3,PasoFijo(unificar_vacios),PasoFijo,no aprende: función fija
+4,UnificadorVariantes,UnificadorVariantes,"37 columnas categóricas, 1167 formas aprendidas"
+5,EliminadorCasiVacias,EliminadorCasiVacias,"elimina: tramo_afectado, horario_posible_degradacion, etr, descripcion_tx_1, proveedor_tx_2, codigo_servicio_tx_2, descripcion_tx_2, proveedor_tx_3, codigo_servicio_tx_3, descripcion_tx_3, proveedor_tx_4, codigo_servicio_tx_4, descripcion_tx_4, proveedor_tx_5, codigo_servicio_tx_5, descripcion_tx_5, tipo_incidencia_gmi, incidenca_gmi, causa_raiz_gmi, codigo_de_servicio"
+6,PasoFijo(convertir_tipos),PasoFijo,no aprende: función fija
+7,"ImputadorMedianaGrupo(duracion_min, tipo_incidencia_noc, criticidad)",ImputadorMedianaGrupo,medianas de 50 grupos; general 73.7 min
+8,PasoFijo(derivar_variables),PasoFijo,no aprende: función fija
+9,PasoFijo(codificar_ordinales),PasoFijo,no aprende: función fija
+10,"CodificadorNominal(tipo_incidencia_noc, estado, region_principal)",CodificadorNominal,"26 columnas: tipo_incidencia_noc_energia, tipo_incidencia_noc_incidencia_automatica, tipo_incidencia_noc_problema_rf, tipo_incidencia_noc_tx_propia, tipo_incidencia_noc_tx_proveedor, tipo_incidencia_noc_infrequent_sklearn, estado_abierta, estado_cerrada, estado_pendiente_automatico, estado_infrequent_sklearn, region_principal_i, region_principal_ii, region_principal_iii, region_principal_iv, region_principal_ix, region_principal_rm, region_principal_v, region_principal_vi, region_principal_vii, region_principal_viii, region_principal_x, region_principal_xii, region_principal_xiv, region_principal_xv, region_principal_xvi, region_principal_infrequent_sklearn"
+11,CodificadorNominal(tipo_enlace),CodificadorNominal,"6 columnas: tipo_enlace_fibra_propia_fop, tipo_enlace_fibra_proveedor, tipo_enlace_microondas, tipo_enlace_otra_tx, tipo_enlace_satelital, tipo_enlace_sin_dato"
+12,PasoFijo(log_duracion_modelo),PasoFijo,no aprende: función fija
+13,"Escalador(duracion_log_modelo, StandardScaler)",Escalador,"StandardScaler {'mean_': 4.2289, 'scale_': 2.0383}"
+14,"Escalador(q_sitios, MinMaxScaler)",Escalador,"MinMaxScaler {'scale_': 0.0141, 'data_min_': 1.0, 'data_max_': 72.0}"
+15,"Escalador(tiempo_respuesta_h, MinMaxScaler)",Escalador,"MinMaxScaler {'scale_': 0.0208, 'data_min_': 0.0, 'data_max_': 48.0}"

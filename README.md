@@ -32,11 +32,32 @@ El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transm
 
 ```
 data/raw/        datos de entrada anonimizados (no se modifican)
-data/processed/  resultado de la limpieza y transformación (F2)
-docs/            diccionario de variables, bitácora, metadatos y vinculación con el mapa
-src/             módulo utilidades.py (funciones y clases reutilizables)
+data/processed/  resultado de la limpieza y transformación (F2; F3 lo reproduce idéntico)
+docs/            diccionario de variables, bitácoras, metadatos, mediciones y vinculación con el mapa
+src/             código del proyecto (ver «Arquitectura del código»)
+tests/           pruebas de casos normales, límite y excepciones (unittest)
 scripts/         preparación previa de los datos (anonimización)
 F1/ F2/ F3/ F4/  un notebook por fase
+```
+
+## Arquitectura del código (Fase 3)
+
+| Módulo | Responsabilidad | Usa a |
+|---|---|---|
+| `src/utilidades.py` | Funciones base de las Fases 1 y 2: texto, duraciones, sitios y fusión de intervalos (recursiva e iterativa) | — |
+| `src/carga.py` | Lee `data/raw` y verifica que sea el archivo que registró la Fase 1 | utilidades |
+| `src/limpieza.py` | Operaciones que **no** aprenden de los datos (funciones) | utilidades |
+| `src/transformadores.py` | Pasos que **sí** aprenden de los datos: clase base `Transformador` y cinco clases hijas, más el adaptador `PasoFijo` | utilidades |
+| `src/pipeline.py` | `Pipeline` que encadena los 15 pasos, `Bitacora` (patrón Observer) y `ejecutar`, que repite la Fase 2 con una llamada | carga, limpieza, transformadores |
+| `src/medicion.py` | Compara implementaciones en tiempo (`timeit`) y memoria (`tracemalloc`) | — |
+
+Patrones de diseño: **Observer** (la bitácora registra cada paso sin que el paso lo sepa) y **Strategy** (el `Escalador` recibe la forma de escalar como parámetro).
+
+```python
+from src.pipeline import construir_pipeline, ejecutar
+resultado = ejecutar(RAIZ)                                   # la Fase 2 completa
+tubo = construir_pipeline().ajustar(entrenamiento)          # Fase 4: ajustar solo con entrenamiento
+prueba_lista = tubo.transformar(prueba)
 ```
 
 ## Cómo ejecutar el proyecto desde cero (Windows, PowerShell)
@@ -50,7 +71,13 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m jupyter lab
 ```
 
-En JupyterLab, abrir los notebooks en orden (`F1/F1_Definicion.ipynb`, luego `F2/F2_Preprocesamiento.ipynb`), elegir el kernel **Python (mcdi500)** y ejecutar *Kernel → Restart Kernel and Run All Cells*. En macOS o Linux se usa `.venv/bin/python` en lugar de `.\.venv\Scripts\python.exe`.
+En JupyterLab, abrir los notebooks en orden (`F1/F1_Definicion.ipynb`, `F2/F2_Preprocesamiento.ipynb` y `F3/F3_Nucleo_Eficiencia_POO.ipynb`), elegir el kernel **Python (mcdi500)** y ejecutar *Kernel → Restart Kernel and Run All Cells*. En macOS o Linux se usa `.venv/bin/python` en lugar de `.\.venv\Scripts\python.exe`.
+
+Las pruebas se ejecutan con un solo comando desde la raíz del proyecto (unittest viene con Python):
+
+```
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+```
 
 ## Reproducibilidad
 
@@ -59,10 +86,11 @@ En JupyterLab, abrir los notebooks en orden (`F1/F1_Definicion.ipynb`, luego `F2
 - La instalación se prueba en Linux, macOS y Windows con GitHub Actions (`.github/workflows/instalacion.yml`) en cada push.
 - Semilla aleatoria: 42. Rutas relativas a la raíz del proyecto (`localizar_raiz`).
 - F1 verifica el entorno en su sección 2: se detiene si el kernel no es el del proyecto e informa las versiones que no coincidan.
+- F3 comprueba que el pipeline con clases produce los mismos archivos que F2, byte a byte (huella SHA-256); la prueba `test_normal_mismos_archivos_que_la_fase_2` lo repite en cada ejecución de las pruebas.
 
 ## Convención de commits
 
-`docs:` documentación · `data:` datos · `feat:` código nuevo · `fix:` corrección · `test:` pruebas. El historial con el detalle de cada commit y el criterio de la rúbrica que respalda está en `docs/bitacora_proceso.md`.
+`docs:` documentación · `data:` datos · `feat:` código nuevo · `fix:` corrección · `test:` pruebas · `perf:` cambio por rendimiento medido. El historial con el detalle de cada commit y el criterio de la rúbrica que respalda está en `docs/bitacora_proceso.md`.
 
 ## Uso de herramientas de inteligencia artificial
 
