@@ -129,7 +129,8 @@ class UnificadorVariantes(Transformador):
 
     def _unificar(self, serie, forma_frecuente):
         """Reescribe cada valor con la forma aprendida. Un valor que no se vio al ajustar se conserva tal cual."""
-        return self._llave(serie).map(forma_frecuente).fillna(serie).where(serie.notna())
+        aprendida = self._llave(serie).map(forma_frecuente)
+        return aprendida.where(aprendida.notna(), serie).where(serie.notna())
 
     def aplicar(self, df):
         for col, forma_frecuente in self._parametros["formas"].items():

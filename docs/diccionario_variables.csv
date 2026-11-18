@@ -21,7 +21,7 @@ fecha_cierre_de_incidencia,Fecha Cierre de incidencia,fecha,Normalización de la
 fecha_de_cierre_de_ticket,Fecha de Cierre de ticket,fecha,Cierre del ticket,str,3910,27.23
 tiempo_de_duracion_de_la_incidencia,Tiempo de duraciÃ³n de la incidencia,continua,Duración h:mm:ss; vacía si la incidencia no se ha normalizado,str,9822,24.69
 tiempo_de_duracion_del_ticket,Tiempo de duraciÃ³n del ticket,continua,Duración del ticket h:mm:ss,str,4173,27.23
-codigo_de_servicio,CÃ³digo de Servicio,identificador,"Código de servicio (suministro eléctrico, no es RUT)",str,1090,89.49
+codigo_de_servicio,CÃ³digo de Servicio,identificador,"Código de servicio (suministro eléctrico, no es RUT)",str,1089,89.49
 tramo_afectado,Tramo Afectado,texto,Tramo de transmisión afectado; casi siempre NA o no aplica,str,5,98.38
 comunas,Comunas,alta cardinalidad,Comunas afectadas (puede listar varias),str,519,0.0
 regiones,Regiones,nominal,Regiones afectadas en números romanos (puede listar varias),str,29,0.24

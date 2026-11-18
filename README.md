@@ -11,19 +11,20 @@ El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transm
 
 **Pregunta:** ¿Qué sitios de la red concentran incidencias recurrentes de transmisión (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y qué tipo de enlace o proveedor las origina, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime?
 
-**Objetivo general:** Construir un flujo reproducible que transforme el exporte de incidencias en un conjunto limpio y validado, y en una tabla de recurrencia por sitio, apta para priorizar las fallas de transmisión.
+**Objetivo general:** Identificar los sitios con fallas recurrentes de transmisión en octubre de 2026, cuantificar su tiempo fuera de servicio y determinar qué tipo de enlace y qué proveedor las originan, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime.
 
 **Objetivos específicos:**
 
-1. Convertir la duración (texto h:mm:ss) a minutos, tratar las duraciones inválidas y comparar su distribución y sus atípicos entre las fallas de transmisión y el resto.
-2. Clasificar cada falla de transmisión según el tipo de enlace (microondas, fibra propia FOP, fibra de proveedor o satelital) y marcar si afecta el uptime según su criticidad (P1, P2, P3 o P3E).
-3. Comparar al menos tres métodos para tratar las duraciones vacías, considerando que corresponden a incidencias aún no normalizadas.
-4. Corregir la codificación del texto, unificar las categorías escritas de varias formas y codificar la criticidad y el impacto con orden declarado.
-5. Entregar un conjunto validado con pruebas (assert) y una tabla de recurrencia por sitio (fallas con pérdida de servicio y minutos fuera de servicio acumulados), lista para las Fases 3 y 4.
+1. Cuantificar, por sitio, las fallas de transmisión con pérdida de servicio (P1, P2, P3 y P3E) y los minutos que estuvo fuera de servicio en octubre, sin contar dos veces el tiempo de incidencias que se traslapan.
+2. Identificar los sitios con fallas recurrentes (dos o más en el mes) y medir qué parte del tiempo fuera de servicio por transmisión concentran.
+3. Determinar qué tipo de enlace (microondas, fibra propia FOP, fibra de proveedor o satelital) y qué proveedor de transmisión originan más fallas y más minutos fuera de servicio.
+4. Ordenar los sitios recurrentes en una lista de prioridad para escalar al área de transmisión o al proveedor, con su enlace, su proveedor y su región.
+
+**Metodología:** Los objetivos se responden con un flujo reproducible en cuatro fases: F1 define el problema y mide la calidad de los datos sin corregirlos; F2 limpia, transforma y arma la tabla de recurrencia por sitio; F3 lleva ese pipeline a módulos y clases, verifica que el resultado no cambie y mide su eficiencia; F4 visualiza y comunica los resultados.
 
 ## Datos
 
-- **Origen:** Exporte interno del sistema de tickets del NOC de WOM (operador móvil, Chile). Uso autorizado por escrito por la jefatura; el docente está informado.
+- **Origen:** Exporte interno del sistema de tickets del NOC de WOM (operador móvil, Chile). Los sitios se reemplazaron por códigos y el texto libre se omitió; el docente está informado.
 - **Período:** 2026-10-01 a 2026-10-31 (cierres hasta 2026-11-10).
 - **Archivo:** `data/raw/incidencias_oct2026_anon.csv` (21.542 filas × 49 columnas, separador `;`).
 - **Anonimización:** scripts/anonimizar_incidencias.py: personas, tickets de proveedor y códigos de servicio TX reemplazados por códigos; los sitios van con un código (SIT_0001, ...) y el texto libre (Titulo y Detalle) se omite. El exporte original no forma parte del repositorio.

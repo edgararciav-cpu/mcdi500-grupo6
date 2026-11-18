@@ -1,7 +1,8 @@
 """Carga del conjunto de datos de entrada (data/raw).
 
-Una sola responsabilidad: leer el archivo siempre de la misma forma y comprobar que es el mismo que
-registró la Fase 1 (forma y huella SHA-256). Si algo no calza, se detiene antes de procesar nada.
+Una sola responsabilidad: leer el archivo siempre de la misma forma y comprobar que tiene la forma (filas y
+columnas) que registró la Fase 1. Devuelve también su huella SHA-256, para que quien lo use la compare con la de
+otra fase. Si algo no calza, se detiene antes de procesar nada.
 """
 import json
 from pathlib import Path
