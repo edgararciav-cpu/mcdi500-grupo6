@@ -244,6 +244,30 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - **Consistencia:** "nemónico" en todo el proyecto; la bitácora de decisiones dice cp1252, igual que el paso 18; las listas de verificación de F1 y F2 quedan marcadas; la tabla de commits de esta bitácora muestra el hash de cada commit.
 - **Lo que no se cambia:** todo el historial es del 11-11 (no se reescribe la historia para repartirlo) y los mensajes de commits antiguos dicen "mnemónicos".
 
+# Fase 3 · Sumativa 2
+
+## Paso 24 · Repositorio privado y dependencias solo del proyecto (13-11-2026)
+
+- **Retroalimentación de la Sumativa 1 (93 de 99):** el profesor pidió cinco correcciones para la Fase 3:
+  - resolver la publicación de los datos;
+  - objetivos analíticos;
+  - dependencias que se instalen en cualquier sistema;
+  - commits repartidos en la semana;
+  - declarar la limitación de las duraciones imputadas.
+- **Datos del operador:** el repositorio quedó **privado** el 13-11 y se compartirá con el docente. El 15-11 se decidió cambiar los sitios por códigos y limpiar el historial (paso 25).
+- **Dependencias.** Antes, `requirements.txt` era un volcado de 105 paquetes (`pip freeze`) con `pywinpty`, que solo existe en Windows, así que la instalación fallaba en macOS y Linux. Ahora declara solo las 6 librerías que el proyecto importa o usa para ejecutar los notebooks (pandas, NumPy, scikit-learn, matplotlib, JupyterLab e ipykernel), con versión fija. Las dependencias de esas librerías las resuelve pip según el sistema.
+- **Cómo se verificó:**
+  - `uv pip compile` resolvió el archivo para Linux (x86_64), macOS (arm64) y Windows solo con paquetes compilados. `pywinpty` aparece únicamente en Windows.
+  - Se agregó `.github/workflows/instalacion.yml`: en cada push, GitHub instala `requirements.txt` en Ubuntu, macOS y Windows y compara las versiones importadas con las declaradas.
+- **F1, sección 2** (se aplica en el paso 25, cuando se vuelven a ejecutar los notebooks):
+  - lee `requirements.txt` sin contar los comentarios;
+  - comprueba que la lista verificada sea la misma que la declarada;
+  - si una versión no coincide, **informa la diferencia y sigue**, para que se pueda revisar el resto del notebook (pedido del profesor);
+  - solo se detiene si el kernel no es el del proyecto.
+
+  Probado en una copia: 6 librerías con la versión declarada y "8 de 8". El F1 actual también funciona con el archivo nuevo, porque sus 6 librerías clave están declaradas.
+- **Enfoque descartado:** generar `requirements.txt` con `pip freeze`. Fija también las dependencias propias de cada sistema operativo, y por eso no se puede instalar en otro.
+
 ---
 
 ## Historial de commits y criterio que respalda cada uno
