@@ -6,7 +6,7 @@ Generada por `F2/F2_Preprocesamiento.ipynb`. Una fila por decisión, con su moti
 |---|---|---|---|
 | 2.3 | Conservar las filas con TT repetido | un TT agrupa varias caídas del mismo elemento en fechas distintas; la clave TT + elemento + inicio es única | 0 duplicados exactos; 1081 TT en 2708 filas conservadas |
 | 2.4 | Conservar las duraciones atípicas (IQR) | son caídas largas reales, en buena parte P3E; son las que bajan el uptime | 2.348 atípicas sobre 892 min (14.5 %) |
-| 3.2 | Reparar la doble codificación del texto | el exporte guardó el UTF-8 como si fuera cp1252 (Windows) | 43.811 celdas con tildes rotas → 0 |
+| 3.2 | Reparar la doble codificación del texto | el exporte guardó el UTF-8 como si fuera cp1252 (Windows) | 43.634 celdas con tildes rotas → 0 |
 | 3.3 | Unificar vacíos y variantes de escritura | NA, N/A, na, no aplica y 0000-00-00 significan lo mismo; Pendiente y PENDIENTE también | 29.667 marcadores → NaN; 252 valores reescritos en 2 columnas |
 | 3.4 | Quitar columnas casi vacías y fuera de alcance | más de 95 % sin dato, o pertenecen a la clasificación GMI o al foco de energía | 49 → 29 columnas (16 casi vacías, 4 fuera de alcance) |
 | 3.5 | Convertir fechas, duración, conteos y banderas a su tipo | el exporte entrega todo como texto | duración en minutos; 2 duraciones inválidas → NaN con bandera cierre_invalido |

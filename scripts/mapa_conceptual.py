@@ -47,7 +47,8 @@ NODOS = {
     "f4":    ("F4 · Visualización\ny comunicación", "flujo reproducible", C3, F[5], True),
     "rama":  ("Rama f2-pipeline\n+ pull request", "organización del repositorio", C3, F[6], False),
 
-    "anon":  ("Anonimizar personas\n(sitios con nemónico real)", "procesos", C4, F[1], False),
+    "anon":  ("Anonimizar personas y sitios\n(códigos; texto libre omitido)", "procesos", C4, F[1], False),
+    "d_conf": ("Datos del operador: sitios\ncon código y repo privado", "decisiones técnicas", C5, F[1], False),
     "medir": ("Medir calidad sin corregir\n(tildes, vacíos, TT)", "procesos", C4, F[2], False),
     "limp":  ("Limpiar · transformar\n· escalar", "procesos", C4, F[3], False),
     "rec":   ("Recurrencia por sitio\n(fusión recursiva)", "procesos", C4, F[4], False),
@@ -65,7 +66,7 @@ ARISTAS = [
     ("raw", "f1", "alimenta"), ("f1", "f2", "define el alcance de"), ("f2", "proc", "produce"),
     ("proc", "f3", "entrada de"), ("proc", "f4", "entrada de"),
     ("nb", "f1", "ordena"), ("nb", "test", "incluye"), ("test", "f2", "valida"),
-    ("anon", "raw", "genera"), ("anon", "medir", "luego"), ("medir", "limp", "orienta"), ("limp", "rec", "prepara"),
+    ("anon", "raw", "genera"), ("d_conf", "anon", "exige"), ("anon", "medir", "luego"), ("medir", "limp", "orienta"), ("limp", "rec", "prepara"),
     ("rec", "proc", "escribe"),
     ("d_na", "limp", "guía"), ("d_esc", "limp", "guía"), ("d_up", "rec", "filtra"), ("d_sit", "rec", "define la unidad de"),
 ]

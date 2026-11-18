@@ -135,17 +135,17 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 
 - **Qué pide:** criterio 9 (codificación con funciones, parámetros y docstring) y modularidad o POO.
 - **Qué se hizo:** un módulo con 4 funciones (`reparar_texto`, `normalizar_nombre`, `normalizar_columnas` y `duracion_a_minutos`), la clase `ConjuntoDatos` (con `existe`, `cargar` y `resumen`) y la excepción propia `ProyectoError`.
-- **Resultado:** commit `9f9d7f5`. Las pruebas normal, límite y excepción están en la sección 4.1 del notebook F1.
+- **Resultado:** commit `0042548`. Las pruebas normal, límite y excepción están en la sección 4.1 del notebook F1.
 
 ## Paso 15 · Validación del conjunto con el programa del curso (11-11-2026, 07:03)
 
 - **Qué pide:** paso 3 de la lámina 67, validar el conjunto con `validar_dataset.py`.
-- **Resultado:** `docs/validacion_dataset.md` dice CUMPLE (21.542 × 49). Commit `e6e738d`.
+- **Resultado:** `docs/validacion_dataset.md` dice CUMPLE (21.542 × 49). Commit `8a302df`.
 
 ## Paso 16 · Notebook F1 ejecutado (11-11-2026, 07:20)
 
 - **Qué se hizo:** `F1/F1_Definicion.ipynb` con 11 secciones, igual al modelo del docente: definición, entorno, estructura, módulo, ficha y diccionario, control de versiones, validación, vinculación con el mapa, persistencia, conclusiones y verificación.
-- **Resultado:** ejecutado con *Restart & Run All*, numeración continua, 0 errores, 0 advertencias y "Fase 1 validada: 8 de 8". Commit `abd3693`.
+- **Resultado:** ejecutado con *Restart & Run All*, numeración continua, 0 errores, 0 advertencias y "Fase 1 validada: 8 de 8". Commit `293cccd`.
 
 ## Paso 17 · Cambio de la pregunta al foco en transmisión (11-11-2026)
 
@@ -167,7 +167,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - La mediana de la P3E es 3.188 minutos (unas 53 horas), contra 247 de la P3.
   - La tabla de recurrencia de la Fase 2 se construye solo con las fallas con pérdida de servicio.
 - **Hallazgo nuevo para la Fase 2:** 2 duraciones negativas (`-498136:-36:-45` y `-497906:-41:00`) en incidencias cerradas P4. Se cuentan en la sección 5.3 y se tratan en la Fase 2.
-- **Incidencia de los commits `348231e` y `376d53d` (ver paso 18 para la Fase 2):** los dos guardaron el notebook sin las salidas, porque el commit se hizo antes de ejecutarlo y guardarlo. Se corrigió en el commit siguiente. **Orden correcto:** ejecutar (*Restart & Run All*), guardar (Ctrl+S) y recién ahí `git add` y `git commit`.
+- **Incidencia de los commits `814256b` y `d56de0e` (ver paso 18 para la Fase 2):** los dos guardaron el notebook sin las salidas, porque el commit se hizo antes de ejecutarlo y guardarlo. Se corrigió en el commit siguiente. **Orden correcto:** ejecutar (*Restart & Run All*), guardar (Ctrl+S) y recién ahí `git add` y `git commit`.
 
 ## Paso 18 · Pipeline de la Fase 2 en la rama `f2-pipeline` (11-11-2026)
 
@@ -197,7 +197,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
   - **Orden ordinal:** P4 < P2 Redundancia < P2R Degradación < P3 = P3E < P2 < P1. P3 y P3E comparten nivel, y la duración las distingue con la bandera `es_extendida`.
   - **Satelital:** el proveedor es TGS Starlink. El exporte lo deja vacío en las 15 fallas satelitales.
 - **Corrección de enfoque:** antes de esto se habían supuesto dos reglas del negocio, el proveedor satelital como "Sin dato" y la P3E como menos grave que la P2 Redundancia. Desde ahora toda regla del NOC se consulta antes de aplicarla.
-- **Incidencia repetida:** los commits `e8a457c` y `6431ae9` volvieron a guardar los notebooks sin salidas, porque se hicieron antes de ejecutarlos en Jupyter. Desde aquí se revisa en el disco que los notebooks tengan la numeración completa **antes** de cada commit. Se corrigió en el commit `fix:` siguiente.
+- **Incidencia repetida:** los commits `69237c2` y `1c94a0f` volvieron a guardar los notebooks sin salidas, porque se hicieron antes de ejecutarlos en Jupyter. Desde aquí se revisa en el disco que los notebooks tengan la numeración completa **antes** de cada commit. Se corrigió en el commit `fix:` siguiente.
 - **Impacto en el repositorio:** se regeneró `data/raw/incidencias_oct2026_anon.csv` con el anonimizador ajustado y se volvió a correr `validar_dataset.py`, que sigue diciendo CUMPLE. F1 y F2 se ejecutaron de nuevo, y la tabla de recurrencia ahora es `recurrencia_tx_por_sitio.csv`. F1 da 8 de 8 y F2 da 17 de 17 reglas de integridad.
 
 ## Paso 20 · Mapa conceptual (11-11-2026)
@@ -213,7 +213,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 ## Paso 21 · Prueba desde cero (11-11-2026, 10:54)
 
 - **Qué pide:** el docente recomienda clonar el repositorio en otra carpeta y seguir el README desde cero antes de entregar. Es la evidencia del criterio 5: estabilidad en cualquier equipo.
-- **Qué se hizo:** se clonó `main` (merge `350fa53`) en `C:\Users\edgar\MCDI500\prueba-desde-cero`, con un entorno virtual nuevo instalado desde `requirements.txt`, y se ejecutaron F1 y F2 completos.
+- **Qué se hizo:** se clonó `main` (merge `b100d99`) en `C:\Users\edgar\MCDI500\prueba-desde-cero`, con un entorno virtual nuevo instalado desde `requirements.txt`, y se ejecutaron F1 y F2 completos.
 - **Resultado:**
   - F1: 0 errores, 0 advertencias y "Fase 1 validada: 8 de 8".
   - F2: 0 errores, 0 advertencias y "17 de 17 reglas de integridad".
@@ -234,7 +234,7 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 
 ## Paso 23 · Correcciones de la auditoría independiente (11-11-2026, tarde)
 
-- **Qué se hizo:** antes de entregar, un revisor independiente recorrió los 15 criterios de la rúbrica y comparó cada cifra del informe con los notebooks, `docs/`, `data/processed/` y `git log`. Además clonó el repositorio desde GitHub (commit `88effca`), ejecutó F1 y F2 y obtuvo los tres archivos de `data/processed` idénticos byte a byte.
+- **Qué se hizo:** antes de entregar, un revisor independiente recorrió los 15 criterios de la rúbrica y comparó cada cifra del informe con los notebooks, `docs/`, `data/processed/` y `git log`. Además clonó el repositorio desde GitHub (commit `c3fc0d0`), ejecutó F1 y F2 y obtuvo los tres archivos de `data/processed` idénticos byte a byte.
 - **Lo que se corrigió:**
   - **Duración de la transmisión:** el informe decía que las fallas de transmisión son las que más duran, y no es así: tipos como Hardware o Sitio Vandalizado tienen medianas mayores. Ahora dice que su mediana supera las 10 horas (605 min) frente al resto, y la tabla de atípicos de F2 (sección 2.4) muestra la mediana de cada grupo para que la cifra se pueda verificar.
   - **P3E:** se quitó la definición "P3 que dura más de 24 h", que no calzaba con la duración de la incidencia (112 de 674 P3E duran 24 h o menos). Regla del NOC confirmada por Edgar: la P3E se trata igual que una P3.
@@ -267,6 +267,32 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 
   Probado en una copia: 6 librerías con la versión declarada y "8 de 8". El F1 actual también funciona con el archivo nuevo, porque sus 6 librerías clave están declaradas.
 - **Enfoque descartado:** generar `requirements.txt` con `pip freeze`. Fija también las dependencias propias de cada sistema operativo, y por eso no se puede instalar en otro.
+- **Integración:** rama `f3-dependencias` (commits `96ec463`, `60d03f8` y `4d89856`), integrada a `main` con el pull request #1 (`e26718b`). Las verificaciones de GitHub Actions pasaron en Ubuntu, macOS y Windows.
+
+## Paso 25 · Sitios con código, texto libre omitido e historial limpio (15-11-2026)
+
+- **Qué pidió el profesor:** el repositorio publicaba datos operativos internos del operador, con los identificadores reales de los sitios. Había que adjuntar una autorización escrita o reemplazar los sitios por códigos y limpiar el historial. Edgar decidió codificar sin esperar la autorización.
+- **Anonimizador** (`scripts/anonimizar_incidencias.py`):
+  - cada sitio de `Network Element` pasa a un código `SIT_0001`, `SIT_0002`…, en orden de aparición (3.879 sitios). En las celdas con varios sitios, cada uno recibe su código y se conservan los separadores de dos espacios;
+  - `Titulo` y `Detalle` pasan a «[texto omitido]», porque nombraban sitios, equipos (routers, radios) y tickets de terceros. Las celdas vacías y los marcadores de vacío se conservan, para que la medición de vacíos no cambie;
+  - la tabla de equivalencias sitio → código **no** está en el repositorio: el script la escribe solo si se le pasa una ruta, y queda en la carpeta local de preparación, para uso interno del NOC.
+- **Verificación del anonimizador:** con el exporte original solo cambian esas 3 columnas; las otras 46 son idénticas. La cantidad de sitios por celda coincide en las 21.542 filas, y la búsqueda final no encuentra ningún sitio real.
+- **Efecto en los resultados:** ninguno en el análisis. Siguen 559 sitios, 149 con 2 o más fallas, 21 con 3 o más, 19.029 minutos de noviembre descontados, "8 de 8" en F1 y "17 de 17" en F2. Solo cambian las celdas con tildes rotas, que bajan de 43.811 a 43.634, porque `Detalle` tenía muchas.
+- **Historial limpio:** se reescribieron los 31 commits con `git filter-repo`:
+  - en todas las versiones, los datos quedan con códigos;
+  - los notebooks antiguos pierden sus salidas, que mostraban sitios y texto libre;
+  - en los demás archivos, cada nombre real pasa a su código.
+
+  Las fechas, el autor y los mensajes se conservan. Se revisaron los 86 objetos del historial nuevo: 0 nombres reales, 0 fragmentos del texto libre original y 0 nombres de equipos. El repositorio de GitHub se borró y se creó de nuevo, porque el pull request de la Fase 2 seguía guardando los commits antiguos y esas referencias no se pueden borrar con un push.
+- **Hashes nuevos:** la reescritura cambió 30 de los 31 hashes; solo el primer commit (`c7469f7`) conserva el suyo. En esta bitácora ya están actualizados. `docs/equivalencia_commits_reescritura.csv` da la equivalencia, para leer el informe de la Sumativa 1, que cita los hashes antiguos.
+- **Código y textos:**
+  - `utilidades.separar_sitios` documenta su ejemplo con códigos y prueba el caso del espacio simple con un nombre ficticio («SITIO NORTE»);
+  - F1 y F2 describen los sitios como códigos;
+  - el mapa conceptual agrega la decisión técnica «Datos del operador: sitios con código y repo privado», que exige la anonimización (sugerencia del profesor).
+- **F1** se vuelve a ejecutar con la verificación de versiones del paso 24, que informa las diferencias sin detenerse.
+- **Enfoque descartado:**
+  - **codificar los sitios dentro del texto libre:** el texto también traía nombres de equipos y tickets de terceros que una lista de sitios no detecta;
+  - **force push sin borrar el repositorio:** dejaba los commits antiguos accesibles desde el pull request #1.
 
 ---
 
@@ -275,36 +301,40 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | Commit | Mensaje | Qué guarda | Producto del enunciado | Criterio de la rúbrica |
 |---|---|---|---|---|
 | `c7469f7` | docs: crea estructura inicial del proyecto | Carpetas F1 a F4, data, docs, src y scripts; `.gitignore`; README inicial | 2. Repositorio con carpetas F1 y F2 | 8 Repositorio GitHub · 6 Control de versiones |
-| `a1e40b8` | data: incorpora incidencias de octubre 2026 anonimizadas en raw | El conjunto de datos de entrada, ya anonimizado | 4. Obtención de datos (F2) | 10 Preprocesamiento (punto de partida) · 5 Reproducibilidad (los datos están en el repo) |
-| `b85a209` | docs: agrega bitácora del proceso y script de anonimización | Esta bitácora y el programa que preparó los datos | 5. Evidencias de trazabilidad | 7 Documentación del proceso · 11 Validación (verificación de la anonimización) |
-| `e005441` | feat: define el entorno reproducible con requirements.txt | Las 105 dependencias con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad técnica · 4 Herramientas científicas |
-| `cfceefa` | docs: registra el entorno reproducible y la relación de cada commit con la rúbrica | Pasos 11 a 13 de esta bitácora y esta tabla | 5. Evidencias de trazabilidad | 7 Documentación del proceso · 6 Control de versiones |
-| `9f9d7f5` | feat: agrega módulo utilidades con funciones, clase y excepción propia | `src/utilidades.py` | 3. Notebook F1 (código modular) | 9 Codificación · 12 Notebook F1 |
-| `e6e738d` | data: valida el conjunto con validar_dataset.py del curso | `validar_dataset.py` y `docs/validacion_dataset.md` | 4. Obtención de datos | 11 Validación · 3 Problemática (requisitos del dataset) |
-| `abd3693` | feat: notebook F1 con definición, entorno, ficha, diccionario y validación | Notebook F1, README generado y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática · 5 Reproducibilidad · 14 Vinculación con el mapa |
-| `348231e` | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
-| `376d53d` | docs: define el uptime por criticidad y guarda la ejecución de F1 | Criticidades que afectan el uptime y duraciones inválidas (el notebook quedó sin salidas) | 3. Notebook F1 · 5. Evidencias | 3 Problemática · 11 Validación |
-| `75e005f` | fix: guarda las salidas de la ejecución del notebook F1 | Notebook F1 ejecutado: numeración 1 a 22, 0 errores, 8 de 8 | 3. Notebook F1 | 12 Notebook F1 · 5 Reproducibilidad |
-| `9cd6c0d` | feat: agrega funciones del pipeline F2 a utilidades y repara la Ñ | `src/utilidades.py`: `huella_sha256`, `es_vacio`, `clasificar_enlace`, `fusionar_intervalos` (recursiva) y la corrección de `reparar_texto` | 4. Notebooks F2 (código) | 9 Codificación · RA2 recursión |
-| `e697114` | feat: notebook F2 con limpieza, transformación, escalamiento y validación | Notebook F2 ejecutado, figuras, metadatos y diccionario del modelo | 4. Notebooks F2 · 5. Evidencias | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
-| `70ae0b7` | data: guarda los conjuntos procesados y la tabla de recurrencia | `data/processed/` (3 archivos) | 4. Notebooks F2 (salida) | 10 Preprocesamiento · 5 Reproducibilidad |
-| `1a9c017` | docs: registra las decisiones y el proceso de la Fase 2 | `docs/bitacora_decisiones.md` y este paso 18 | 5. Evidencias de trazabilidad | 7 Documentación del proceso |
-| `ef65acf` | data: conserva los mnemónicos reales de los sitios en data/raw | Anonimizador ajustado, `data/raw` regenerado y validación del dataset | 4. Obtención de datos | 10 Preprocesamiento · 3 Problemática |
-| `6eb12ef` | feat: agrega separar_sitios para contar las fallas por sitio | `src/utilidades.py` | 4. Notebooks F2 (código) | 9 Codificación |
-| `e8a457c` | docs: F1 con mnemónicos reales, definición de criticidad y conteo por sitio | README y productos de `docs/` (el notebook quedó sin salidas; lo corrige `d0469be`) | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática |
-| `6431ae9` | feat: F2 cuenta la recurrencia por sitio con las reglas del NOC | Figuras y metadatos (el notebook quedó sin salidas; lo corrige `d0469be`) | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
-| `e2a8a60` | data: regenera los conjuntos procesados con la tabla por sitio | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
-| `0ca7500` | docs: registra el cambio a mnemónicos reales y el conteo por sitio | Paso 19 de esta bitácora y bitácora de decisiones | 5. Evidencias | 7 Documentación del proceso |
-| `d0469be` | fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales | Notebooks ejecutados y guardados, `data/processed` y `docs/` de esa ejecución | 3 y 4. Notebooks F1 y F2 | 12 y 13 Notebooks · 5 Reproducibilidad |
-| `db1ccd7` | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
+| `9a07d36` | data: incorpora incidencias de octubre 2026 anonimizadas en raw | El conjunto de datos de entrada, ya anonimizado | 4. Obtención de datos (F2) | 10 Preprocesamiento (punto de partida) · 5 Reproducibilidad (los datos están en el repo) |
+| `73ebe27` | docs: agrega bitácora del proceso y script de anonimización | Esta bitácora y el programa que preparó los datos | 5. Evidencias de trazabilidad | 7 Documentación del proceso · 11 Validación (verificación de la anonimización) |
+| `db429ec` | feat: define el entorno reproducible con requirements.txt | Las 105 dependencias con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad técnica · 4 Herramientas científicas |
+| `a286355` | docs: registra el entorno reproducible y la relación de cada commit con la rúbrica | Pasos 11 a 13 de esta bitácora y esta tabla | 5. Evidencias de trazabilidad | 7 Documentación del proceso · 6 Control de versiones |
+| `0042548` | feat: agrega módulo utilidades con funciones, clase y excepción propia | `src/utilidades.py` | 3. Notebook F1 (código modular) | 9 Codificación · 12 Notebook F1 |
+| `8a302df` | data: valida el conjunto con validar_dataset.py del curso | `validar_dataset.py` y `docs/validacion_dataset.md` | 4. Obtención de datos | 11 Validación · 3 Problemática (requisitos del dataset) |
+| `293cccd` | feat: notebook F1 con definición, entorno, ficha, diccionario y validación | Notebook F1, README generado y productos de `docs/` | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática · 5 Reproducibilidad · 14 Vinculación con el mapa |
+| `814256b` | docs: ajusta la problemática al foco en fallas de transmisión | Pregunta, objetivos y alcance nuevos; sección 5.5; README y bitácora | 1. Informe (problemática) · 3. Notebook F1 | 3 Problemática · 7 Documentación del proceso |
+| `d56de0e` | docs: define el uptime por criticidad y guarda la ejecución de F1 | Criticidades que afectan el uptime y duraciones inválidas (el notebook quedó sin salidas) | 3. Notebook F1 · 5. Evidencias | 3 Problemática · 11 Validación |
+| `df0c96d` | fix: guarda las salidas de la ejecución del notebook F1 | Notebook F1 ejecutado: numeración 1 a 22, 0 errores, 8 de 8 | 3. Notebook F1 | 12 Notebook F1 · 5 Reproducibilidad |
+| `122ab0f` | feat: agrega funciones del pipeline F2 a utilidades y repara la Ñ | `src/utilidades.py`: `huella_sha256`, `es_vacio`, `clasificar_enlace`, `fusionar_intervalos` (recursiva) y la corrección de `reparar_texto` | 4. Notebooks F2 (código) | 9 Codificación · RA2 recursión |
+| `2087c11` | feat: notebook F2 con limpieza, transformación, escalamiento y validación | Notebook F2 ejecutado, figuras, metadatos y diccionario del modelo | 4. Notebooks F2 · 5. Evidencias | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
+| `a10c794` | data: guarda los conjuntos procesados y la tabla de recurrencia | `data/processed/` (3 archivos) | 4. Notebooks F2 (salida) | 10 Preprocesamiento · 5 Reproducibilidad |
+| `e65ae34` | docs: registra las decisiones y el proceso de la Fase 2 | `docs/bitacora_decisiones.md` y este paso 18 | 5. Evidencias de trazabilidad | 7 Documentación del proceso |
+| `736c217` | data: conserva los mnemónicos reales de los sitios en data/raw | Anonimizador ajustado, `data/raw` regenerado y validación del dataset | 4. Obtención de datos | 10 Preprocesamiento · 3 Problemática |
+| `2dbef02` | feat: agrega separar_sitios para contar las fallas por sitio | `src/utilidades.py` | 4. Notebooks F2 (código) | 9 Codificación |
+| `69237c2` | docs: F1 con mnemónicos reales, definición de criticidad y conteo por sitio | README y productos de `docs/` (el notebook quedó sin salidas; lo corrige `ebad4a5`) | 3. Notebook F1 | 12 Notebook F1 · 3 Problemática |
+| `1c94a0f` | feat: F2 cuenta la recurrencia por sitio con las reglas del NOC | Figuras y metadatos (el notebook quedó sin salidas; lo corrige `ebad4a5`) | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento · 11 Validación |
+| `e6efd34` | data: regenera los conjuntos procesados con la tabla por sitio | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
+| `8d41e3e` | docs: registra el cambio a mnemónicos reales y el conteo por sitio | Paso 19 de esta bitácora y bitácora de decisiones | 5. Evidencias | 7 Documentación del proceso |
+| `ebad4a5` | fix: guarda las salidas de F1 y F2 ejecutados con los mnemónicos reales | Notebooks ejecutados y guardados, `data/processed` y `docs/` de esa ejecución | 3 y 4. Notebooks F1 y F2 | 12 y 13 Notebooks · 5 Reproducibilidad |
+| `b172f94` | docs: agrega el mapa conceptual del flujo reproducible | `scripts/mapa_conceptual.py`, la figura y los pasos 19 y 20 de esta bitácora | 1. Informe (apartado VIII) | 14 Vinculación con el mapa · 7 Documentación |
 | (pull request) | Merge de f2-pipeline en main | Integración de la Fase 2 | 2. Repositorio | 6 Control de versiones (ramas) · 8 Repositorio |
-| `a1728ca` | docs: registra la prueba desde cero del repositorio | Paso 21 de esta bitácora | 5. Evidencias de trazabilidad | 5 Reproducibilidad · 7 Documentación |
-| `aecfd0e` | docs: reescribe las restricciones del proyecto en F1 | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 · 1. Informe | 3 Problemática · 12 Notebook F1 |
-| `a890f1a` | feat: F2 cuenta solo los minutos de octubre para el uptime | Notebook F2 ejecutado, figuras, metadatos y bitácora de decisiones | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento |
-| `fda0d96` | data: regenera la tabla de recurrencia con el corte al 31-10 | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
-| `88effca` | docs: registra las restricciones nuevas y el corte al 31-10 | Paso 22 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
-| (paso 23) | fix: corrige textos de F1, F2 y el mapa según la auditoría | Notebooks F1 y F2 ejecutados, README, `docs/` y mapa | 3 y 4. Notebooks · 1. Informe | 12 y 13 Notebooks · 14 Vinculación · 7 Documentación |
-| (paso 23) | docs: registra las correcciones de la auditoría | Paso 23 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| `25da47f` | docs: registra la prueba desde cero del repositorio | Paso 21 de esta bitácora | 5. Evidencias de trazabilidad | 5 Reproducibilidad · 7 Documentación |
+| `ead6bcc` | docs: reescribe las restricciones del proyecto en F1 | Notebook F1 ejecutado, README y productos de `docs/` | 3. Notebook F1 · 1. Informe | 3 Problemática · 12 Notebook F1 |
+| `bd1c6c6` | feat: F2 cuenta solo los minutos de octubre para el uptime | Notebook F2 ejecutado, figuras, metadatos y bitácora de decisiones | 4. Notebooks F2 | 13 Notebook F2 · 10 Preprocesamiento |
+| `b99a974` | data: regenera la tabla de recurrencia con el corte al 31-10 | `data/processed/` | 4. Notebooks F2 (salida) | 10 Preprocesamiento |
+| `c3fc0d0` | docs: registra las restricciones nuevas y el corte al 31-10 | Paso 22 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| `26eb864` | fix: corrige textos de F1, F2 y el mapa según la auditoría | Notebooks F1 y F2 ejecutados, README, `docs/` y mapa | 3 y 4. Notebooks · 1. Informe | 12 y 13 Notebooks · 14 Vinculación · 7 Documentación |
+| `17fe776` | docs: registra las correcciones de la auditoría | Paso 23 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| `96ec463` | fix: deja en requirements.txt solo las librerías del proyecto | 6 librerías con versión fija | 2. Archivo de dependencias | 5 Reproducibilidad |
+| `60d03f8` | feat: prueba la instalación en Linux, macOS y Windows con GitHub Actions | `.github/workflows/instalacion.yml` | 2. Repositorio · 5. Evidencias | 5 Reproducibilidad · 6 Control de versiones |
+| `4d89856` | docs: registra el repositorio privado y las dependencias del proyecto | Paso 24 de esta bitácora | 5. Evidencias | 7 Documentación del proceso |
+| `e26718b` | Merge pull request #1 from edgararciav-cpu/f3-dependencias | Integración del componente de dependencias | 2. Repositorio | 6 Control de versiones (ramas) |
 
 Convención de prefijos:
 

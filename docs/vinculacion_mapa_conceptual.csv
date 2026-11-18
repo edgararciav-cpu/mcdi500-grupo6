@@ -1,5 +1,5 @@
 elemento_mapa,tipo,estado,evidencia
-Python + entorno virtual,herramientas,implementado,Sección 2 · .venv y requirements.txt (commit e005441)
+Python + entorno virtual,herramientas,implementado,Sección 2 · .venv y requirements.txt (commit db429ec)
 Jupyter + kernel Python (mcdi500),herramientas,implementado,Sección 2 · kernel registrado y verificado
 Git y GitHub,herramientas,implementado,Sección 6 · historial con prefijos y una sola identidad
 Anonimización de los datos,procesos,implementado,scripts/anonimizar_incidencias.py · bitácora paso 4

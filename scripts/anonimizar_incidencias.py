@@ -7,16 +7,23 @@ Qué hace
     Creador de TT          -> OP_01, OP_02, ...
     Ticket de proveedor    -> TKP_0001, ...
     Código servicio TX 1-5 -> TXS_0001, ...
-- Si un nombre de persona aparece escrito dentro de Titulo o Detalle, también lo reemplaza.
-- Los sitios (Network Element) se dejan con su mnemónico real: es información que la SUBTEL ya
-  publica y el proyecto la necesita para saber qué sitio falla (decisión del 11-11-2026).
-  La versión anterior los codificaba como NE_0001; se cambió para poder escalar con el sitio real.
+- Reemplaza cada sitio de Network Element por un código, SIT_0001, SIT_0002, ..., en el orden en
+  que aparece. Si una celda trae varios sitios (separados por dos o más espacios), cada uno recibe
+  su código y se conservan los separadores, así que la cantidad de sitios por celda no cambia.
+- El texto libre (Titulo y Detalle) se reemplaza por "[texto omitido]": nombra sitios, equipos y
+  tickets internos, y el análisis no lo usa. Las celdas vacías y los marcadores de vacío (NA, N/A,
+  no aplica...) se dejan como están, para que la medición de vacíos de la Fase 1 no cambie.
 - No toca nada más: deja los errores de tildes, las categorías mal escritas y los vacíos,
   porque limpiarlos es el trabajo de la Fase 2.
-- No guarda la tabla de equivalencias (nombre -> código), así que el resultado no se puede revertir.
+- Por qué los sitios van con código (decisión del 15-11-2026): son información operativa interna
+  del operador. La versión del 11-11 los dejaba con su nemónico real y el docente pidió
+  reemplazarlos y limpiar el historial del repositorio.
+- No guarda en el proyecto la tabla de equivalencias (nombre -> código). Si se pasa una tercera ruta,
+  escribe ahí la equivalencia de los sitios, para uso interno del NOC: esa ruta debe quedar FUERA del
+  repositorio.
 
 Uso (desde esta carpeta):
-    python anonimizar_incidencias.py ORIGEN.csv DESTINO.csv
+    python anonimizar_incidencias.py ORIGEN.csv DESTINO.csv [EQUIVALENCIAS_SITIOS.csv]
 """
 import csv
 import re
@@ -33,14 +40,17 @@ A_CODIFICAR = {
     'Código servicio TX 4': ('TXS', 4),
     'Código servicio TX 5': ('TXS', 4),
 }
-LARGO_MINIMO_EN_TEXTO = 4  # valores más cortos no se buscan dentro del texto, para no reemplazar por error
-# Solo se buscan dentro de texto libre los nombres de personas,
-# y solo en estas columnas. Los tickets y códigos TX no, porque algunos son palabras comunes.
-PREFIJOS_EN_TEXTO = {'IM', 'OP'}
-COLUMNAS_TEXTO = ['Titulo', 'Detalle']
 # En tickets y códigos TX solo se codifican los valores con algún número: "Pendiente" o "ENEL"
 # no son códigos sino marcadores, y se dejan tal cual para tratarlos en la Fase 2.
 SOLO_CON_NUMERO = {'TKP', 'TXS'}
+
+COLUMNA_SITIOS = 'Network Element'
+PREFIJO_SITIO, DIGITOS_SITIO = 'SIT', 4
+SEPARADOR_SITIOS = re.compile(r'(\s{2,})')   # dos o más espacios separan sitios; uno solo es parte del nombre
+
+COLUMNAS_TEXTO = ['Titulo', 'Detalle']
+TEXTO_OMITIDO = '[texto omitido]'
+MARCADORES_VACIO = {'', 'na', 'n/a', 'no aplica', '-', '0000-00-00 00:00:00'}
 
 
 def debe_codificar(prefijo, valor):
@@ -56,13 +66,26 @@ def nombre_limpio(columna):
         return c
 
 
-def main(origen, destino):
+def codificar_sitios(celda, codigos):
+    """Reemplaza cada sitio de la celda por su código (lo crea si es nuevo) y conserva los separadores."""
+    partes = SEPARADOR_SITIOS.split(celda)
+    for k in range(0, len(partes), 2):           # posiciones pares: sitios; impares: separadores
+        sitio = partes[k].strip()
+        if not sitio:
+            continue
+        if sitio not in codigos:
+            codigos[sitio] = f'{PREFIJO_SITIO}_{len(codigos) + 1:0{DIGITOS_SITIO}d}'
+        partes[k] = partes[k].replace(sitio, codigos[sitio])
+    return ''.join(partes)
+
+
+def main(origen, destino, equivalencias=None):
     with open(origen, encoding='utf-8', newline='') as f:
         filas = list(csv.reader(f, delimiter=';'))
     cabecera, datos = filas[0], filas[1:]
     limpios = [nombre_limpio(c) for c in cabecera]
 
-    faltan = [c for c in A_CODIFICAR if c not in limpios]
+    faltan = [c for c in [*A_CODIFICAR, COLUMNA_SITIOS, *COLUMNAS_TEXTO] if c not in limpios]
     if faltan:
         sys.exit(f'No encontré estas columnas en el archivo: {faltan}')
 
@@ -84,31 +107,45 @@ def main(origen, destino):
             if debe_codificar(prefijo, v):
                 fila[i] = codigos[(prefijo, v)]
 
-    # 3) Reemplazar nombres de personas escritos dentro del texto libre
-    por_valor = {v: c for (p, v), c in codigos.items() if p in PREFIJOS_EN_TEXTO and len(v) >= LARGO_MINIMO_EN_TEXTO}
-    patron = re.compile(r'(?<![\w-])(' + '|'.join(re.escape(v) for v in sorted(por_valor, key=len, reverse=True)) + r')(?![\w-])')
-    columnas_texto = [limpios.index(c) for c in COLUMNAS_TEXTO if c in limpios]
-    en_texto = 0
+    # 3) Sitios: un código por sitio, también en las celdas con varios sitios
+    i_sitios = limpios.index(COLUMNA_SITIOS)
+    sitios = {}
     for fila in datos:
-        for i in columnas_texto:
-            nuevo, n = patron.subn(lambda m: por_valor[m.group(1)], fila[i])
-            if n:
-                fila[i], en_texto = nuevo, en_texto + n
+        fila[i_sitios] = codificar_sitios(fila[i_sitios], sitios)
 
-    # 4) Verificar que ningún nombre de persona quede en todo el archivo
+    # 4) Texto libre: se omite (los marcadores de vacío se conservan)
+    omitidas = 0
+    for col in COLUMNAS_TEXTO:
+        i = limpios.index(col)
+        for fila in datos:
+            if fila[i].strip().lower() not in MARCADORES_VACIO:
+                fila[i], omitidas = TEXTO_OMITIDO, omitidas + 1
+
+    # 5) Verificar que ningún sitio real ni nombre de persona quede en todo el archivo
+    reales = [v for (p, v) in codigos if p in {'IM', 'OP'}] + list(sitios)
+    patron = re.compile(r'(?<![\w-])(' + '|'.join(re.escape(v) for v in sorted(reales, key=len, reverse=True)) + r')(?![\w-])')
     quedan = sum(1 for fila in datos for v in fila if patron.search(v))
+
     with open(destino, 'w', encoding='utf-8', newline='') as f:
         csv.writer(f, delimiter=';', lineterminator='\r\n').writerows([cabecera] + datos)
+    if equivalencias:
+        with open(equivalencias, 'w', encoding='utf-8-sig', newline='') as f:
+            w = csv.writer(f, delimiter=';')
+            w.writerow(['codigo', 'sitio'])
+            w.writerows((c, s) for s, c in sitios.items())
 
     print(f'Filas leídas y escritas: {len(datos)} | columnas: {len(cabecera)}')
     for prefijo in sorted(contador):
         print(f'  {prefijo}: {contador[prefijo]} valores distintos reemplazados por código')
-    print(f'Reemplazos dentro de texto libre: {en_texto}')
+    print(f'  {PREFIJO_SITIO}: {len(sitios)} sitios distintos reemplazados por código')
+    print(f'Celdas de texto libre omitidas: {omitidas}')
     print('Verificación: ' + ('OK, no queda ningún valor original.' if quedan == 0 else f'ATENCIÓN, quedan {quedan} celdas con valores originales.'))
     print(f'Archivo anonimizado: {destino}')
+    if equivalencias:
+        print(f'Equivalencias de sitios (uso interno, fuera del repositorio): {equivalencias}')
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        sys.exit('Uso: python anonimizar_incidencias.py ORIGEN.csv DESTINO.csv')
-    main(sys.argv[1], sys.argv[2])
+    if len(sys.argv) not in (3, 4):
+        sys.exit('Uso: python anonimizar_incidencias.py ORIGEN.csv DESTINO.csv [EQUIVALENCIAS_SITIOS.csv]')
+    main(*sys.argv[1:])
