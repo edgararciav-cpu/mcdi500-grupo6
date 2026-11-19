@@ -324,6 +324,20 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 - **Efecto en los resultados:** ninguno. El pipeline elimina las dos columnas (una está fuera de alcance y la otra supera el 95 % de vacíos), así que los tres archivos de `data/processed` siguen idénticos a los de la Fase 2 y las 30 pruebas pasan. F1, F2 y F3 se ejecutaron de nuevo para registrar la huella nueva de `data/raw`. En la medición de calidad de F1 solo cambian dos cifras: las celdas con tildes rotas bajan de 43.634 a 43.623 y `Código de Servicio` pasa de 1.090 a 1.089 valores distintos (el código no distingue espacios sobrantes).
 - **Enfoque descartado:** borrar las dos columnas de `data/raw`. Cambiaba la forma del archivo (49 columnas) que verifican F1, F2 y F3, y la Fase 1 mide justamente cuántos vacíos tiene cada columna.
 
+## Paso 28 · Fase 4: visualización y comunicación (19-11-2026)
+
+- **Rama:** `f4-visualizacion`, que se integra a main con un pull request, como los componentes de la Fase 3.
+- **Qué se construyó:** `src/comunicacion.py`, con funciones de una sola tarea: cargar las tablas de la Fase 3, verificar el contrato de la tabla por sitio, calcular la curva de concentración, resumir por categoría y armar la lista de escalamiento. Son funciones y no clases porque no guardan estado entre llamadas, que es el mismo criterio de la Fase 3. Tiene 17 pruebas en `tests/test_comunicacion.py` (normales, límite y de excepción); en total el proyecto tiene 47.
+- **Qué se grafica y con qué tabla:** tres figuras, una por objetivo, cuyo título dice el hallazgo. Se grafica con `recurrencia_tx_por_sitio.csv` y `incidencias_limpio.csv`, que están en horas y con los nombres de cada categoría. `incidencias_modelo.csv` queda fuera porque está escalada y repartida en columnas 0/1.
+- **Verificación antes de graficar:** la tabla de recurrencia se recalcula desde la tabla limpia con `limpieza.tabla_recurrencia` y es idéntica a la de la Fase 2 (`assert_frame_equal`). Los 6 controles del contrato y los 10 controles de validación del notebook pasan.
+- **Hallazgos:**
+  - el 10 % de los sitios acumula el 64 % de las 12.453 horas fuera de servicio, y el 20 % acumula el 82 %;
+  - la fibra de proveedor origina el 47 % de las fallas, con 13 horas por falla, y el satelital promedia 63 horas por falla;
+  - la lista de escalamiento la encabezan 4 sitios de fibra de proveedor (de 4 a 11 fallas) y 6 de microondas (más de 120 horas cada uno).
+- **Eficiencia:** la curva de concentración se calcula de dos formas, que dan el mismo resultado. La ingenua suma de nuevo el prefijo para cada k, O(n²); la vectorizada ordena una vez y acumula con `np.cumsum`. Al pasar de 2.000 a 5.000 valores, la ingenua tarda unas 6 veces más, como corresponde a un crecimiento cuadrático, y la vectorizada casi no cambia. Queda la vectorizada.
+- **Trazabilidad:** `changelog.md` en la raíz, con las observaciones de la Sumativa 1, su acción de mejora, el commit y el impacto, y un registro por fase. F1 se ejecutó de nuevo para que el README incluya F4 y la vinculación con el mapa marque F4 como implementada.
+- **Enfoque descartado:** graficar desde `incidencias_modelo.csv`. Habría obligado a deshacer el escalamiento y a juntar las columnas 0/1, para obtener lo que la tabla limpia ya tiene en sus unidades originales.
+
 ---
 
 ## Historial de commits y criterio que respalda cada uno
@@ -386,6 +400,15 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `213015b` | docs: objetivos analíticos, metodología y vinculación con el mapa al cierre de la Fase 3 | F1 ejecutado, README y `docs/` | S2 · II (objetivos) | Corrección 2 de la S1 |
 | `7a7e26f` | fix: unifica variantes sin el aviso de pandas y precisa textos de carga, limpieza y bitácora | `src/` y bitácora | S2 · II.c Validación | Correcciones de la auditoría |
 | `0c97d30` | fix: el anonimizador también codifica Código de Servicio y Tramo Afectado | `scripts/anonimizar_incidencias.py` | S2 · IV Repositorio | Confidencialidad (paso 27) |
+| `99b17a4` | docs: registra la codificación de servicios y tramos y actualiza los hashes citados | Paso 27 de esta bitácora | S2 · IV Repositorio | Trazabilidad |
+| `f0dd3c0` | docs: completa en la bitácora los merges de los pull request #1 a #3 | Tabla de commits | S2 · IV Repositorio | Trazabilidad |
+| `659e502` | feat: F1, F2 y F3 ejecutados con los datos codificados | Notebooks ejecutados, `data/processed` y `docs/` | S2 · V Notebooks | Reproducibilidad |
+| `8791301` | Merge pull request #4 from edgararciav-cpu/f3-documentacion | Integración de la documentación de la Fase 3 | S2 · IV Repositorio | Ramas por componente |
+| `919d5c0` | feat: módulo de comunicación de la Fase 4 y sus 17 pruebas | `src/comunicacion.py` y `tests/test_comunicacion.py` | S3 · V Codificación · V Validación | 10 Codificación · 12 Validación (paso 28) |
+| `da3c729` | feat: notebook F4 con las tres figuras que responden los objetivos | `F4/F4_Visualizacion_Comunicacion.ipynb` y `F4/README.md` | S3 · VII Visualizaciones | 20 Preprocesamiento para visualizar · 21 Visualizaciones |
+| `33651e5` | feat: F4 ejecutado: tres figuras, hallazgos, lista de escalamiento y mediciones | `F4/figuras/` y `docs/` (hallazgos, prioridad, mediciones y metadatos de F4) | S3 · V Notebooks · VIII Resultados | 15 Notebook final · 13 Eficiencia · 24 Resultados |
+| `ac9deb2` | docs: changelog con las observaciones formativas y los cambios de F1 a F4 | `changelog.md` | S3 · VIII Trazabilidad de mejoras | 27 Trazabilidad de mejoras |
+| `0a46d18` | docs: README y vinculación con el mapa al cierre de la Fase 4 | F1 ejecutado, README y `docs/` | S3 · IV Repositorio | 8 Repositorio · 7 Documentación |
 
 Convención de prefijos:
 
