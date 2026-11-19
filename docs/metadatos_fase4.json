@@ -1,0 +1,33 @@
+{
+  "fase": "F4",
+  "fecha_ejecucion": "2026-11-19",
+  "commit": "da3c729",
+  "semilla": 42,
+  "python": "3.14.6",
+  "dependencias": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.1",
+    "matplotlib": "3.11.2"
+  },
+  "entradas": [
+    "data/processed/incidencias_limpio.csv",
+    "data/processed/recurrencia_tx_por_sitio.csv",
+    "data/processed/diccionario_f3.csv",
+    "data/processed/parametros_f3.csv"
+  ],
+  "recurrencia_identica_al_recalculo": true,
+  "figuras": [
+    "F4/figuras/fig1_concentracion_horas.png",
+    "F4/figuras/fig2_enlace_y_proveedor.png",
+    "F4/figuras/fig3_lista_escalamiento.png"
+  ],
+  "controles_superados": 10,
+  "pruebas_modulo": 17,
+  "cifras": {
+    "sitios": 559,
+    "horas_fuera": 12452.9,
+    "sitios_recurrentes": 149,
+    "parte_horas_10pct_sitios": 0.6414,
+    "parte_horas_20pct_sitios": 0.8161
+  }
+}

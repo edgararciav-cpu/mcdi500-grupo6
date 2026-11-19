@@ -7,6 +7,7 @@ Módulos:
     transformadores  pasos que SÍ aprenden de los datos (clases con ajustar y transformar)
     pipeline         encadena los pasos y ejecuta toda la Fase 2 con una sola llamada
     medicion         mide tiempo y memoria para comparar implementaciones
+    comunicacion     Fase 4: lee las tablas de la Fase 3 y calcula las cifras que se grafican
 
 Desde un notebook, con la raíz del proyecto en sys.path:
     from src.pipeline import ejecutar

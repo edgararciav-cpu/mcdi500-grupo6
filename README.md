@@ -2,7 +2,7 @@
 
 Proyecto del curso **MCDI500 · Programación para la Ciencia de Datos** · Magíster en Ciencia de Datos e Inteligencia Artificial, Universidad Andrés Bello.
 
-- **Integrante:** Edgar Arcia Velásquez ([@edgararciav-cpu](https://github.com/edgararciav-cpu)) · Grupo 6 (trabajo individual, informado al docente)
+- **Integrante:** Edgar Arcia Velásquez ([@edgararciav-cpu](https://github.com/edgararciav-cpu)) · Grupo 6
 - **Docente:** Dr. Omar Salinas Silva
 
 ## Problemática
@@ -34,14 +34,15 @@ El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transm
 ```
 data/raw/        datos de entrada anonimizados (no se modifican)
 data/processed/  resultado de la limpieza y transformación (F2; F3 lo reproduce idéntico)
-docs/            diccionario de variables, bitácoras, metadatos, mediciones y vinculación con el mapa
+docs/            diccionario de variables, bitácoras, metadatos, mediciones, hallazgos y vinculación con el mapa
 src/             código del proyecto (ver «Arquitectura del código»)
 tests/           pruebas de casos normales, límite y excepciones (unittest)
 scripts/         preparación previa de los datos (anonimización)
-F1/ F2/ F3/ F4/  un notebook por fase
+F1/ F2/ F3/ F4/  un notebook por fase (F4/figuras: las figuras del informe)
+changelog.md     cambios por fase, con fecha, commit y justificación
 ```
 
-## Arquitectura del código (Fase 3)
+## Arquitectura del código (Fases 3 y 4)
 
 | Módulo | Responsabilidad | Usa a |
 |---|---|---|
@@ -51,13 +52,14 @@ F1/ F2/ F3/ F4/  un notebook por fase
 | `src/transformadores.py` | Pasos que **sí** aprenden de los datos: clase base `Transformador` y cinco clases hijas, más el adaptador `PasoFijo` | utilidades |
 | `src/pipeline.py` | `Pipeline` que encadena los 15 pasos, `Bitacora` (patrón Observer) y `ejecutar`, que repite la Fase 2 con una llamada | carga, limpieza, transformadores |
 | `src/medicion.py` | Compara implementaciones en tiempo (`timeit`) y memoria (`tracemalloc`) | — |
+| `src/comunicacion.py` | Fase 4: lee las tablas de la Fase 3, verifica su contrato y calcula las cifras que se grafican | — |
 
 Patrones de diseño: **Observer** (la bitácora registra cada paso sin que el paso lo sepa) y **Strategy** (el `Escalador` recibe la forma de escalar como parámetro).
 
 ```python
 from src.pipeline import construir_pipeline, ejecutar
 resultado = ejecutar(RAIZ)                                   # la Fase 2 completa
-tubo = construir_pipeline().ajustar(entrenamiento)          # Fase 4: ajustar solo con entrenamiento
+tubo = construir_pipeline().ajustar(entrenamiento)          # para un modelo: ajustar solo con entrenamiento
 prueba_lista = tubo.transformar(prueba)
 ```
 
@@ -72,13 +74,23 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m jupyter lab
 ```
 
-En JupyterLab, abrir los notebooks en orden (`F1/F1_Definicion.ipynb`, `F2/F2_Preprocesamiento.ipynb` y `F3/F3_Nucleo_Eficiencia_POO.ipynb`), elegir el kernel **Python (mcdi500)** y ejecutar *Kernel → Restart Kernel and Run All Cells*. En macOS o Linux se usa `.venv/bin/python` en lugar de `.\.venv\Scripts\python.exe`.
+En JupyterLab, abrir los notebooks en orden (`F1/F1_Definicion.ipynb`, `F2/F2_Preprocesamiento.ipynb`, `F3/F3_Nucleo_Eficiencia_POO.ipynb` y `F4/F4_Visualizacion_Comunicacion.ipynb`), elegir el kernel **Python (mcdi500)** y ejecutar *Kernel → Restart Kernel and Run All Cells*. En macOS o Linux se usa `.venv/bin/python` en lugar de `.\.venv\Scripts\python.exe`.
 
 Las pruebas se ejecutan con un solo comando desde la raíz del proyecto (unittest viene con Python):
 
 ```
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
+
+## Resultados (Fase 4)
+
+| Objetivo | Figura | Hallazgo |
+|---|---|---|
+| 1 y 2 | `F4/figuras/fig1_concentracion_horas.png` | Pocos sitios concentran la mayor parte del tiempo fuera de servicio por transmisión |
+| 3 | `F4/figuras/fig2_enlace_y_proveedor.png` | La fibra de proveedor origina más fallas; microondas y satelital duran más por falla |
+| 4 | `F4/figuras/fig3_lista_escalamiento.png` | Diez sitios encabezan la lista de escalamiento (`docs/prioridad_escalamiento_f4.csv`) |
+
+Las cifras exactas de cada hallazgo están en `docs/hallazgos_f4.csv`, que escribe el notebook F4.
 
 ## Reproducibilidad
 
@@ -88,10 +100,11 @@ Las pruebas se ejecutan con un solo comando desde la raíz del proyecto (unittes
 - Semilla aleatoria: 42. Rutas relativas a la raíz del proyecto (`localizar_raiz`).
 - F1 verifica el entorno en su sección 2: se detiene si el kernel no es el del proyecto e informa las versiones que no coincidan.
 - F3 comprueba que el pipeline con clases produce los mismos archivos que F2, byte a byte (huella SHA-256); la prueba `test_normal_mismos_archivos_que_la_fase_2` lo repite en cada ejecución de las pruebas.
+- F4 recalcula la tabla de recurrencia desde la tabla limpia y comprueba que es idéntica a la de F2 antes de graficar.
 
 ## Convención de commits
 
-`docs:` documentación · `data:` datos · `feat:` código nuevo · `fix:` corrección · `test:` pruebas · `perf:` cambio por rendimiento medido. El historial con el detalle de cada commit y el criterio de la rúbrica que respalda está en `docs/bitacora_proceso.md`.
+`docs:` documentación · `data:` datos · `feat:` código nuevo · `fix:` corrección · `test:` pruebas · `perf:` cambio por rendimiento medido. El historial con el detalle de cada commit y el criterio de la rúbrica que respalda está en `docs/bitacora_proceso.md`; el resumen por fase, con las observaciones del docente y su corrección, está en `changelog.md`.
 
 ## Uso de herramientas de inteligencia artificial
 

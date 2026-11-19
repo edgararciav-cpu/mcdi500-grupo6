@@ -1,0 +1,11 @@
+sitio,fallas,fallas_p3e,abiertas,enlace_principal,proveedor_tx,region,minutos_sumados,minutos_reales,horas_fuera
+SIT_0535,11,0,0,Fibra proveedor,GTD,X,2831.0,2831.0,47.2
+SIT_1088,4,1,0,Fibra proveedor,GTD,RM,3615.0,3615.0,60.2
+SIT_0751,4,1,0,Fibra proveedor,MOVISTAR,VIII,2769.0,2769.0,46.2
+SIT_1452,4,0,0,Fibra proveedor,GTD,RM,996.0,996.0,16.6
+SIT_2201,3,3,0,Microondas,WOM,IV,39591.0,39591.0,659.8
+SIT_1174,3,2,0,Microondas,WOM,V,11941.0,11941.0,199.0
+SIT_1764,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_1765,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_1766,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
+SIT_1767,3,2,0,Microondas,WOM,VI,7190.0,7190.0,119.8
