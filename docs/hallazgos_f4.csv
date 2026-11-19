@@ -1,0 +1,4 @@
+figura,objetivo,hallazgo,evidencia
+fig1_concentracion_horas,1 y 2,Pocos sitios concentran la mayor parte del tiempo fuera de servicio,El 10 % de los sitios acumula el 64 % de las horas y el 20 % el 82 %; los 149 recurrentes suman el 42 % de las horas
+fig2_enlace_y_proveedor,3,La fibra de proveedor falla más; microondas y satelital duran más por falla,Fibra de proveedor: 47 % de las fallas y 13 h/falla; satelital: 63 h/falla
+fig3_lista_escalamiento,4,Diez sitios encabezan la lista de escalamiento,4 de fibra de proveedor por recurrencia y 6 de microondas por tiempo fuera
