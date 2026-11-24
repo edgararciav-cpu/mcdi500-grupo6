@@ -1,0 +1,6 @@
+peso_fallas,peso_minutos,coinciden_con_oficial,de,primeros_3
+0.0,1.0,3,10,"SIT_2201, SIT_0382, SIT_3138"
+0.25,0.75,6,10,"SIT_2201, SIT_1174, SIT_1764"
+0.5,0.5,7,10,"SIT_2201, SIT_1174, SIT_1764"
+0.75,0.25,9,10,"SIT_1088, SIT_0535, SIT_2201"
+1.0,0.0,10,10,"SIT_0535, SIT_1088, SIT_0751"

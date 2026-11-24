@@ -1,7 +1,7 @@
 {
   "fase": "F4",
-  "fecha_ejecucion": "2026-11-19",
-  "commit": "da3c729",
+  "fecha_ejecucion": "2026-11-24",
+  "commit": "92f3c80",
   "semilla": 42,
   "python": "3.14.6",
   "dependencias": {
@@ -19,15 +19,38 @@
   "figuras": [
     "F4/figuras/fig1_concentracion_horas.png",
     "F4/figuras/fig2_enlace_y_proveedor.png",
-    "F4/figuras/fig3_lista_escalamiento.png"
+    "F4/figuras/fig3_lista_escalamiento.png",
+    "F4/figuras/fig4_episodios_por_dia.png"
   ],
-  "controles_superados": 10,
-  "pruebas_modulo": 17,
+  "controles_superados": 16,
+  "pruebas_proyecto": 59,
+  "pruebas_modulo_comunicacion": 28,
+  "registro_pruebas": "docs/registro_pruebas.txt",
   "cifras": {
     "sitios": 559,
     "horas_fuera": 12452.9,
     "sitios_recurrentes": 149,
     "parte_horas_10pct_sitios": 0.6414,
-    "parte_horas_20pct_sitios": 0.8161
+    "parte_horas_20pct_sitios": 0.8161,
+    "incidencias_abiertas": 3,
+    "sitios_con_abiertas": 3,
+    "sitios_estables_sensibilidad": [
+      "SIT_2201",
+      "SIT_1174",
+      "SIT_1764"
+    ],
+    "grupo_mismos_dias": [
+      "SIT_1764",
+      "SIT_1765",
+      "SIT_1766",
+      "SIT_1767",
+      "SIT_1768",
+      "SIT_1769"
+    ],
+    "dias_grupo": [
+      15,
+      21,
+      25
+    ]
   }
 }

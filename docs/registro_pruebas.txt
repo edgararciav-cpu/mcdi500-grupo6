@@ -1,0 +1,67 @@
+Registro de pruebas · 2026-11-24 · commit 92f3c80 · Python 3.14.6 · Windows
+Comando equivalente: python -m unittest discover -s tests -v
+
+test_excepcion_parte_fuera_de_rango (test_comunicacion.PruebasConcentracion.test_excepcion_parte_fuera_de_rango) ... ok
+test_excepcion_sin_valores (test_comunicacion.PruebasConcentracion.test_excepcion_sin_valores) ... ok
+test_excepcion_total_cero (test_comunicacion.PruebasConcentracion.test_excepcion_total_cero) ... ok
+test_limite_un_solo_valor (test_comunicacion.PruebasConcentracion.test_limite_un_solo_valor) ... ok
+test_limite_valores_iguales_dan_la_diagonal (test_comunicacion.PruebasConcentracion.test_limite_valores_iguales_dan_la_diagonal) ... ok
+test_normal_curva_conocida (test_comunicacion.PruebasConcentracion.test_normal_curva_conocida) ... ok
+test_normal_ingenua_igual_a_vectorizada (test_comunicacion.PruebasConcentracion.test_normal_ingenua_igual_a_vectorizada) ... ok
+test_normal_parte_del_total (test_comunicacion.PruebasConcentracion.test_normal_parte_del_total) ... ok
+test_excepcion_carpeta_sin_artefactos (test_comunicacion.PruebasContratoYCarga.test_excepcion_carpeta_sin_artefactos) ... ok
+test_excepcion_falta_columna (test_comunicacion.PruebasContratoYCarga.test_excepcion_falta_columna) ... ok
+test_limite_detecta_minutos_reales_mayores (test_comunicacion.PruebasContratoYCarga.test_limite_detecta_minutos_reales_mayores) ... ok
+test_normal_contrato_cumplido (test_comunicacion.PruebasContratoYCarga.test_normal_contrato_cumplido) ... ok
+test_excepcion_nadie_es_recurrente (test_comunicacion.PruebasCriterioYSensibilidad.test_excepcion_nadie_es_recurrente) ... ok
+test_excepcion_peso_fuera_de_rango (test_comunicacion.PruebasCriterioYSensibilidad.test_excepcion_peso_fuera_de_rango) ... ok
+test_limite_estables_cuando_todos_entran (test_comunicacion.PruebasCriterioYSensibilidad.test_limite_estables_cuando_todos_entran) ... ok
+test_normal_peso_cero_ordena_por_minutos (test_comunicacion.PruebasCriterioYSensibilidad.test_normal_peso_cero_ordena_por_minutos) ... ok
+test_normal_peso_uno_ordena_por_fallas (test_comunicacion.PruebasCriterioYSensibilidad.test_normal_peso_uno_ordena_por_fallas) ... ok
+test_normal_resumen_abiertas (test_comunicacion.PruebasCriterioYSensibilidad.test_normal_resumen_abiertas) ... ok
+test_normal_sensibilidad_peso_uno_coincide_con_la_oficial (test_comunicacion.PruebasCriterioYSensibilidad.test_normal_sensibilidad_peso_uno_coincide_con_la_oficial) ... ok
+test_normal_sitio_con_una_falla_no_entra_a_la_lista (test_comunicacion.PruebasCriterioYSensibilidad.test_normal_sitio_con_una_falla_no_entra_a_la_lista) ... ok
+test_limite_sitio_sin_fallas_queda_en_cero (test_comunicacion.PruebasFallasPorDia.test_limite_sitio_sin_fallas_queda_en_cero) ... ok
+test_normal_cuenta_por_sitio_y_dia (test_comunicacion.PruebasFallasPorDia.test_normal_cuenta_por_sitio_y_dia) ... ok
+test_excepcion_columna_inexistente (test_comunicacion.PruebasResumenYPrioridad.test_excepcion_columna_inexistente) ... ok
+test_excepcion_n_invalido (test_comunicacion.PruebasResumenYPrioridad.test_excepcion_n_invalido) ... ok
+test_limite_nadie_es_recurrente (test_comunicacion.PruebasResumenYPrioridad.test_limite_nadie_es_recurrente) ... ok
+test_normal_prioridad_desempata_por_minutos (test_comunicacion.PruebasResumenYPrioridad.test_normal_prioridad_desempata_por_minutos) ... ok
+test_normal_resumen_por_enlace (test_comunicacion.PruebasResumenYPrioridad.test_normal_resumen_por_enlace) ... ok
+test_normal_suma_por_enlace_coincide_con_el_total (test_comunicacion.PruebasResumenYPrioridad.test_normal_suma_por_enlace_coincide_con_el_total) ... ok
+test_normal_mismos_archivos_que_la_fase_2 (test_nucleo.PruebaEquivalenciaConFase2.test_normal_mismos_archivos_que_la_fase_2) ... ok
+test_excepcion_estrategia_desconocida (test_nucleo.PruebasCodificadorYEscalador.test_excepcion_estrategia_desconocida) ... ok
+test_limite_frecuencia_minima_agrupa_las_raras (test_nucleo.PruebasCodificadorYEscalador.test_limite_frecuencia_minima_agrupa_las_raras) ... ok
+test_limite_minmax_entre_cero_y_uno (test_nucleo.PruebasCodificadorYEscalador.test_limite_minmax_entre_cero_y_uno) ... ok
+test_normal_escala_estandar_media_cero (test_nucleo.PruebasCodificadorYEscalador.test_normal_escala_estandar_media_cero) ... ok
+test_normal_one_hot_suma_uno_y_vacio_es_sin_dato (test_nucleo.PruebasCodificadorYEscalador.test_normal_one_hot_suma_uno_y_vacio_es_sin_dato) ... ok
+test_limite_grupo_sin_datos_usa_la_mediana_general (test_nucleo.PruebasImputador.test_limite_grupo_sin_datos_usa_la_mediana_general) ... ok
+test_limite_sin_vacios_no_cambia_nada (test_nucleo.PruebasImputador.test_limite_sin_vacios_no_cambia_nada) ... ok
+test_normal_mediana_de_su_grupo (test_nucleo.PruebasImputador.test_normal_mediana_de_su_grupo) ... ok
+test_normal_usa_lo_aprendido_en_un_conjunto_nuevo (test_nucleo.PruebasImputador.test_normal_usa_lo_aprendido_en_un_conjunto_nuevo) ... ok
+test_excepcion_comparacion_con_resultados_distintos (test_nucleo.PruebasPipelineYFunciones.test_excepcion_comparacion_con_resultados_distintos) ... ok
+test_excepcion_paso_que_no_es_transformador (test_nucleo.PruebasPipelineYFunciones.test_excepcion_paso_que_no_es_transformador) ... ok
+test_excepcion_pipeline_sin_ajustar (test_nucleo.PruebasPipelineYFunciones.test_excepcion_pipeline_sin_ajustar) ... ok
+test_excepcion_valor_fuera_del_orden_declarado (test_nucleo.PruebasPipelineYFunciones.test_excepcion_valor_fuera_del_orden_declarado) ... ok
+test_limite_columna_sin_vacios_no_cambia (test_nucleo.PruebasPipelineYFunciones.test_limite_columna_sin_vacios_no_cambia) ... ok
+test_limite_y_excepcion_fusion (test_nucleo.PruebasPipelineYFunciones.test_limite_y_excepcion_fusion) ... ok
+test_normal_fusion_recursiva_e_iterativa_coinciden (test_nucleo.PruebasPipelineYFunciones.test_normal_fusion_recursiva_e_iterativa_coinciden) ... ok
+test_normal_p3_y_p3e_comparten_nivel (test_nucleo.PruebasPipelineYFunciones.test_normal_p3_y_p3e_comparten_nivel) ... ok
+test_normal_polimorfismo_y_observador (test_nucleo.PruebasPipelineYFunciones.test_normal_polimorfismo_y_observador) ... ok
+test_normal_vacios_vectorizado_igual_al_de_la_fase_2 (test_nucleo.PruebasPipelineYFunciones.test_normal_vacios_vectorizado_igual_al_de_la_fase_2) ... ok
+test_excepcion_clase_base_es_abstracta (test_nucleo.PruebasTransformadorBase.test_excepcion_clase_base_es_abstracta) ... ok
+test_excepcion_columna_inexistente (test_nucleo.PruebasTransformadorBase.test_excepcion_columna_inexistente) ... ok
+test_excepcion_hija_incompleta_no_se_instancia (test_nucleo.PruebasTransformadorBase.test_excepcion_hija_incompleta_no_se_instancia) ... ok
+test_excepcion_transformar_sin_ajustar (test_nucleo.PruebasTransformadorBase.test_excepcion_transformar_sin_ajustar) ... ok
+test_limite_copia_defensiva_y_entrada_intacta (test_nucleo.PruebasTransformadorBase.test_limite_copia_defensiva_y_entrada_intacta) ... ok
+test_excepcion_columna_fuera_de_alcance_inexistente (test_nucleo.PruebasUnificadorYEliminador.test_excepcion_columna_fuera_de_alcance_inexistente) ... ok
+test_limite_categoria_que_no_se_vio_al_ajustar_se_conserva (test_nucleo.PruebasUnificadorYEliminador.test_limite_categoria_que_no_se_vio_al_ajustar_se_conserva) ... ok
+test_limite_el_texto_libre_no_se_toca (test_nucleo.PruebasUnificadorYEliminador.test_limite_el_texto_libre_no_se_toca) ... ok
+test_limite_una_sola_categoria (test_nucleo.PruebasUnificadorYEliminador.test_limite_una_sola_categoria) ... ok
+test_normal_escritura_mas_frecuente (test_nucleo.PruebasUnificadorYEliminador.test_normal_escritura_mas_frecuente) ... ok
+test_normal_quita_las_casi_vacias_y_conserva_las_pedidas (test_nucleo.PruebasUnificadorYEliminador.test_normal_quita_las_casi_vacias_y_conserva_las_pedidas) ... ok
+
+----------------------------------------------------------------------
+Ran 59 tests in 3.306s
+
+OK
