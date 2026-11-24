@@ -130,6 +130,86 @@ def lista_prioridad(tabla, n=10, minimo_fallas=2):
     return orden.head(n).reset_index(drop=True)
 
 
+def puntaje_prioridad(tabla, peso_fallas=0.5, minimo_fallas=2):
+    """Lista de escalamiento con un criterio de pesos explícito y reproducible.
+
+    Cada sitio recurrente recibe dos posiciones relativas entre 0 y 1 (percentiles): una por número de
+    fallas y otra por minutos reales fuera de servicio. El puntaje es
+        peso_fallas · percentil_fallas + (1 − peso_fallas) · percentil_minutos.
+    Se usan percentiles y no los valores directos porque los minutos tienen un sitio de 660 horas que,
+    sin esta conversión, decidiría la lista casi solo. Con peso_fallas = 1 se ordena solo por fallas y
+    con 0 solo por minutos. A igual puntaje desempata el orden oficial (fallas y luego minutos).
+    """
+    if not 0 <= peso_fallas <= 1:
+        raise ValueError("peso_fallas debe estar entre 0 y 1.")
+    recurrentes = tabla[tabla["fallas"] >= minimo_fallas].copy()
+    if recurrentes.empty:
+        raise ValueError(f"No hay sitios con {minimo_fallas} o más fallas.")
+    recurrentes["percentil_fallas"] = recurrentes["fallas"].rank(pct=True)
+    recurrentes["percentil_minutos"] = recurrentes["minutos_reales"].rank(pct=True)
+    recurrentes["puntaje"] = (peso_fallas * recurrentes["percentil_fallas"]
+                              + (1 - peso_fallas) * recurrentes["percentil_minutos"])
+    orden = recurrentes.sort_values(["puntaje", "fallas", "minutos_reales"], ascending=False, kind="stable")
+    return orden.reset_index(drop=True)
+
+
+def sensibilidad_prioridad(tabla, pesos=(0.0, 0.25, 0.5, 0.75, 1.0), n=10, minimo_fallas=2):
+    """Prueba de sensibilidad: ¿cambian los n primeros de la lista oficial si se mueven los pesos?
+
+    Para cada peso de las fallas cuenta cuántos de los n sitios de `lista_prioridad` siguen entre los
+    n primeros de `puntaje_prioridad`. Si coinciden casi todos, la lista no depende del peso elegido.
+    """
+    oficial = set(lista_prioridad(tabla, n, minimo_fallas)["sitio"])
+    filas = []
+    for peso in pesos:
+        primeros = puntaje_prioridad(tabla, peso, minimo_fallas).head(n)["sitio"]
+        filas.append({"peso_fallas": peso, "peso_minutos": round(1 - peso, 2),
+                      "coinciden_con_oficial": len(oficial & set(primeros)), "de": n,
+                      "primeros_3": ", ".join(primeros.head(3))})
+    return pd.DataFrame(filas)
+
+
+def sitios_estables(tabla, pesos=(0.0, 0.25, 0.5, 0.75, 1.0), n=10, minimo_fallas=2):
+    """Sitios que están entre los n primeros de la lista oficial y de TODAS las listas con pesos."""
+    estables = set(lista_prioridad(tabla, n, minimo_fallas)["sitio"])
+    for peso in pesos:
+        estables &= set(puntaje_prioridad(tabla, peso, minimo_fallas).head(n)["sitio"])
+    orden = lista_prioridad(tabla, len(tabla), minimo_fallas)["sitio"]
+    return [sitio for sitio in orden if sitio in estables]
+
+
+def resumen_abiertas(tabla):
+    """Incidencias que seguían abiertas al cierre de octubre (objetivo 1).
+
+    Se informan aparte porque una incidencia abierta no tiene fecha de cierre y no suma minutos: sin
+    esta cifra, un sitio con incidencias abiertas parecería haber estado menos tiempo fuera de servicio.
+    """
+    if "abiertas" not in tabla.columns:
+        raise KeyError("La tabla no tiene la columna 'abiertas'.")
+    con_abiertas = tabla[tabla["abiertas"] > 0]
+    return {"sitios_con_abiertas": int(len(con_abiertas)),
+            "incidencias_abiertas": int(tabla["abiertas"].sum()),
+            "parte_sitios": float(len(con_abiertas) / len(tabla)) if len(tabla) else 0.0,
+            "sitios": con_abiertas["sitio"].tolist()}
+
+
+def fallas_por_dia(limpio, sitios):
+    """Matriz sitio × día de octubre con el número de fallas TX que afectan el uptime (mapa de calor).
+
+    Usa el mismo filtro que la tabla de recurrencia (es_tx = 1 y afecta_uptime = 1) y separa los
+    sitios de cada incidencia con `limpieza.por_sitio`, así la suma de cada fila coincide con la columna
+    `fallas` de la tabla de recurrencia. Las filas siguen el orden de `sitios`.
+    """
+    from .limpieza import por_sitio            # import local: limpieza no depende de este módulo
+    foco = por_sitio(limpio[(limpio["es_tx"] == 1) & (limpio["afecta_uptime"] == 1)])
+    foco = foco[foco["sitio"].isin(sitios)]
+    dias = pd.Series(range(1, 32), name="dia")
+    matriz = (foco.assign(dia=foco["fecha_inicio"].dt.day)
+                  .groupby(["sitio", "dia"]).size().unstack(fill_value=0)
+                  .reindex(index=list(sitios), columns=dias, fill_value=0))
+    return matriz
+
+
 def guardar_figura(figura, carpeta, nombre, dpi=200):
     """Guarda la figura en PNG a `dpi` puntos por pulgada (suficiente para el informe) y devuelve la ruta."""
     carpeta = Path(carpeta)
