@@ -17,7 +17,34 @@ Observaciones del docente en la Sumativa 1 (12-11-2026) y lo que se hizo con cad
 | Limitación de las duraciones imputadas sin declarar | La tabla limpia no inventa cierres y la limitación se declara en F2, F3 y F4 | `9e7df9d` | Documentación: el análisis no usa duraciones que no ocurrieron |
 | Las piezas que aprenden de los datos son celdas sueltas | Clase base `Transformador` y cinco clases que aprenden con `ajustar` y aplican con `transformar` | `fcad3ed` | Modularidad: cambiar la imputación toca un solo archivo |
 | Verificar que las clases dan lo mismo que F2 | Prueba de equivalencia byte a byte (SHA-256) contra los archivos de F2 | `2f45c60` | Validación: las mejoras no cambiaron el resultado |
-| Pruebas dispersas | Pruebas en `tests/` que corren con un solo comando (47 en total) | `2f45c60`, `919d5c0` | Validación: casos normales, límite y de excepción repetibles |
+| Pruebas dispersas | Pruebas en `tests/` que corren con un solo comando (59 en total) | `2f45c60`, `919d5c0`, `ffc94c6` | Validación: casos normales, límite y de excepción repetibles |
+
+Observaciones del docente en la Sumativa 2 (21-11-2026) y lo que se hizo con cada una.
+
+| Observación | Acción de mejora | Commit | Impacto |
+|---|---|---|---|
+| `Transformador` no es una clase abstracta real | Hereda de `ABC`, con `aprender` y `aplicar` abstractos; dos pruebas nuevas | `525f631` | POO: el contrato se exige al crear el objeto |
+| Objetivo 1: informar aparte las incidencias abiertas | `resumen_abiertas` y tabla en F4: 3 abiertas en 3 sitios, ninguno en la lista | `ffc94c6`, `734f871` | Resultados: no se subestima el tiempo de ningún sitio |
+| Objetivo 3: falta un denominador | Se declara que las cifras son absolutas y se usa «concentra» en vez de «origina» | `734f871` | Discusión: no se atribuye causa ni confiabilidad sin datos |
+| Objetivo 4: criterio con pesos y sensibilidad | `puntaje_prioridad`, `sensibilidad_prioridad` y `sitios_estables`; tabla en `docs/` | `ffc94c6`, `2481bc8` | Resultados: tres sitios se escalan con cualquier criterio |
+| Mapa de calor por día | Figura 4, con `fallas_por_dia` y control de que cada fila suma las fallas del sitio | `734f871`, `2481bc8` | Visualización: seis sitios caen los mismos días |
+| Fuente y unidades en cada figura | Fuente «NOC, octubre de 2026, datos anonimizados» y unidades en los ejes | `734f871` | Comunicación: cada figura se lee sola |
+| Guardar el registro de la última ejecución de las pruebas | `docs/registro_pruebas.txt`, escrito por el notebook F4 | `2481bc8` | Validación: la evidencia queda en el repositorio |
+| Commits en bloque | Un commit por cada parte terminada, en la rama `f4-mejoras` | `525f631` a `2481bc8` | Control de versiones: el historial muestra la evolución |
+
+## [F4] 2026-11-24 · Mejoras tras la retroalimentación de la Sumativa 2
+
+### Cambiado
+- `Transformador` es una clase abstracta con `ABC` (`525f631`). F3 se ejecutó de nuevo sin cambios en `data/processed` (`1ebb20e`).
+- La figura 2 dice «concentra» y declara que las cifras son absolutas, porque no hay inventario de sitios por tipo de enlace (`734f871`).
+
+### Agregado
+- Criterio de prioridad con pesos y prueba de sensibilidad (`ffc94c6`). Con pesos iguales coinciden 7 de los 10 sitios de la lista oficial; SIT_2201, SIT_1174 y SIT_1764 están en todas las versiones.
+- Incidencias abiertas aparte y figura 4, mapa de calor de fallas por día (`734f871`, `2481bc8`).
+- Registro de las 59 pruebas en `docs/registro_pruebas.txt` (`2481bc8`).
+
+### Corregido
+- El registro de pruebas se guardaba con los códigos de color de la consola (`92f3c80`).
 
 ## [F4] 2026-11-19 · Visualización y comunicación
 
