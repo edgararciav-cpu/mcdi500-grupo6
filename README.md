@@ -7,17 +7,17 @@ Proyecto del curso **MCDI500 · Programación para la Ciencia de Datos** · Mag�
 
 ## Problemática
 
-El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios sitios fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y qué tipo de enlace las origina. Para el uptime cuentan solo las incidencias con pérdida de servicio: criticidad P1, P2, P3 y P3E (P3 extendida, que se trata igual que una P3).
+El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios sitios fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y con qué tipo de enlace se asocian. Para el uptime cuentan solo las incidencias con pérdida de servicio: criticidad P1, P2, P3 y P3E (P3 extendida, que se trata igual que una P3).
 
-**Pregunta:** ¿Qué sitios de la red concentran incidencias recurrentes de transmisión (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y qué tipo de enlace o proveedor las origina, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime?
+**Pregunta:** ¿Qué sitios de la red concentran incidencias recurrentes de transmisión (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y con qué tipo de enlace o proveedor se asocian, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime?
 
-**Objetivo general:** Identificar los sitios con fallas recurrentes de transmisión en octubre de 2026, cuantificar su tiempo fuera de servicio y determinar qué tipo de enlace y qué proveedor las originan, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime.
+**Objetivo general:** Identificar los sitios con fallas recurrentes de transmisión en octubre de 2026, cuantificar su tiempo fuera de servicio y determinar con qué tipo de enlace y qué proveedor se asocian, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime.
 
 **Objetivos específicos:**
 
 1. Cuantificar, por sitio, las fallas de transmisión con pérdida de servicio (P1, P2, P3 y P3E) y los minutos que estuvo fuera de servicio en octubre, sin contar dos veces el tiempo de incidencias que se traslapan.
 2. Identificar los sitios con fallas recurrentes (dos o más en el mes) y medir qué parte del tiempo fuera de servicio por transmisión concentran.
-3. Determinar qué tipo de enlace (microondas, fibra propia FOP, fibra de proveedor o satelital) y qué proveedor de transmisión originan más fallas y más minutos fuera de servicio.
+3. Determinar qué tipo de enlace (microondas, fibra propia FOP, fibra de proveedor o satelital) y qué proveedor de transmisión concentran más fallas y más minutos fuera de servicio.
 4. Ordenar los sitios recurrentes en una lista de prioridad para escalar al área de transmisión o al proveedor, con su enlace, su proveedor y su región.
 
 **Metodología:** Los objetivos se responden con un flujo reproducible en cuatro fases: F1 define el problema y mide la calidad de los datos sin corregirlos; F2 limpia, transforma y arma la tabla de recurrencia por sitio; F3 lleva ese pipeline a módulos y clases, verifica que el resultado no cambie y mide su eficiencia; F4 visualiza y comunica los resultados.
