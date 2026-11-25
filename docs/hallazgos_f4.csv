@@ -1,4 +1,7 @@
-figura,objetivo,hallazgo,evidencia
-fig1_concentracion_horas,1 y 2,Pocos sitios concentran la mayor parte del tiempo fuera de servicio,El 10 % de los sitios acumula el 64 % de las horas y el 20 % el 82 %; los 149 recurrentes suman el 42 % de las horas
-fig2_enlace_y_proveedor,3,La fibra de proveedor falla más; microondas y satelital duran más por falla,Fibra de proveedor: 47 % de las fallas y 13 h/falla; satelital: 63 h/falla
-fig3_lista_escalamiento,4,Diez sitios encabezan la lista de escalamiento,4 de fibra de proveedor por recurrencia y 6 de microondas por tiempo fuera
+figura,objetivo,hallazgo,evidencia,fuente
+fig1_concentracion_horas,1 y 2,Pocos sitios concentran la mayor parte del tiempo fuera de servicio,El 10 % de los sitios acumula el 64 % de las horas y el 20 % el 82 %; los 149 recurrentes suman el 42 % de las horas,"F4 sección 3, figura 1 · docs/metadatos_fase4.json"
+fig2_enlace_y_proveedor,3,La fibra de proveedor concentra más fallas; microondas y satelital duran más por falla,Fibra de proveedor: 47 % de las fallas y 13 h/falla; satelital: 63 h/falla,"F4 sección 3, figura 2"
+fig3_lista_escalamiento,4,Diez sitios encabezan la lista de escalamiento,4 de fibra de proveedor por recurrencia y 6 de microondas por tiempo fuera,"F4 sección 3, figura 3 · docs/prioridad_escalamiento_f4.csv"
+tabla de sensibilidad,4,La lista depende en parte del peso; tres sitios están en todas las versiones,"Con pesos iguales coinciden 7 de 10; estables: SIT_2201, SIT_1174, SIT_1764","F4 sección 3, sensibilidad · docs/sensibilidad_prioridad_f4.csv"
+fig4_episodios_por_dia,2,Las fallas de los sitios prioritarios se reparten en el mes; un grupo cae los mismos días,"6 sitios con fallas los días 15, 21, 25; 4 de 25 sitios con 2 o más fallas en un mismo día","F4 sección 3, figura 4"
+incidencias abiertas,1,Las incidencias abiertas no alteran la lista,"3 abiertas en 3 sitios, ninguno en la lista","F4 sección 3, objetivo 1 · docs/metadatos_fase4.json"

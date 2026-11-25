@@ -38,9 +38,19 @@ class PruebasTransformadorBase(unittest.TestCase):
         with self.assertRaises(KeyError):
             Escalador("no_existe", "z").ajustar(pd.DataFrame({"x": [1.0]}))
 
-    def test_excepcion_clase_base_sin_implementar(self):
-        with self.assertRaises(NotImplementedError):
-            Transformador().ajustar(pd.DataFrame({"x": [1]}))
+    def test_excepcion_clase_base_es_abstracta(self):
+        # la clase base no se puede instanciar: es abstracta (ABC)
+        with self.assertRaises(TypeError):
+            Transformador()
+
+    def test_excepcion_hija_incompleta_no_se_instancia(self):
+        # una hija que implementa aprender() pero olvida aplicar() falla al crearla, no al usarla
+        class SoloAprende(Transformador):
+            def aprender(self, df):
+                return {}
+
+        with self.assertRaises(TypeError):
+            SoloAprende()
 
     def test_limite_copia_defensiva_y_entrada_intacta(self):
         df = pd.DataFrame({"x": [1.0, np.nan], "g": ["a", "a"]})

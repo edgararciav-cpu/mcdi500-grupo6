@@ -18,6 +18,7 @@ Principios de la POO en este módulo:
     encapsulamiento  lo aprendido vive en _parametros (con guion bajo) y solo se lee con una copia
 """
 import copy
+from abc import ABC, abstractmethod
 
 import pandas as pd
 from sklearn.base import clone
@@ -26,11 +27,13 @@ from sklearn.preprocessing import MinMaxScaler, OneHotEncoder, RobustScaler, Sta
 from . import utilidades
 
 
-class Transformador:
-    """Clase base: el contrato común de todos los pasos del pipeline. No se usa directamente.
+class Transformador(ABC):
+    """Clase base abstracta: el contrato común de todos los pasos del pipeline.
 
     Define QUÉ métodos tiene un paso y CÓMO se controla su estado; las clases hijas solo
-    implementan aprender() y aplicar(), que es lo que cambia de un paso a otro.
+    implementan aprender() y aplicar(), que es lo que cambia de un paso a otro. Al heredar de
+    ABC y marcar esos dos métodos con @abstractmethod, Python impide crear un Transformador
+    directamente o una clase hija que olvide alguno de ellos (TypeError al instanciar).
     """
 
     def __init__(self, columnas=()):
@@ -74,11 +77,13 @@ class Transformador:
         return self.ajustar(df).transformar(df)
 
     # ---- lo que cada clase hija DEBE implementar -------------------------------------------
+    @abstractmethod
     def aprender(self, df):
-        raise NotImplementedError(f"{type(self).__name__} debe implementar aprender().")
+        """Devuelve un diccionario con lo que el paso aprende de `df`."""
 
+    @abstractmethod
     def aplicar(self, df):
-        raise NotImplementedError(f"{type(self).__name__} debe implementar aplicar().")
+        """Aplica lo aprendido sobre `df` (una copia) y devuelve la tabla resultante."""
 
     def __repr__(self):
         return f"{self.nombre} [{'ajustado' if self._ajustado else 'sin ajustar'}]"

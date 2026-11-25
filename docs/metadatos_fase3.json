@@ -1,7 +1,7 @@
 {
   "fase": "F3",
-  "generado": "2026-11-18T11:08:23",
-  "commit_base": "f0dd3c0",
+  "generado": "2026-11-24T19:55:03",
+  "commit_base": "734f871",
   "entrada": {
     "archivo": "data/raw/incidencias_oct2026_anon.csv",
     "sha256": "3951a4f48dbb27cf6f1a59687d2dbbbb707d3340f87e05e2affbc4f7af760139",
@@ -114,9 +114,9 @@
       "operación": "fusión de intervalos (datos de octubre)",
       "versión F2": "recursiva (F2)",
       "alternativa": "iterativa",
-      "tiempo F2 (s)": 0.0004,
-      "tiempo alternativa (s)": 0.0002,
-      "veces más rápida": 1.41,
+      "tiempo F2 (s)": 0.0007,
+      "tiempo alternativa (s)": 0.0006,
+      "veces más rápida": 1.29,
       "memoria F2 (MB)": 0.039,
       "memoria alternativa (MB)": 0.047,
       "decisión": "diferencia menor a 1 ms: decide el crecimiento (fila siguiente)"
@@ -125,9 +125,9 @@
       "operación": "fusión de intervalos (n = 900)",
       "versión F2": "recursiva (F2)",
       "alternativa": "iterativa",
-      "tiempo F2 (s)": 0.6576,
-      "tiempo alternativa (s)": 0.0002,
-      "veces más rápida": 3672.0,
+      "tiempo F2 (s)": 1.8558,
+      "tiempo alternativa (s)": 0.0005,
+      "veces más rápida": 3837.0,
       "memoria F2 (MB)": 6.275,
       "memoria alternativa (MB)": 0.013,
       "decisión": "se cambia (además, la recursiva falla sobre ~1.000 intervalos)"
@@ -136,9 +136,9 @@
       "operación": "marcadores de vacío",
       "versión F2": "es_vacio por celda (F2)",
       "alternativa": "vectorizado con isin",
-      "tiempo F2 (s)": 0.4867,
-      "tiempo alternativa (s)": 0.2403,
-      "veces más rápida": 2.03,
+      "tiempo F2 (s)": 1.1715,
+      "tiempo alternativa (s)": 0.5916,
+      "veces más rápida": 1.98,
       "memoria F2 (MB)": 16.334,
       "memoria alternativa (MB)": 16.328,
       "decisión": "se cambia"
@@ -147,9 +147,9 @@
       "operación": "separar sitios",
       "versión F2": "separar_sitios por celda (F2)",
       "alternativa": "str.split vectorizado",
-      "tiempo F2 (s)": 0.0132,
-      "tiempo alternativa (s)": 0.0099,
-      "veces más rápida": 1.33,
+      "tiempo F2 (s)": 0.0328,
+      "tiempo alternativa (s)": 0.024,
+      "veces más rápida": 1.37,
       "memoria F2 (MB)": 3.868,
       "memoria alternativa (MB)": 3.868,
       "decisión": "se conserva la de F2"
@@ -158,13 +158,13 @@
   "limite_recursion": "RecursionError con 1.500 intervalos",
   "duraciones_imputadas": 5320,
   "pruebas": {
-    "ejecutadas": 30,
+    "ejecutadas": 59,
     "fallas": 0,
     "errores": 0,
     "por_escenario": {
-      "normal": 11,
-      "limite": 10,
-      "excepcion": 9
+      "normal": 24,
+      "excepcion": 19,
+      "limite": 16
     }
   },
   "entregables_fase4": [

@@ -1,7 +1,7 @@
 n,version,tiempo_ms,memoria_pico_mb
-559,ingenua O(n²),5.0159,0.0877
-559,vectorizada O(n log n),0.2266,0.0243
-2000,ingenua O(n²),35.2879,0.31
-2000,vectorizada O(n log n),0.3037,0.0793
-5000,ingenua O(n²),202.7082,0.7783
-5000,vectorizada O(n log n),0.569,0.1937
+559,ingenua O(n²),1.4389,0.0877
+559,vectorizada O(n log n),0.0937,0.0243
+2000,ingenua O(n²),18.9747,0.31
+2000,vectorizada O(n log n),0.1304,0.0793
+5000,ingenua O(n²),110.4891,0.7783
+5000,vectorizada O(n log n),0.1421,0.1937

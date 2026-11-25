@@ -338,6 +338,19 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 - **Trazabilidad:** `changelog.md` en la raíz, con las observaciones de la Sumativa 1, su acción de mejora, el commit y el impacto, y un registro por fase. F1 se ejecutó de nuevo para que el README incluya F4 y la vinculación con el mapa marque F4 como implementada.
 - **Enfoque descartado:** graficar desde `incidencias_modelo.csv`. Habría obligado a deshacer el escalamiento y a juntar las columnas 0/1, para obtener lo que la tabla limpia ya tiene en sus unidades originales.
 
+## Paso 29 · Fase 4: retroalimentación de la Sumativa 2 (24-11-2026)
+
+- **Rama:** `f4-mejoras`, desde main después del pull request #5.
+- **Por qué:** la retroalimentación de la Sumativa 2 (69/69) trajo sugerencias concretas para la Fase 4. Las apliqué todas las que tenían datos para sostenerse.
+- **POO:** `Transformador` ahora hereda de `ABC` y `aprender` y `aplicar` son `@abstractmethod`. Ya no se puede instanciar la clase base ni una hija incompleta: el error aparece al crearla (`TypeError`) y no al usarla. F3 se ejecutó de nuevo y `data/processed` no cambió.
+- **Objetivo 1:** las incidencias abiertas al 31-10 se informan aparte (`com.resumen_abiertas`): 3 incidencias en 3 sitios, ninguno en la lista de escalamiento. Dos de esos sitios figuran con 0 horas porque su única falla no tiene cierre: su tiempo real es desconocido, no nulo.
+- **Objetivo 3:** el registro solo tiene los sitios que fallaron, así que no hay denominador (sitios expuestos por tipo de enlace o proveedor). La figura 2 lo declara y dice que la fibra de proveedor «concentra» más fallas, no que sea menos confiable.
+- **Objetivo 4:** el criterio oficial sigue siendo el de la Fase 1 (fallas y, a igualdad, minutos). Para probar su sensibilidad agregué `com.puntaje_prioridad`, que combina los percentiles de fallas y minutos con un peso, y `com.sensibilidad_prioridad`. Con pesos iguales coinciden 7 de los 10 sitios; con peso 0 (solo minutos), 3. SIT_2201, SIT_1174 y SIT_1764 están entre los 10 primeros con cualquier peso. Uso percentiles y no valores porque un solo sitio de 660 horas decidiría la lista casi solo.
+- **Figura 4 (nueva):** mapa de calor de fallas por sitio y día para los 25 primeros de la lista (`com.fallas_por_dia`, con el mismo filtro que la tabla de recurrencia; cada fila suma las fallas del sitio). SIT_1764 a SIT_1769 fallan exactamente los días 15, 21 y 25: refuerza que comparten un tramo. SIT_0535 suma 11 fallas entre el 14 y el 29.
+- **Figuras:** fuente «NOC, octubre de 2026, datos anonimizados», unidades en los ejes y lectura bajo cada figura en el notebook.
+- **Pruebas:** 59 (28 del módulo de comunicación), entre ellas las tres que sugirió el docente: un sitio con una sola falla no entra a la lista, la suma por tipo de enlace coincide con el total y los traslapes cuentan una sola vez (ya estaba en la Fase 3). El notebook F4 guarda el registro completo en `docs/registro_pruebas.txt`, con fecha, commit y versión de Python.
+- **Corrección menor:** Python 3.14 colorea el resultado de unittest; el primer registro quedó con códigos de color. El notebook ahora los quita antes de guardar (`92f3c80`).
+
 ---
 
 ## Historial de commits y criterio que respalda cada uno
@@ -409,6 +422,14 @@ Un registro por paso, en el orden en que se hizo. Cada registro dice qué pide l
 | `33651e5` | feat: F4 ejecutado: tres figuras, hallazgos, lista de escalamiento y mediciones | `F4/figuras/` y `docs/` (hallazgos, prioridad, mediciones y metadatos de F4) | S3 · V Notebooks · VIII Resultados | 15 Notebook final · 13 Eficiencia · 24 Resultados |
 | `ac9deb2` | docs: changelog con las observaciones formativas y los cambios de F1 a F4 | `changelog.md` | S3 · VIII Trazabilidad de mejoras | 27 Trazabilidad de mejoras |
 | `0a46d18` | docs: README y vinculación con el mapa al cierre de la Fase 4 | F1 ejecutado, README y `docs/` | S3 · IV Repositorio | 8 Repositorio · 7 Documentación |
+| `23bfcaf` | docs: registra la Fase 4 en la bitácora (paso 28) y completa la tabla de commits | Paso 28 de esta bitácora | S3 · IV Repositorio | 7 Documentación del proceso |
+| `d0788b1` | Merge pull request #5 from edgararciav-cpu/f4-visualizacion | Integración de la Fase 4 | S3 · IV Repositorio | 6 Control de versiones |
+| `525f631` | refactor: Transformador como clase abstracta (ABC) con aprender y aplicar abstractos | `src/transformadores.py` y 2 pruebas | S3 · VI POO | 17 POO (observación de la S2) |
+| `ffc94c6` | feat: criterio de prioridad con pesos, prueba de sensibilidad, abiertas y fallas por día | `src/comunicacion.py` y 11 pruebas | S3 · V Codificación · V Validación | 10 Codificación · 12 Validación (paso 29) |
+| `734f871` | feat: notebook F4 con abiertas, criterio con pesos, sensibilidad y mapa de calor por día | `F4/F4_Visualizacion_Comunicacion.ipynb` | S3 · VII Visualizaciones | 21 Visualizaciones |
+| `1ebb20e` | chore: F3 ejecutado de nuevo con Transformador abstracto | F3 ejecutado | S3 · V Notebooks | 5 Reproducibilidad |
+| `92f3c80` | fix: el registro de pruebas se guarda sin códigos de color de la consola | Notebook F4 | S3 · V Validación | 12 Validación |
+| `2481bc8` | feat: F4 ejecutado con cuatro figuras, sensibilidad de la lista y registro de las 59 pruebas | `F4/figuras/` y `docs/` | S3 · V Notebooks · VIII Resultados | 15 Notebook final · 24 Resultados |
 
 Convención de prefijos:
 
@@ -420,3 +441,5 @@ Convención de prefijos:
 | `fix:` | corrección |
 | `test:` | pruebas |
 | `perf:` | cambio de implementación justificado por una medición |
+| `refactor:` | cambio de estructura que no altera el resultado |
+| `chore:` | ejecución o mantenimiento sin cambio de código |
