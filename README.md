@@ -86,11 +86,14 @@ Las pruebas se ejecutan con un solo comando desde la raíz del proyecto (unittes
 
 | Objetivo | Figura | Hallazgo |
 |---|---|---|
-| 1 y 2 | `F4/figuras/fig1_concentracion_horas.png` | Pocos sitios concentran la mayor parte del tiempo fuera de servicio por transmisión |
-| 3 | `F4/figuras/fig2_enlace_y_proveedor.png` | La fibra de proveedor origina más fallas; microondas y satelital duran más por falla |
-| 4 | `F4/figuras/fig3_lista_escalamiento.png` | Diez sitios encabezan la lista de escalamiento (`docs/prioridad_escalamiento_f4.csv`) |
+| 1 y 2 | `F4/figuras/fig1_concentracion_horas.png` | El 10 % de los sitios acumula el 64 % de las horas fuera de servicio por transmisión, y el 20 % acumula el 82 % |
+| 3 | `F4/figuras/fig2_enlace_y_proveedor.png` | La fibra de proveedor concentra el 47 % de las fallas, de 13 h cada una; el satelital dura 63 h por falla. Son cifras absolutas: sin el inventario de sitios por tipo de enlace no se comparan tasas |
+| 4 | `F4/figuras/fig3_lista_escalamiento.png` | Diez sitios encabezan la lista de escalamiento (`docs/prioridad_escalamiento_f4.csv`). Con pesos iguales entre fallas y minutos coinciden 7 de 10, y SIT_2201, SIT_1174 y SIT_1764 aparecen con cualquier peso (`docs/sensibilidad_prioridad_f4.csv`) |
+| 2 | `F4/figuras/fig4_episodios_por_dia.png` | Seis sitios de microondas (SIT_1764 a SIT_1769) fallan los mismos días (15, 21 y 25 de octubre), lo que sugiere un tramo común |
 
-Las cifras exactas de cada hallazgo están en `docs/hallazgos_f4.csv`, que escribe el notebook F4.
+Las cifras exactas de cada hallazgo, con su fuente, están en `docs/hallazgos_f4.csv`, que escribe el notebook F4. F4 también ejecuta las 59 pruebas del proyecto y guarda el registro en `docs/registro_pruebas.txt`; sus 16 controles de validación quedan en `docs/metadatos_fase4.json`.
+
+**Entregables de la Fase 4:** el informe y el video de presentación se entregan en Canvas, en la tarea Sumativa 3. El video está en Canvas Studio y está compartido con el docente.
 
 ## Reproducibilidad
 

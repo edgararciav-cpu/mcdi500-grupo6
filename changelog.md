@@ -32,6 +32,11 @@ Observaciones del docente en la Sumativa 2 (21-11-2026) y lo que se hizo con cad
 | Guardar el registro de la última ejecución de las pruebas | `docs/registro_pruebas.txt`, escrito por el notebook F4 | `2481bc8` | Validación: la evidencia queda en el repositorio |
 | Commits en bloque | Un commit por cada parte terminada, en la rama `f4-mejoras` | `525f631` a `2481bc8` | Control de versiones: el historial muestra la evolución |
 
+## [F4] 2026-11-25 · Cierre
+
+### Cambiado
+- README: resultados de la Fase 4 con las cuatro figuras, la sensibilidad de la lista, las 59 pruebas y los entregables (informe y video en Canvas). Se genera desde F1, por eso F1 se volvió a ejecutar.
+
 ## [F4] 2026-11-24 · Mejoras tras la retroalimentación de la Sumativa 2
 
 ### Cambiado
