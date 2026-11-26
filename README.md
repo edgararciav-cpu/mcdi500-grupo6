@@ -7,17 +7,17 @@ Proyecto del curso **MCDI500 · Programación para la Ciencia de Datos** · Mag�
 
 ## Problemática
 
-El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios sitios fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y qué tipo de enlace las origina. Para el uptime cuentan solo las incidencias con pérdida de servicio: criticidad P1, P2, P3 y P3E (P3 extendida, que se trata igual que una P3).
+El NOC registró 21.542 incidencias en octubre de 2026; 588 son fallas de transmisión (enlace de microondas, fibra propia o fibra de proveedor). Varios sitios fallaron más de una vez en el mes, pero no hay una medición que diga cuáles concentran las fallas, cuánto tiempo sin servicio acumulan y con qué tipo de enlace se asocian. Para el uptime cuentan solo las incidencias con pérdida de servicio: criticidad P1, P2, P3 y P3E (P3 extendida, que se trata igual que una P3).
 
-**Pregunta:** ¿Qué sitios de la red concentran incidencias recurrentes de transmisión (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y qué tipo de enlace o proveedor las origina, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime?
+**Pregunta:** ¿Qué sitios de la red concentran incidencias recurrentes de transmisión (microondas, fibra propia FOP y fibra de proveedor), cuánto tiempo fuera de servicio acumulan y con qué tipo de enlace o proveedor se asocian, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime?
 
-**Objetivo general:** Identificar los sitios con fallas recurrentes de transmisión en octubre de 2026, cuantificar su tiempo fuera de servicio y determinar qué tipo de enlace y qué proveedor las originan, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime.
+**Objetivo general:** Identificar los sitios con fallas recurrentes de transmisión en octubre de 2026, cuantificar su tiempo fuera de servicio y determinar con qué tipo de enlace y qué proveedor se asocian, para priorizar su escalamiento y evaluar cambios de transmisión que mejoren el uptime.
 
 **Objetivos específicos:**
 
 1. Cuantificar, por sitio, las fallas de transmisión con pérdida de servicio (P1, P2, P3 y P3E) y los minutos que estuvo fuera de servicio en octubre, sin contar dos veces el tiempo de incidencias que se traslapan.
 2. Identificar los sitios con fallas recurrentes (dos o más en el mes) y medir qué parte del tiempo fuera de servicio por transmisión concentran.
-3. Determinar qué tipo de enlace (microondas, fibra propia FOP, fibra de proveedor o satelital) y qué proveedor de transmisión originan más fallas y más minutos fuera de servicio.
+3. Determinar qué tipo de enlace (microondas, fibra propia FOP, fibra de proveedor o satelital) y qué proveedor de transmisión concentran más fallas y más minutos fuera de servicio.
 4. Ordenar los sitios recurrentes en una lista de prioridad para escalar al área de transmisión o al proveedor, con su enlace, su proveedor y su región.
 
 **Metodología:** Los objetivos se responden con un flujo reproducible en cuatro fases: F1 define el problema y mide la calidad de los datos sin corregirlos; F2 limpia, transforma y arma la tabla de recurrencia por sitio; F3 lleva ese pipeline a módulos y clases, verifica que el resultado no cambie y mide su eficiencia; F4 visualiza y comunica los resultados.
@@ -86,11 +86,14 @@ Las pruebas se ejecutan con un solo comando desde la raíz del proyecto (unittes
 
 | Objetivo | Figura | Hallazgo |
 |---|---|---|
-| 1 y 2 | `F4/figuras/fig1_concentracion_horas.png` | Pocos sitios concentran la mayor parte del tiempo fuera de servicio por transmisión |
-| 3 | `F4/figuras/fig2_enlace_y_proveedor.png` | La fibra de proveedor origina más fallas; microondas y satelital duran más por falla |
-| 4 | `F4/figuras/fig3_lista_escalamiento.png` | Diez sitios encabezan la lista de escalamiento (`docs/prioridad_escalamiento_f4.csv`) |
+| 1 y 2 | `F4/figuras/fig1_concentracion_horas.png` | El 10 % de los sitios acumula el 64 % de las horas fuera de servicio por transmisión, y el 20 % acumula el 82 % |
+| 3 | `F4/figuras/fig2_enlace_y_proveedor.png` | La fibra de proveedor concentra el 47 % de las fallas, de 13 h cada una; el satelital dura 63 h por falla. Son cifras absolutas: sin el inventario de sitios por tipo de enlace no se comparan tasas |
+| 4 | `F4/figuras/fig3_lista_escalamiento.png` | Diez sitios encabezan la lista de escalamiento (`docs/prioridad_escalamiento_f4.csv`). Con pesos iguales entre fallas y minutos coinciden 7 de 10, y SIT_2201, SIT_1174 y SIT_1764 aparecen con cualquier peso (`docs/sensibilidad_prioridad_f4.csv`) |
+| 2 | `F4/figuras/fig4_episodios_por_dia.png` | Seis sitios de microondas (SIT_1764 a SIT_1769) fallan los mismos días (15, 21 y 25 de octubre), lo que sugiere un tramo común |
 
-Las cifras exactas de cada hallazgo están en `docs/hallazgos_f4.csv`, que escribe el notebook F4.
+Las cifras exactas de cada hallazgo, con su fuente, están en `docs/hallazgos_f4.csv`, que escribe el notebook F4. F4 también ejecuta las 59 pruebas del proyecto y guarda el registro en `docs/registro_pruebas.txt`; sus 16 controles de validación quedan en `docs/metadatos_fase4.json`.
+
+**Entregables de la Fase 4:** el informe y el video de presentación se entregan en Canvas, en la tarea Sumativa 3. El video está en Canvas Studio y está compartido con el docente.
 
 ## Reproducibilidad
 

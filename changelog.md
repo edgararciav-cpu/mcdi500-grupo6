@@ -10,7 +10,7 @@ Observaciones del docente en la Sumativa 1 (12-11-2026) y lo que se hizo con cad
 
 | Observación | Acción de mejora | Commit | Impacto |
 |---|---|---|---|
-| Datos internos con sitios reales en un repositorio público | Repositorio privado; sitios, códigos de servicio y tramos reemplazados por códigos; texto libre omitido; historial reescrito | `1e004ac`, `0c97d30` | Documentación: ningún identificador real queda en el repositorio ni en su historial |
+| Datos internos con sitios reales en un repositorio público | Repositorio privado mientras se anonimizaba (público desde el 24-11); sitios, códigos de servicio y tramos reemplazados por códigos; texto libre omitido; historial reescrito | `1e004ac`, `0c97d30` | Documentación: los sitios y servicios quedan con código en el repositorio y en su historial |
 | Objetivos de proceso, no analíticos | Objetivo general y cuatro específicos que responden la pregunta; la preparación de datos pasa a metodología | `213015b` | Documentación: cada figura de F4 responde un objetivo |
 | `requirements.txt` con 105 paquetes, uno solo de Windows | Solo las 6 librerías del proyecto, con versión fija, e instalación probada en Linux, macOS y Windows | `0676823`, `52efc82` | Reproducibilidad: el entorno se instala igual en cualquier sistema |
 | Los 31 commits de F1 y F2 son del mismo día | Ramas por componente con pull request y commits repartidos entre el 15 y el 19 de noviembre | PR #1 a #4 y rama `f4-visualizacion` | Control de versiones: el historial muestra la evolución por etapas |
@@ -31,6 +31,12 @@ Observaciones del docente en la Sumativa 2 (21-11-2026) y lo que se hizo con cad
 | Fuente y unidades en cada figura | Fuente «NOC, octubre de 2026, datos anonimizados» y unidades en los ejes | `734f871` | Comunicación: cada figura se lee sola |
 | Guardar el registro de la última ejecución de las pruebas | `docs/registro_pruebas.txt`, escrito por el notebook F4 | `2481bc8` | Validación: la evidencia queda en el repositorio |
 | Commits en bloque | Un commit por cada parte terminada, en la rama `f4-mejoras` | `525f631` a `2481bc8` | Control de versiones: el historial muestra la evolución |
+
+## [F4] 2026-11-25 · Cierre
+
+### Cambiado
+- README: resultados de la Fase 4 con las cuatro figuras, la sensibilidad de la lista, las 59 pruebas y los entregables (informe y video en Canvas). Se genera desde F1, por eso F1 se volvió a ejecutar.
+- Pregunta, objetivo general y objetivo 3 dicen «se asocian» y «concentran» en vez de «origina», igual que el informe; README de F4, mapa conceptual y la sección 3 de F4 (solo texto) hablan de cuatro figuras y del repositorio público.
 
 ## [F4] 2026-11-24 · Mejoras tras la retroalimentación de la Sumativa 2
 
